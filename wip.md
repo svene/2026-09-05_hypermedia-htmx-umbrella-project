@@ -105,6 +105,7 @@ Deliverables:
 | WP13 | DONE  | Decision: `2026-03-07_springboot-graalvm-jsx-poc` stays a historical PoC (no codegen migration). Added a "deliberately not updated" note to its `readme.md`; closed the "Codegen-direction consistency" Future-work item; updated `Learnings.md` / `Variants.md` / `Variant-Comparison.md`. |
 | WP14 | DONE  | Replaced all relative directory references (`../…`, `../../2025/…`) with plain project names, since the repos are flat on GitHub. Added a project ↔ GitHub-repo table at the top of `docs/Variants.md` (repos under `github.com/svene/`; `springboot-hono-docs` is local-only). Updated `Analysis-Baseline.md`, both READMEs, `wip.md`. |
 | WP15 | DONE  | Wrote the "Architecture trade-offs — two-process vs GraalVM polyglot vs browser-hono" section in `docs/Variant-Comparison.md` (14-dimension table, per-architecture "Net", low-lock-in note). Closed the matching Future-work item; repointed `History.md` / `Learnings.md` / `docs/README.md`. |
+| WP16 | DONE  | Staged `htmx4-upgrade-plan.md` in the 4 ready older projects (`jte-htmx`, `jte-vc-htmx`, `quarkus-qute-htmx`, `hono-htmx`) for the user to execute in separate sessions. Thymeleaf skipped (variant not implemented). Future-work item updated with a per-project checklist. |
 
 ### Catalog entry shape (WP1)
 
@@ -166,17 +167,21 @@ by WP1 (catalog) + WP3.
   `docs/Variant-Comparison.md` (14-dimension table + a "Net" per architecture +
   a low-lock-in note). Extend it later with real-world operational experience as
   it accrues.
-- **Bring the older projects up to the current htmx / asset conventions.** For the
-  projects still on **htmx 2 loaded via webjars** — `2025-08-23_ssfe-patterns-jte-htmx`,
-  `2025-08-23_ssfe-patterns-jte-vc-htmx`, `2025-08-23_ssfe-patterns-thymeleaf-htmx`
-  (once implemented), `2025-12-21_ssfe-patterns-quarkus-qute-htmx` — and the
-  vendored-but-still-v2 `2025-12-27_ssfe-patterns-hono-htmx`:
-  1. upgrade to **htmx 4**;
-  2. drop the `/webjars/htmx.org/...` approach and instead **vendor** the htmx
-     (and hyperscript / Alpine) files into the repo under `static/js/...`, as the
-     2026 projects do.
-  Update `docs/Variants.md` / `docs/Variant-Comparison.md` htmx-version columns
-  and `docs/Analysis-Baseline.md` afterwards.
+- **Bring the older projects up to the current htmx / asset conventions**
+  (htmx 4 + vendored assets instead of webjars). **In progress — per-project plan
+  files staged; the user executes each in a separate Claude session in that
+  project, then returns here.**
+  - `2025-08-23_ssfe-patterns-jte-htmx` → `htmx4-upgrade-plan.md` ☐
+  - `2025-08-23_ssfe-patterns-jte-vc-htmx` → `htmx4-upgrade-plan.md` ☐
+  - `2025-12-21_ssfe-patterns-quarkus-qute-htmx` → `htmx4-upgrade-plan.md` ☐
+  - `2025-12-27_ssfe-patterns-hono-htmx` → `htmx4-upgrade-plan.md` ☐ (already
+    vendored; version bump + migration only)
+  - `2025-08-23_ssfe-patterns-thymeleaf-htmx` — **no plan yet**; the variant is
+    not implemented, so fold the htmx-4 + vendored setup into that build-out.
+
+  When all are done: update the htmx-version columns in `docs/Variants.md` /
+  `docs/Variant-Comparison.md`, refresh the affected rows in
+  `docs/Analysis-Baseline.md`, and delete each project's `htmx4-upgrade-plan.md`.
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
   code-docs; this umbrella project stays the high-level companion.
 - **Decide the relationship to the 2026-05 docs-generator projects**
