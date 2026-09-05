@@ -39,11 +39,31 @@ different variants; others are just a PoC or demonstrate hypermedia/htmx pattern
   docs from the real code. In a later step these can most likely be extended to
   create code-docs for the variants.
 
+## Scope of the umbrella project
+
+The umbrella project documents **high-level things only**: concepts, the
+architectural idea behind each variant, and how the variants differ from one
+another. It is **not** the place to document the internals of a variant — that
+belongs in the individual project. Every catalog entry therefore stays short and
+points to the individual project for the details.
+
+Deliverables:
+
+- `docs/Variants.md` — a lightweight catalog: for each project a short paragraph
+  on what it is, the one concept that distinguishes it, and a pointer to the
+  project itself.
+- `docs/History.md` — the chronological story: which concepts were adopted or
+  dropped from one variant to the next, and why.
+- `docs/Variant-Comparison.md` — the variants compared at the level of concepts
+  and architecture, not implementation detail.
+- `docs/Learnings.md` — learnings inferred from how the projects changed over
+  time. Claude seeds this from the observable history; the user is expected to
+  extend and correct it manually later.
+
 ## Approach
 
-- The analysis-heavy step is done once as a structured inventory of every sibling
-  project (`docs/Variants.md`). Both `docs/History.md` and
-  `docs/Variant-Comparison.md` are then derived from that inventory.
+- `docs/Variants.md` is written first as the shared reference; `History.md`,
+  `Variant-Comparison.md` and `Learnings.md` build on it.
 - All documentation output lives in `docs/` as Markdown.
 - This repo only reads the sibling projects; it never modifies them.
 - Work is split into work packages. Each work package is one manual git commit by
@@ -55,38 +75,38 @@ different variants; others are just a PoC or demonstrate hypermedia/htmx pattern
 | WP  | Status | Deliverable |
 |-----|--------|-------------|
 | WP0 | DONE   | This `wip.md` rewrite (plan + TODO list) and umbrella `README.md`. |
-| WP1 | TODO   | `docs/Variants.md` — catalog of the 2025 projects. |
-| WP2 | TODO   | `docs/Variants.md` extended with the 2026 projects (incl. the two Astro/Starlight docs projects). |
-| WP3 | TODO   | `docs/History.md` — narrative timeline / learning journey derived from the inventory. |
-| WP4 | TODO   | `docs/Variant-Comparison.md` — dimension-by-dimension comparison tables. |
+| WP1 | DONE   | `docs/Variants.md` — lightweight catalog of all sibling projects (concept + role + pointer). |
+| WP2 | TODO   | `docs/History.md` — chronological story of concepts adopted / dropped and why. |
+| WP3 | TODO   | `docs/Variant-Comparison.md` — concept- and architecture-level comparison. |
+| WP4 | TODO   | `docs/Learnings.md` — learnings seeded from the observable history (user extends later). |
 | WP5 | TODO   | `docs/README.md` index + cross-links; final `wip.md` cleanup. |
 
-### Catalog entry schema (used by WP1 / WP2)
+### Catalog entry shape (WP1)
 
-Per project: folder path, start date (from prefix), category (app variant / PoC /
-pattern showcase / docs generator), backend framework, language(s), template /
-view technology, build tool(s), htmx version, where HTML is generated (in the JVM
-/ separate process / GraalVM polyglot), notable patterns demonstrated, current
-status, key source files / docs.
+Per project, a few lines only: folder path + start date, role (app variant /
+PoC / pattern showcase / docs generator), the stack in one line, the one
+distinguishing concept, current status, and "details: see the project". No
+internals.
 
-### Comparison dimensions (used by WP4)
+### Comparison dimensions (WP3)
 
-Backend framework, language, template/view tech, build tool, htmx version, HTML
-generation location, OOB vs hx-partial swap patterns, dev hot-reload story,
-native-image support, main trade-offs / when to pick it.
+Kept high-level: backend framework + language, where HTML is generated (in the
+JVM / separate process / GraalVM polyglot), template/view technology as a
+concept, how dynamic updates are done (full page / OOB / partial), and the main
+trade-off / when this variant makes sense.
 
 ## TODO
 
-- [ ] WP1 — `docs/Variants.md` for the 2025 projects
-- [ ] WP2 — add the 2026 projects to `docs/Variants.md`
-- [ ] WP3 — `docs/History.md`
-- [ ] WP4 — `docs/Variant-Comparison.md`
+- [x] WP1 — `docs/Variants.md` (all projects, lightweight)
+- [ ] WP2 — `docs/History.md`
+- [ ] WP3 — `docs/Variant-Comparison.md`
+- [ ] WP4 — `docs/Learnings.md` (seed only)
 - [ ] WP5 — `docs/README.md` index + cross-links, `wip.md` cleanup
 
 ## Open items (original)
 
 - create a file History.md which includes the main differences between the
-  variants — planned as WP3 (`docs/History.md`).
+  variants — planned as WP2 (`docs/History.md`).
 - create a file Variant-Comparison.md which includes the main differences between
   the variants. Analysis of the projects will be needed to do this — planned as
-  WP1/WP2 (inventory) + WP4 (`docs/Variant-Comparison.md`).
+  WP1 (`docs/Variants.md` catalog) + WP3 (`docs/Variant-Comparison.md`).
