@@ -96,6 +96,7 @@ Deliverables:
 | WP8 | DONE   | Resolved open questions 1 & 3: `jsx` in folder names is historical (repo-rename item added to Future work); `hda-dynapage-demo` still runs the `typescript-generator` (Java→TS) plugin — audit table corrected. |
 | WP9 | DONE   | Resolved open questions 4, 5 & 10: GraalVM `Context` is not thread-safe (reason for the pool); two-process / GraalVM / browser-hono are all valid, use-case-dependent. Added "which architecture for which use case" to Future work; updated `Learnings.md`, `History.md`, `Variant-Comparison.md`. |
 | WP10 | DONE  | Resolved open question 6: older projects are on htmx 2 via webjars. Added a Future-work task to upgrade them to htmx 4 and switch to the vendored `static/js/...` asset approach. |
+| WP11 | DONE  | Resolved open question 7: `dynapage-demo` is a copy of `springboot-hono-poc`; the user does this often and it should NOT be documented publicly. Noted internally in Claude memory. |
 
 ### Catalog entry shape (WP1)
 
@@ -195,8 +196,11 @@ also noted in the relevant `docs/*.md`.
    **resolved:** they are on htmx 2 via webjars (`/webjars/htmx.org/...`).
    Converted into a Future-work task: upgrade to htmx 4 and switch to the vendored
    `static/js/...` approach used by the 2026 projects.
-7. **`springboot-hono-poc` vs `hda-dynapage-demo`** share identical early git
-   history — was `dynapage-demo` forked from the PoC? (Assumed yes.)
+7. ~~`springboot-hono-poc` vs `hda-dynapage-demo` share identical early git
+   history — forked?~~ — **resolved:** yes, `dynapage-demo` is a copy of
+   `springboot-hono-poc`. The user has done this for several of these projects.
+   It is an irrelevant implementation detail — **do not document project-copy
+   lineage in the public docs.**
 8. **The two 2026-05 docs-generator projects** — should they eventually be folded
    into this umbrella project, or stay separate?
 9. **Thymeleaf stall reason** — assumed "interest moved on"; partly answered
