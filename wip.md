@@ -207,10 +207,9 @@ by WP1 (catalog) + WP3.
   `quarkus-web-dependency-locator` dropped); the other 7 `git mv`'d their flat
   `css/bulma.min.css` into `css/bulma/1.0.4/` and repointed the `<link>` tags
   (plus stale `architecture.md` tree listings). `jte-htmx` has no bulma;
-  Thymeleaf is un-built. Details + per-project verification:
-  [`bulma-vendoring-plan.md`](bulma-vendoring-plan.md). **Remaining:** after the
-  user commits each repo, refresh those rows in `docs/Analysis-Baseline.md` and
-  delete the plan file.
+  Thymeleaf is un-built. **Done: all 8 committed + pushed 2026-09-05
+  (`vendored bulma`); `docs/Analysis-Baseline.md` rows refreshed.**
+  `bulma-vendoring-plan.md` can be deleted.
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
   code-docs; this umbrella project stays the high-level companion.
 - **Decide the relationship to the 2026-05 docs-generator projects**
