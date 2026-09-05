@@ -85,6 +85,7 @@ Deliverables:
 | WP3 | DONE   | `docs/Variant-Comparison.md` — concept- and architecture-level comparison. |
 | WP4 | DONE   | `docs/Learnings.md` — learnings seeded from the observable history (user extends later). |
 | WP5 | DONE   | `docs/Analysis-Baseline.md` (per-project commit hashes), `docs/README.md` index + cross-links, `README.md` refresh, `wip.md` cleanup. |
+| WP6 | DONE   | Follow-up: Java→TS codegen confirmed as preference + per-project audit (`docs/Learnings.md`), threaded through `History.md` / `Variant-Comparison.md` / `Variants.md`; "Open questions" section added below. |
 
 ### Catalog entry shape (WP1)
 
@@ -127,5 +128,36 @@ by WP1 (catalog) + WP3.
 - **Implement the Thymeleaf variant** (`2025-08-23_ssfe-patterns-thymeleaf-htmx`)
   with Claude, mirroring the JTE variants' patterns. Update `docs/Variants.md`,
   `docs/Variant-Comparison.md` and `docs/Analysis-Baseline.md` afterwards.
+- **Codegen-direction consistency.** Java→TS is the settled preference, but not
+  every project was migrated. `docs/Learnings.md` has the audit table. Known gap:
+  `2026-03-07_springboot-graalvm-jsx-poc` still generates Java from TS (`javagen/`,
+  `.tsx`). Decide per project whether to migrate to Java→TS or leave as a
+  historical PoC (and note that in the project's own README). `hda-dynapage-demo`
+  needs a quick check whether any generator remains at all.
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
   code-docs; this umbrella project stays the high-level companion.
+
+## Open questions
+
+Collected while analysing the projects — to be worked through together. Each is
+also noted in the relevant `docs/*.md`.
+
+1. **`2026-03-09` / `2026-03-15` folder names say `...jsx...`** but the projects
+   use `html``` tagged templates, not JSX. Is the name just historical, or should
+   it be read as significant?
+2. **Codegen direction not uniform** — see Future work above.
+   `2026-03-07_springboot-graalvm-jsx-poc` still uses TS→Java.
+3. **`hda-dynapage-demo`** — is any generator still in use, or are the VMs now
+   fully hand-written Java records?
+4. **GraalVM boundary tuning** (Context pool, JSON-string passing, entry-function
+   caching) — were there measured numbers behind these, or judgement calls?
+5. **Two-process architecture** (`springboot-hono-poc` pattern) — fully retired,
+   or still a valid option for some situations?
+6. **htmx versions of the 2025 Java variants** (`jte-vc`, `thymeleaf`, `qute`) —
+   pulled via a webjars BOM, not pinned inline; assumed 2.x but not verified.
+7. **`springboot-hono-poc` vs `hda-dynapage-demo`** share identical early git
+   history — was `dynapage-demo` forked from the PoC? (Assumed yes.)
+8. **The two 2026-05 docs-generator projects** — should they eventually be folded
+   into this umbrella project, or stay separate?
+9. **Thymeleaf stall reason** — assumed "interest moved on"; partly answered
+   (planned to be done later with Claude), but was there a specific blocker?

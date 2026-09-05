@@ -115,6 +115,10 @@ comparable.
   process** — the JS renderer runs in the JVM via GraalVM, so there is no second
   server, while the templates stay TypeScript/JSX.
 - **Status:** PoC — `hello` / `page` / `layout` components, no domain app.
+  Predates the JSX→`html``` and the TS→Java→**Java→TS** codegen migrations, so it
+  still uses `.tsx` and generates Java from TS. Superseded by `2026-03-09`; decide
+  whether to migrate it or keep it as-is (see the audit in
+  [Learnings.md](Learnings.md)).
 
 ### `../2026-03-09_hda-springboot-graalvm-jsx-demo`
 

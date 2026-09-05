@@ -63,10 +63,15 @@ all — simplest of all, but it abandons the Java investment.
 |---|---|---|
 | pure Java (2025-08, Qute) | none | n/a |
 | pure Hono (`hono-htmx`) | none | n/a |
-| Java + separate Hono | view model as **JSON over HTTP** | tried zod + OpenAPI→Java codegen, reverted; settled on generating Java records from the TS DTOs |
+| Java + separate Hono | view model as **JSON over HTTP** | tried zod + OpenAPI→Java codegen, reverted; then migrated to **Java→TS** (`springboot-hono-poc`) |
 | Java + GraalVM | in-process **Java↔JS** call, JSON string payload | early: generate Java view-model types from TS. Later reversed: **Java→TS** — Java owns the view models, route names and action URLs; TS consumes generated types/constants |
 
-The direction of truth flipped over time: TypeScript-first → **Java-first**.
+The direction of truth flipped over time: TypeScript-first → **Java-first**
+(the current preference). The migration is **not uniform across projects** —
+`springboot-hono-poc`, `hda-dynapage-demo`, `hda-springboot-graalvm-jsx-demo` and
+`hda-quarkus-graalvm-jsx-demo` are Java-first; **`springboot-graalvm-jsx-poc`
+still generates Java from TS** and has not been migrated (see the audit table in
+[Learnings.md](Learnings.md)).
 
 ## Axis 4 — Dynamic updates
 

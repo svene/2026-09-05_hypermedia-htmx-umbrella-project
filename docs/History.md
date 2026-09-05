@@ -99,9 +99,13 @@ the current preferred style:
   virtual DOM, `String(result)` is the HTML.
 - **Many entry functions → a single `render(route, json)`** that dispatches on the
   route.
-- **Code-generation direction reversed:** TS→Java became **Java→TS**. Java now
-  owns the view models *and* the action URLs / route names; TypeScript consumes
-  the generated types and constants.
+- **Code-generation direction reversed:** TS→Java became **Java→TS** (the current
+  preference). Java now owns the view models *and* the action URLs / route names;
+  TypeScript consumes the generated types and constants, produced by the
+  `typescript-generator` Maven plugin instead of a hand-written generator. This
+  reversal reached `springboot-hono-poc`, `hda-dynapage-demo` and both GraalVM
+  demos, but **not `springboot-graalvm-jsx-poc`**, which still generates Java
+  from TS — see the audit in [Learnings.md](Learnings.md).
 - **htmx 2 → htmx 4**.
 - **WebSockets → SSE** for automatic browser reload ("much cleaner").
 

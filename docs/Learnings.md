@@ -36,10 +36,13 @@ for the axes.
    "generate Java records from the TS DTOs" was sufficient. The elaborate contract
    tooling cost more than the drift it prevented.
 5. **Pick one source of truth for shared types, generate the other side.** The
-   direction flipped from TypeScript-first to **Java-first**: view models, route
-   names and action URLs now live in Java, and TypeScript consumes generated
-   types and constants. Both directions worked; Java-first won because the whole
-   point was to keep the existing Java code.
+   direction flipped from TypeScript-first to **Java-first** — the user's settled
+   preference: view models, route names and action URLs live in Java, and
+   TypeScript consumes generated types and constants (Java→TS via the
+   `typescript-generator` Maven plugin, which also replaces a hand-written
+   generator). Java-first won because the whole point was to keep the existing
+   Java code, and because the mature Maven plugin beats maintaining a custom one.
+   **Not every project was migrated** — see the audit below.
 6. **Two processes is a real, recurring cost** — run, deploy, a network hop, and
    a contract to keep in sync. It was tolerated for a while, then removed by
    GraalVM polyglot without giving up TypeScript templates. The GraalVM runtime
@@ -89,13 +92,31 @@ for the axes.
 
 - **`html``` over JSX is a settled preference** — simpler, closer to real HTML,
   no JSX runtime or extra dependencies.
+- **Java→TS code generation is the settled preference** (Java is the source of
+  truth), reversing the earlier TS→Java direction.
 - The **Thymeleaf variant stalled deliberately** and is planned to be implemented
   later (with Claude), not abandoned.
 
+## Codegen-direction audit (2026-09-05)
+
+Which projects have cross-language type generation, and in which direction:
+
+| Project | Direction | Notes |
+|---|---|---|
+| `springboot-hono-poc` | **Java→TS** ✅ | migrated (`ab83834`); removed the TS→Java generator and its Maven plugin |
+| `hda-dynapage-demo` | **Java-first** ✅ | removed the TS→Java ("Hono2Java") generator (`8b79818`); VMs are hand-written Java records, URLs no longer passed in VMs — confirm whether any generator remains |
+| `springboot-graalvm-jsx-poc` | **TS→Java** ⚠️ **not migrated** | still uses `javagen/generate-java-from-hono.ts`; a superseded PoC, so possibly fine to leave — decide explicitly |
+| `hda-springboot-graalvm-jsx-demo` | **Java→TS** ✅ | migrated (`5ecb2e7`); `typescript-generator` + gmavenplus for consts/routes/events/action-URLs |
+| `hda-quarkus-graalvm-jsx-demo` | **Java→TS** ✅ | migrated (`0fce481`) |
+
+Pure-Java and pure-Hono variants have no cross-language contract.
+
+**Action:** decide whether `springboot-graalvm-jsx-poc` should be migrated to
+Java→TS for consistency or left as a historical PoC (and say so in its README).
+
 ## To confirm / expand (for the manual pass)
 
-- Whether "codegen direction reversed to Java→TS" is a settled preference or just
-  the `2026-03-15` repo's local choice.
+- Whether `hda-dynapage-demo` still has any generator or is fully hand-written.
 - Performance numbers, if any, behind the GraalVM boundary decisions.
 - Whether the two-process architecture is fully retired or still has a use case.
 - Anything learned that never made it into a commit message.
