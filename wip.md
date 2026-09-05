@@ -168,19 +168,28 @@ by WP1 (catalog) + WP3.
   a low-lock-in note). Extend it later with real-world operational experience as
   it accrues.
 - **Bring the older projects up to the current htmx / asset conventions**
-  (htmx 4 + vendored assets instead of webjars). **In progress — per-project plan
-  files staged; the user executes each in a separate Claude session in that
-  project, then returns here.**
+  (htmx 4 + vendored assets instead of webjars). **All 4 buildable projects done
+  (2026-09-05); only Thymeleaf remains, blocked on that variant being
+  implemented.** Each was executed by the user in a separate Claude session from
+  its `htmx4-upgrade-plan.md`; umbrella docs (`Variants.md` /
+  `Variant-Comparison.md` htmx columns, `Analysis-Baseline.md` rows) already
+  updated per project.
   - `2025-08-23_ssfe-patterns-jte-htmx` → ☑ **done 2026-09-05, commit `e2cba81`**
     ("htmx4 upgrade"): htmx 4 vendored at `src/main/resources/static/js/htmx.org/4.0.0/`,
     webjar + `webjars-locator` removed from `pom.xml`, both script refs updated.
     Docs updated. Plan file to be deleted after the user merges.
-  - `2025-08-23_ssfe-patterns-jte-vc-htmx` → ☑ **done 2026-09-05, commit `7384f38`**
-    (was `ae4901e`, amended) ("upgrade to htmx4"): htmx 4 vendored at
+  - `2025-08-23_ssfe-patterns-jte-vc-htmx` → ☑ **htmx4 done 2026-09-05, commit
+    `7384f38`** (was `ae4901e`, amended): htmx 4 vendored at
     `src/main/resources/static/js/htmx.org/4.0.0/`, webjar + `webjars-locator`
-    removed from `pom.xml`, all 4 `.jte` script refs updated (`play.html` no
-    longer exists). Docs updated. Plan file to be deleted after the user merges.
-  - `2025-12-21_ssfe-patterns-quarkus-qute-htmx` → `htmx4-upgrade-plan.md` ☐
+    removed from `pom.xml`, all 4 `.jte` script refs updated. **Bulma also
+    vendored 2026-09-05, commit `5089f49`** — `static/css/bulma/1.0.4/bulma.min.css`,
+    webjar removed; this is the reference for the bulma-vendoring plan below.
+    Plan file to be deleted after the user merges.
+  - `2025-12-21_ssfe-patterns-quarkus-qute-htmx` → ☑ **done 2026-09-05, commit `431e0d2`**
+    ("upgrade to htmx4"): htmx 4 vendored at `src/main/resources/META-INF/resources/js/htmx.org/4.0.0/`,
+    htmx webjar removed from `pom.xml` (`quarkus-web-dependency-locator` kept for
+    bulma), all 3 template script refs updated. Docs updated. Plan file to be
+    deleted after the user merges.
   - `2025-12-27_ssfe-patterns-hono-htmx` → ☑ **done 2026-09-05, commit `3daf3da`**
     ("upgrade to htmx4"): htmx 4 vendored at `static/js/htmx.org/4.0.0/`, old
     2.0.8 removed, 3 script refs updated, `upgrade-check` clean, demos verified.
@@ -189,9 +198,19 @@ by WP1 (catalog) + WP3.
   - `2025-08-23_ssfe-patterns-thymeleaf-htmx` — **no plan yet**; the variant is
     not implemented, so fold the htmx-4 + vendored setup into that build-out.
 
-  When the rest are done: update the htmx-version columns in `docs/Variants.md` /
-  `docs/Variant-Comparison.md`, refresh the affected rows in
-  `docs/Analysis-Baseline.md`, and delete each project's `htmx4-upgrade-plan.md`.
+  Remaining: delete each project's `htmx4-upgrade-plan.md` once merged, and cover
+  Thymeleaf as part of building that variant out.
+- **Vendor bulma (versioned) everywhere, off webjars.** Reference:
+  `2025-08-23_ssfe-patterns-jte-vc-htmx` commit `5089f49`. **Applied to all 8
+  remaining projects on 2026-09-05 from this umbrella project** (working trees
+  only — the user reviews/commits each): `quarkus-qute-htmx` off the webjar (and
+  `quarkus-web-dependency-locator` dropped); the other 7 `git mv`'d their flat
+  `css/bulma.min.css` into `css/bulma/1.0.4/` and repointed the `<link>` tags
+  (plus stale `architecture.md` tree listings). `jte-htmx` has no bulma;
+  Thymeleaf is un-built. Details + per-project verification:
+  [`bulma-vendoring-plan.md`](bulma-vendoring-plan.md). **Remaining:** after the
+  user commits each repo, refresh those rows in `docs/Analysis-Baseline.md` and
+  delete the plan file.
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
   code-docs; this umbrella project stays the high-level companion.
 - **Decide the relationship to the 2026-05 docs-generator projects**

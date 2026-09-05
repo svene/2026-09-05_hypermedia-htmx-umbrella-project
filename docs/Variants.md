@@ -55,8 +55,10 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 - **Role:** pattern showcase (the most built-out of the 2025-08 trio).
 - **Stack:** Spring Boot + JTE + [spring-view-component](https://github.com/tschuehly/spring-view-component)
-  (server-side View Components), **htmx 4** (vendored under `static/js/…`,
-  upgraded from 2.0.4 on 2026-09-05, commit `7384f38`).
+  (server-side View Components), **htmx 4**. On 2026-09-05 htmx (`7384f38`) and
+  then bulma (`5089f49`) were moved off webjars to vendored, versioned
+  `static/js/htmx.org/4.0.0/` and `static/css/bulma/1.0.4/` — the reference for
+  the [bulma-vendoring plan](../bulma-vendoring-plan.md).
 - **Distinguishing idea:** components as first-class server objects — a
   component owns its URL constant and its template, the controller returns the
   component instead of a template path, and htmx events (`hx-trigger … from:body`)
@@ -81,8 +83,9 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 - **Role:** pattern showcase, organised as a course (`m00`–`m05` modules:
   plain → JSX-ish → pages → UI patterns → htmx).
-- **Stack:** Quarkus + [Qute](https://quarkus.io/guides/qute) templates, htmx;
-  native-image build files present.
+- **Stack:** Quarkus + [Qute](https://quarkus.io/guides/qute) templates, **htmx 4**
+  (vendored under `META-INF/resources/js/…`, upgraded from 2.0.4 on 2026-09-05,
+  commit `431e0d2`); native-image build files present.
 - **Distinguishing idea:** the same SSFE patterns on a Quarkus/Qute stack, with
   a module-per-concept teaching structure and a live code-snippet viewer built
   into the demo app.

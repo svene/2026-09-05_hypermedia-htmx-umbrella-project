@@ -73,8 +73,13 @@ for the axes.
    esbuild and rebuild the JS context per request — no app restart. And **SSE
    beat WebSockets** for triggering browser reloads ("much cleaner").
 10. **htmx major version is worth keeping uniform across variants.** The 2 → 4
-    upgrade happened late and across the board; mixed majors add cognitive load
-    when comparing variants.
+    upgrade happened late; the 2026 GraalVM/browser projects moved first, then the
+    older 2025 Java variants + `hono-htmx` were retrofitted on 2026-09-05 (each
+    from a shared `htmx4-upgrade-plan.md`). Only the un-built Thymeleaf variant is
+    still on htmx 2. Mixed majors add cognitive load when comparing variants. The
+    2→4 diffs were small here — mainly the vendored script swap; where `hx-*` was
+    used, quoting extended `from:` selectors and turning bare
+    `hx-trigger="click consume"` into `hx-on:click`.
 
 ## Keeping a family of variants healthy
 
@@ -90,10 +95,19 @@ for the axes.
 14. **Unfinished experiments are still data.** The Thymeleaf variant was only
     started before interest moved on — that "moved on" is itself a signal about
     where the value was.
+15. **Pin front-end assets: vendored, version-namespaced, no webjars/CDN.** The
+    settled convention is a file in the repo at
+    `…/js/htmx.org/4.0.0/htmx.js`, `…/css/bulma/1.0.4/bulma.min.css`, etc. It
+    drifted — early projects used webjars, others vendored *flat*
+    (`css/bulma.min.css`) — and was normalised across every project on 2026-09-05
+    (htmx first, then bulma; see `../bulma-vendoring-plan.md`). Version in the path
+    makes upgrades explicit and keeps the variants comparable. Removing the last
+    webjar also let `quarkus-web-dependency-locator` go from the Quarkus/Qute
+    project.
 
 ## Meta / documentation
 
-15. **Docs-from-code is a separate concern, started later (2026-05).** Snippet
+16. **Docs-from-code is a separate concern, started later (2026-05).** Snippet
     extraction from real source keeps docs in sync; this umbrella project is the
     higher-level companion to those generators.
 
