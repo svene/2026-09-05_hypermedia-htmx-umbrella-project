@@ -11,8 +11,8 @@ the umbrella docs still need to catch up on.
 
 | Project | Branch | Commit at analysis | Date | Subject |
 |---|---|---|---|---|
-| `2025-08-23_ssfe-patterns-jte-htmx` | main | `9d03e03` | 2025-08-24 | documented Template-Injection pattern and Template-Inclusion pattern |
-| `2025-08-23_ssfe-patterns-jte-vc-htmx` | main | `ae4901e` | 2026-09-05 | upgrade to htmx4 |
+| `2025-08-23_ssfe-patterns-jte-htmx` | main | `e2cba81` | 2026-09-05 | htmx4 upgrade |
+| `2025-08-23_ssfe-patterns-jte-vc-htmx` | main | `7384f38` | 2026-09-05 | upgrade to htmx4 |
 | `2025-08-23_ssfe-patterns-thymeleaf-htmx` | main | `07b4d91` | 2025-08-23 | springboot code: controller working |
 | `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | main | `afab795` | 2026-01-15 | code for M05 |
 | `2025-12-27_ssfe-patterns-hono-htmx` | main | `3daf3da` | 2026-09-05 | upgrade to htmx4 |

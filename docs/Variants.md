@@ -43,7 +43,8 @@ pair, where the same templates run client-side. They mostly render the same smal
 ### `2025-08-23_ssfe-patterns-jte-htmx`
 
 - **Role:** pattern showcase.
-- **Stack:** Spring Boot + plain [JTE](https://jte.gg/), htmx 2.
+- **Stack:** Spring Boot + plain [JTE](https://jte.gg/), **htmx 4** (vendored under
+  `static/js/…`, upgraded from 2.0.4 on 2026-09-05, commit `e2cba81`).
 - **Distinguishing idea:** the two basic ways to assemble a page with a plain
   template engine — *Template-Injection* (parent takes a `Content` block) vs
   *Template-Inclusion* (child pulls in `pagestart` / `pagenavigation` / `pageend`
@@ -55,7 +56,7 @@ pair, where the same templates run client-side. They mostly render the same smal
 - **Role:** pattern showcase (the most built-out of the 2025-08 trio).
 - **Stack:** Spring Boot + JTE + [spring-view-component](https://github.com/tschuehly/spring-view-component)
   (server-side View Components), **htmx 4** (vendored under `static/js/…`,
-  upgraded from 2.0.4 on 2026-09-05, commit `ae4901e`).
+  upgraded from 2.0.4 on 2026-09-05, commit `7384f38`).
 - **Distinguishing idea:** components as first-class server objects — a
   component owns its URL constant and its template, the controller returns the
   component instead of a template path, and htmx events (`hx-trigger … from:body`)
