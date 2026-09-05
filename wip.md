@@ -210,6 +210,20 @@ by WP1 (catalog) + WP3.
   Thymeleaf is un-built. **Done: all 8 committed + pushed 2026-09-05
   (`vendored bulma`); `docs/Analysis-Baseline.md` rows refreshed.**
   `bulma-vendoring-plan.md` can be deleted.
+- **`2025-12-27_ssfe-patterns-hono-htmx`: docs-snippet markers leak into the
+  rendered page.** The M01 "Simple Pages using HTML Helper" demos (module
+  `m01html`, routes `/m01/d01`…) show the literal text `{/*docs:start page*/}` /
+  `{/*docs:end page*/}` in the browser. Cause: those files (`src/m01html/m01d0*.ts`,
+  `src/components/*.ts`) build HTML with hono's `html``` tagged template, where
+  `{/* … */}` is plain string content, not a comment — unlike the `.tsx` modules
+  (m02–m05) where it is a real JSX expression comment and renders nothing.
+  Pre-existing; **not** caused by the htmx 4 upgrade. Fix: in the `html```
+  templates switch the markers to real HTML comments
+  (`<!-- docs:start page -->` / `<!-- docs:end page -->`); the snippet extractor
+  in the 2026-05 docs generators only does `line.includes('docs:start page')`, so
+  comment syntax is irrelevant to extraction and an HTML comment is invisible in
+  the browser. Grep `src` for `docs:start` / `docs:end` in `.ts` files.
+  (Copied from that project's Claude memory so it can be dropped there.)
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
   code-docs; this umbrella project stays the high-level companion.
 - **Decide the relationship to the 2026-05 docs-generator projects**
