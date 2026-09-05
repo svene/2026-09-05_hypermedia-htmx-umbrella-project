@@ -108,7 +108,7 @@ Which projects have cross-language type generation, and in which direction:
 | Project | Direction | Notes |
 |---|---|---|
 | `springboot-hono-poc` | **Java→TS** ✅ | migrated (`ab83834`); removed the TS→Java generator and its Maven plugin |
-| `hda-dynapage-demo` | **Java-first** ✅ | removed the TS→Java ("Hono2Java") generator (`8b79818`); VMs are hand-written Java records, URLs no longer passed in VMs — confirm whether any generator remains |
+| `hda-dynapage-demo` | **Java→TS** ✅ | removed the old TS→Java ("Hono2Java") generator (`8b79818`); the `typescript-generator` Maven plugin is still active in `springboot/pom.xml`, generating `hono/src/generated/types/vm-types.d.ts` (VM interfaces + route/event unions) from Java |
 | `springboot-graalvm-jsx-poc` | **TS→Java** ⚠️ **not migrated** | still uses `javagen/generate-java-from-hono.ts`; a superseded PoC, so possibly fine to leave — decide explicitly |
 | `hda-springboot-graalvm-jsx-demo` | **Java→TS** ✅ | migrated (`5ecb2e7`); `typescript-generator` + gmavenplus for consts/routes/events/action-URLs |
 | `hda-quarkus-graalvm-jsx-demo` | **Java→TS** ✅ | migrated (`0fce481`) |
@@ -122,7 +122,6 @@ Java→TS for consistency or left as a historical PoC (and say so in its README)
 
 ## To confirm / expand (for the manual pass)
 
-- Whether `hda-dynapage-demo` still has any generator or is fully hand-written.
 - Performance numbers, if any, behind the GraalVM boundary decisions.
 - Whether the two-process architecture is fully retired or still has a use case.
 - Anything learned that never made it into a commit message.

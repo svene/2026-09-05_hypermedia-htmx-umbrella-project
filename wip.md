@@ -93,6 +93,7 @@ Deliverables:
 | WP5 | DONE   | `docs/Analysis-Baseline.md` (per-project commit hashes), `docs/README.md` index + cross-links, `README.md` refresh, `wip.md` cleanup. |
 | WP6 | DONE   | Follow-up: Java→TS codegen confirmed as preference + per-project audit (`docs/Learnings.md`), threaded through `History.md` / `Variant-Comparison.md` / `Variants.md`; "Open questions" section added below. |
 | WP7 | DONE   | Added the two `2026-09-03_hda-*-browser-hono` projects (browser-side rendering) across all docs: sibling list, `Variants.md` (new section), `Analysis-Baseline.md`, `Variant-Comparison.md` (new Axis-1 model + matrix/axes), `History.md` (new Phase 8), READMEs. |
+| WP8 | DONE   | Resolved open questions 1 & 3: `jsx` in folder names is historical (repo-rename item added to Future work); `hda-dynapage-demo` still runs the `typescript-generator` (Java→TS) plugin — audit table corrected. |
 
 ### Catalog entry shape (WP1)
 
@@ -135,12 +136,17 @@ by WP1 (catalog) + WP3.
 - **Implement the Thymeleaf variant** (`2025-08-23_ssfe-patterns-thymeleaf-htmx`)
   with Claude, mirroring the JTE variants' patterns. Update `docs/Variants.md`,
   `docs/Variant-Comparison.md` and `docs/Analysis-Baseline.md` afterwards.
+- **Rename the `jsx` repos.** The `jsx` in `2026-03-07_springboot-graalvm-jsx-poc`,
+  `2026-03-09_hda-springboot-graalvm-jsx-demo` and
+  `2026-03-15_hda-quarkus-graalvm-jsx-demo` is historical — they use hono `html`
+  tagged templates, not JSX (except the `2026-03-07` PoC, which still has `.tsx`).
+  Rename e.g. `…graalvm-jsx-demo` → `…graalvm-hono-demo`, then update the folder
+  paths in `docs/*` and `docs/Analysis-Baseline.md`.
 - **Codegen-direction consistency.** Java→TS is the settled preference, but not
   every project was migrated. `docs/Learnings.md` has the audit table. Known gap:
   `2026-03-07_springboot-graalvm-jsx-poc` still generates Java from TS (`javagen/`,
-  `.tsx`). Decide per project whether to migrate to Java→TS or leave as a
-  historical PoC (and note that in the project's own README). `hda-dynapage-demo`
-  needs a quick check whether any generator remains at all.
+  `.tsx`). Decide whether to migrate it to Java→TS or leave it as a historical PoC
+  (and note that in the project's own README).
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
   code-docs; this umbrella project stays the high-level companion.
 
@@ -149,13 +155,15 @@ by WP1 (catalog) + WP3.
 Collected while analysing the projects — to be worked through together. Each is
 also noted in the relevant `docs/*.md`.
 
-1. **`2026-03-09` / `2026-03-15` folder names say `...jsx...`** but the projects
-   use `html``` tagged templates, not JSX. Is the name just historical, or should
-   it be read as significant?
-2. **Codegen direction not uniform** — see Future work above.
+1. ~~`2026-03-09` / `2026-03-15` folder names say `...jsx...`~~ — **resolved:**
+   `jsx` is historical, they use `html``` templates. Repo rename added to Future
+   work.
+2. **Codegen direction not uniform** — accepted; tracked in Future work.
    `2026-03-07_springboot-graalvm-jsx-poc` still uses TS→Java.
-3. **`hda-dynapage-demo`** — is any generator still in use, or are the VMs now
-   fully hand-written Java records?
+3. ~~`hda-dynapage-demo` — is any generator still in use?~~ — **resolved:** yes,
+   the `typescript-generator` Maven plugin (Java→TS) is still active in
+   `springboot/pom.xml`, generating `vm-types.d.ts`. Only the old *TS→Java*
+   generator was removed. Nothing to remove.
 4. **GraalVM boundary tuning** (Context pool, JSON-string passing, entry-function
    caching) — were there measured numbers behind these, or judgement calls?
 5. **Two-process architecture** (`springboot-hono-poc` pattern) — fully retired,
