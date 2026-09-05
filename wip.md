@@ -94,6 +94,7 @@ Deliverables:
 | WP6 | DONE   | Follow-up: Java→TS codegen confirmed as preference + per-project audit (`docs/Learnings.md`), threaded through `History.md` / `Variant-Comparison.md` / `Variants.md`; "Open questions" section added below. |
 | WP7 | DONE   | Added the two `2026-09-03_hda-*-browser-hono` projects (browser-side rendering) across all docs: sibling list, `Variants.md` (new section), `Analysis-Baseline.md`, `Variant-Comparison.md` (new Axis-1 model + matrix/axes), `History.md` (new Phase 8), READMEs. |
 | WP8 | DONE   | Resolved open questions 1 & 3: `jsx` in folder names is historical (repo-rename item added to Future work); `hda-dynapage-demo` still runs the `typescript-generator` (Java→TS) plugin — audit table corrected. |
+| WP9 | DONE   | Resolved open questions 4, 5 & 10: GraalVM `Context` is not thread-safe (reason for the pool); two-process / GraalVM / browser-hono are all valid, use-case-dependent. Added "which architecture for which use case" to Future work; updated `Learnings.md`, `History.md`, `Variant-Comparison.md`. |
 
 ### Catalog entry shape (WP1)
 
@@ -147,6 +148,11 @@ by WP1 (catalog) + WP3.
   `2026-03-07_springboot-graalvm-jsx-poc` still generates Java from TS (`javagen/`,
   `.tsx`). Decide whether to migrate it to Java→TS or leave it as a historical PoC
   (and note that in the project's own README).
+- **"Which architecture for which use case."** The two-process (Java → Hono over
+  HTTP), the GraalVM-polyglot, and the browser-hono architectures are all
+  considered valid for hypermedia/htmx webapps — the right choice depends on the
+  use case. Write this up as guidance (extends the "When each model makes sense"
+  table in `docs/Variant-Comparison.md`).
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
   code-docs; this umbrella project stays the high-level companion.
 
@@ -164,10 +170,15 @@ also noted in the relevant `docs/*.md`.
    the `typescript-generator` Maven plugin (Java→TS) is still active in
    `springboot/pom.xml`, generating `vm-types.d.ts`. Only the old *TS→Java*
    generator was removed. Nothing to remove.
-4. **GraalVM boundary tuning** (Context pool, JSON-string passing, entry-function
-   caching) — were there measured numbers behind these, or judgement calls?
-5. **Two-process architecture** (`springboot-hono-poc` pattern) — fully retired,
-   or still a valid option for some situations?
+4. ~~GraalVM boundary tuning — measured numbers or judgement calls?~~ —
+   **resolved:** a **GraalVM `Context` is not thread-safe**, so the pool (and the
+   engine/source vs context split) is a *correctness* requirement, not a
+   perf-tuning guess. JSON-string passing / entry-function caching are the
+   related optimisations on top.
+5. ~~Two-process architecture — fully retired?~~ — **resolved:** not retired. The
+   two-process, GraalVM, and browser-hono architectures are **all valid**; the
+   choice is use-case-dependent. See the "which architecture for which use case"
+   Future-work entry.
 6. **htmx versions of the 2025 Java variants** (`jte-vc`, `thymeleaf`, `qute`) —
    pulled via a webjars BOM, not pinned inline; assumed 2.x but not verified.
 7. **`springboot-hono-poc` vs `hda-dynapage-demo`** share identical early git
@@ -176,9 +187,10 @@ also noted in the relevant `docs/*.md`.
    into this umbrella project, or stay separate?
 9. **Thymeleaf stall reason** — assumed "interest moved on"; partly answered
    (planned to be done later with Claude), but was there a specific blocker?
-10. **Browser-side rendering vs GraalVM SSR** — are the `2026-09-03_…browser-hono`
-    projects the intended future direction, or one experiment kept alongside the
-    GraalVM demos? The docs currently present both as "live".
+10. ~~Browser-side rendering vs GraalVM SSR — which is the future direction?~~ —
+    **resolved:** neither supersedes the other; both (plus two-process) are valid,
+    use-case-dependent choices. Covered by the "which architecture for which use
+    case" Future-work entry.
 11. **`2026-03-09` codegen wording** — its `Variants.md` entry previously said
     "regenerate Java from TS"; corrected to Java→TS per the git history
     (`5ecb2e7`). Confirm that matches reality.
