@@ -107,12 +107,64 @@ The direction of truth flipped over time: TypeScript-first → **Java-first**
 
 ---
 
+## Architecture trade-offs — two-process vs GraalVM polyglot vs browser-hono
+
+These three are the live options for "Java framework + Hono `html` templates".
+**The part a maintainer touches most — writing the templates — is identical in all
+three:** the same hono `html` tagged-template `.ts` files, the same view models
+and route/event names generated from Java. What differs is the **glue** each one
+needs and **where the rendering runs**. So the comparison below is really about
+the glue and its consequences.
+
+| Dimension | Two-process (`springboot-hono-poc`, `dynapage-demo`) | GraalVM polyglot (`2026-03-09`, `2026-03-15`) | Browser-hono (`2026-09-03` pair) |
+|---|---|---|---|
+| **Template authoring** | hono `html` `.ts`, Java-generated types | same | same |
+| **Glue you own** | a Hono HTTP service (routing, error→status, dev GET / prod POST) + a Java HTTP client + static-asset passthrough | a GraalVM bridge: `Context` pool, engine/source lifecycle, entry-function cache, Java↔JS JSON marshalling | a small htmx extension (`hx-hono.js`, ~7–12 KB) + client-side `render(route, vm)` dispatch; Java controllers just return JSON |
+| **Extra tech to know** | a Node/Bun runtime in prod; otherwise mainstream | GraalVM JDK + polyglot API — **niche**, few devs know it, boundary debugging is specialised | none beyond a plain JRE; but you own some browser framework code |
+| **Processes / containers** | 2 (app + render) | 1 | 1 |
+| **Server image / footprint** | two images & runtimes to build, patch, deploy in step | one image, but GraalVM JDK (larger) + memory per pooled `Context` | smallest — slim `temurin:21-jre`; ships ~7–12 KB JS to each client once |
+| **Where render cost lands** | the render service | the app instance (bounded by pool size) | the end user's device (server does DB + JSON only) |
+| **Per-render latency** | one pod-local HTTP round-trip + JSON both ways — low-ms, fine but *not* a function call | in-process call, JIT-fast after warmup; cold `Context` / pool contention are the risks | no server render; client template call is cheap (but see first paint) |
+| **First paint / no-JS / SEO** | full HTML in the first response — initial content works without JS, SEO-friendly | same | static shell, then JS parse + a JSON round-trip before content — slower first paint, **needs JS**, SEO needs care |
+| **Native-image friendliness** | Java side can be native (Quarkus); render side is separate anyway | polyglot + native-image not done here — effectively rules it out | Java side is a plain JSON API — the **most** native-image-friendly |
+| **Failure mode of rendering** | a network dependency: timeouts, retries, version skew, another thing to monitor & release in lockstep | shares fate with the request thread; a template error just throws in-process; no partition risk | failures happen on the client — invisible to server logs unless reported; but a struggling server blocks data, not cached template code |
+| **Debugging a template bug** | two log streams, correlate across HTTP; stack traces stop at the boundary | one process, but mixed Java/JS stack traces; GraalVM tooling needed | reproduce & inspect in browser devtools (pleasant) — but needs the client's state |
+| **What the client can see** | only final HTML; view-model JSON and template logic stay server-side | same | the `{route, vm}` JSON **and** the compiled templates ship to the client — VM shape and presentation logic are visible; keep secrets out of VMs (now enforced, not just good practice) |
+| **Independent scaling / evolution** | render tier scales, versions, and could be reused by other clients on its own — at the cost of contract management | template bundle builds & ships with the app — always in sync, no separate scaling | same as GraalVM |
+| **Testing rendering** | test the Hono service in isolation (fast); full path needs both up | invoke the renderer inside a JVM test; Playwright for end-to-end | only truly exercised through a browser (Playwright) — more end-to-end weight |
+
+### Net
+
+- **Two-process** shines when you already run Node comfortably and want the render
+  tier decoupled — scaled, versioned, or reused independently, with app and UI
+  work separable. It hurts when you don't want a second deployable, a network hop,
+  or contract/version management; it adds the most operational surface.
+- **GraalVM polyglot** shines when you want server-rendered HTML, TypeScript
+  templates, and **exactly one deployable**, with no second process. It hurts when
+  the team doesn't want to learn GraalVM polyglot, when you need native image, or
+  when the bridge machinery (Context pool, marshalling) is unwelcome weight. In
+  practice its niche-ness is the main cost — it is not used in many projects, so
+  familiarity, examples, and debugging tooling are all thinner.
+- **Browser-hono** shines when you want the slimmest server (plain JRE, JSON
+  only), the best native-image story, and render cost off the server — and you are
+  fine shipping template code to clients. It hurts when first paint / no-JS / SEO
+  matter, when the view-model and presentation logic should not be visible
+  client-side, or when you'd rather not own browser framework code.
+
+### Low lock-in
+
+Because the `.ts` templates and the Java view models are identical across all
+three, moving between them is mostly swapping the glue — the browser-hono repos
+were made *from* the GraalVM demos by deleting the rendering layer. The choice is
+reversible, so it can follow the use case rather than being a one-way door.
+
+---
+
 ## When each model makes sense
 
 The Java + Hono options — **two-process**, **GraalVM polyglot**, **browser-side** —
-are all considered valid; none supersedes the others, the choice is
-use-case-dependent. A fuller "which architecture for which use case" write-up is
-open work (see [`../wip.md`](../wip.md)). First cut:
+are all valid; none supersedes the others (see the trade-off section above). Quick
+picker:
 
 | If you want… | Reach for |
 |---|---|

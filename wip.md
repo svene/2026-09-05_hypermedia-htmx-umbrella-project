@@ -104,6 +104,7 @@ Deliverables:
 | WP12 | DONE  | Resolved open questions 8 & 9: docs-generator relationship undecided → added to Future work; Thymeleaf variant still wanted (no blocker, just deprioritised) → Future-work entry updated. |
 | WP13 | DONE  | Decision: `2026-03-07_springboot-graalvm-jsx-poc` stays a historical PoC (no codegen migration). Added a "deliberately not updated" note to its `readme.md`; closed the "Codegen-direction consistency" Future-work item; updated `Learnings.md` / `Variants.md` / `Variant-Comparison.md`. |
 | WP14 | DONE  | Replaced all relative directory references (`../…`, `../../2025/…`) with plain project names, since the repos are flat on GitHub. Added a project ↔ GitHub-repo table at the top of `docs/Variants.md` (repos under `github.com/svene/`; `springboot-hono-docs` is local-only). Updated `Analysis-Baseline.md`, both READMEs, `wip.md`. |
+| WP15 | DONE  | Wrote the "Architecture trade-offs — two-process vs GraalVM polyglot vs browser-hono" section in `docs/Variant-Comparison.md` (14-dimension table, per-architecture "Net", low-lock-in note). Closed the matching Future-work item; repointed `History.md` / `Learnings.md` / `docs/README.md`. |
 
 ### Catalog entry shape (WP1)
 
@@ -160,11 +161,11 @@ by WP1 (catalog) + WP3.
   `.tsx` and TS→Java generation. A "historical PoC, deliberately not updated" note
   was added to its `readme.md`. All other projects are on Java→TS
   (`docs/Learnings.md` audit table). No further action.
-- **"Which architecture for which use case."** The two-process (Java → Hono over
-  HTTP), the GraalVM-polyglot, and the browser-hono architectures are all
-  considered valid for hypermedia/htmx webapps — the right choice depends on the
-  use case. Write this up as guidance (extends the "When each model makes sense"
-  table in `docs/Variant-Comparison.md`).
+- ~~**"Which architecture for which use case."**~~ **Done** — written up as
+  "Architecture trade-offs — two-process vs GraalVM polyglot vs browser-hono" in
+  `docs/Variant-Comparison.md` (14-dimension table + a "Net" per architecture +
+  a low-lock-in note). Extend it later with real-world operational experience as
+  it accrues.
 - **Bring the older projects up to the current htmx / asset conventions.** For the
   projects still on **htmx 2 loaded via webjars** — `2025-08-23_ssfe-patterns-jte-htmx`,
   `2025-08-23_ssfe-patterns-jte-vc-htmx`, `2025-08-23_ssfe-patterns-thymeleaf-htmx`
