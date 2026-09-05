@@ -76,7 +76,7 @@ Deliverables:
 |-----|--------|-------------|
 | WP0 | DONE   | This `wip.md` rewrite (plan + TODO list) and umbrella `README.md`. |
 | WP1 | DONE   | `docs/Variants.md` — lightweight catalog of all sibling projects (concept + role + pointer). |
-| WP2 | TODO   | `docs/History.md` — chronological story of concepts adopted / dropped and why. |
+| WP2 | DONE   | `docs/History.md` — chronological story of concepts adopted / dropped and why. |
 | WP3 | TODO   | `docs/Variant-Comparison.md` — concept- and architecture-level comparison. |
 | WP4 | TODO   | `docs/Learnings.md` — learnings seeded from the observable history (user extends later). |
 | WP5 | TODO   | `docs/README.md` index + cross-links; final `wip.md` cleanup. |
@@ -98,7 +98,7 @@ trade-off / when this variant makes sense.
 ## TODO
 
 - [x] WP1 — `docs/Variants.md` (all projects, lightweight)
-- [ ] WP2 — `docs/History.md`
+- [x] WP2 — `docs/History.md`
 - [ ] WP3 — `docs/Variant-Comparison.md`
 - [ ] WP4 — `docs/Learnings.md` (seed only)
 - [ ] WP5 — `docs/README.md` index + cross-links, `wip.md` cleanup
