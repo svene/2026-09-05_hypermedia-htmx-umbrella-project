@@ -94,7 +94,9 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 - **Role:** pattern showcase — the Hono/TS re-do of the SSFE pattern course
   (same `m00`–`m05` module structure as the Qute variant).
-- **Stack:** [Hono](https://hono.dev/) on Bun, htmx 4, no Java at all.
+- **Stack:** [Hono](https://hono.dev/) on Bun, **htmx 4** (vendored under
+  `static/js/…`, upgraded from 2.0.8 on 2026-09-05, commit `3daf3da`), no Java at
+  all.
 - **Distinguishing idea:** two ways to produce HTML in Hono side by side — the
   `html``` tagged template (`.ts`) vs `hono/jsx` (`.tsx`) — with the tagged
   template emerging as the preferred style.

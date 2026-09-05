@@ -18,7 +18,7 @@ tables.
 | `2025-08-23_…jte-vc-htmx` | Spring Boot, Java | in the JVM | JTE + server-side View Components | fragments + event-driven refresh | 2.x |
 | `2025-08-23_…thymeleaf-htmx` | Spring Boot, Java | in the JVM | Thymeleaf fragments/slots | (planned) | 2.x |
 | `2025-12-21_…quarkus-qute-htmx` | Quarkus, Java | in the JVM | Qute templates | fragments, per-module demos | 2.x |
-| `2025-12-27_…hono-htmx` | Hono on Bun, TypeScript | in the (single) JS process | Hono `html``` **and** `hono/jsx` | fragments, per-module demos | 2.0.8 |
+| `2025-12-27_…hono-htmx` | Hono on Bun, TypeScript | in the (single) JS process | Hono `html``` **and** `hono/jsx` | fragments, per-module demos | 4.0.0 |
 | `2025-12-31-springboot-hono-poc` | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono `html``` / JSX | fragments | 2.0.8 → 4.0.0 |
 | `2026-01-24_hda-dynapage-demo` | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono components | **OOB vs `hx-partial`, compared** | 2.0.8 → 4.0.0 |
 | `2026-03-07_…graalvm-jsx-poc` | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | `hono/jsx` (`.tsx`) | fragments | 4.0.0 |

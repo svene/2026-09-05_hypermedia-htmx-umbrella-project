@@ -174,12 +174,15 @@ by WP1 (catalog) + WP3.
   - `2025-08-23_ssfe-patterns-jte-htmx` → `htmx4-upgrade-plan.md` ☐
   - `2025-08-23_ssfe-patterns-jte-vc-htmx` → `htmx4-upgrade-plan.md` ☐
   - `2025-12-21_ssfe-patterns-quarkus-qute-htmx` → `htmx4-upgrade-plan.md` ☐
-  - `2025-12-27_ssfe-patterns-hono-htmx` → `htmx4-upgrade-plan.md` ☐ (already
-    vendored; version bump + migration only)
+  - `2025-12-27_ssfe-patterns-hono-htmx` → ☑ **done 2026-09-05, commit `3daf3da`**
+    ("upgrade to htmx4"): htmx 4 vendored at `static/js/htmx.org/4.0.0/`, old
+    2.0.8 removed, 3 script refs updated, `upgrade-check` clean, demos verified.
+    `docs/Variants.md` / `docs/Variant-Comparison.md` / `docs/Analysis-Baseline.md`
+    updated. Plan file to be deleted after the user merges.
   - `2025-08-23_ssfe-patterns-thymeleaf-htmx` — **no plan yet**; the variant is
     not implemented, so fold the htmx-4 + vendored setup into that build-out.
 
-  When all are done: update the htmx-version columns in `docs/Variants.md` /
+  When the rest are done: update the htmx-version columns in `docs/Variants.md` /
   `docs/Variant-Comparison.md`, refresh the affected rows in
   `docs/Analysis-Baseline.md`, and delete each project's `htmx4-upgrade-plan.md`.
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
