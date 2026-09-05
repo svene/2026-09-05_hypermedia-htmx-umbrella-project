@@ -45,7 +45,7 @@ comparable.
 - **Distinguishing idea:** re-express the same component/insertion patterns with
   Thymeleaf fragments and slots.
 - **Status:** **only started** — controller wired up, patterns not yet filled in
-  to the level of the JTE variants.
+  to the level of the JTE variants. Planned to be implemented later with Claude.
 
 ---
 

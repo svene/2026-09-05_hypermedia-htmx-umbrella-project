@@ -24,10 +24,10 @@ for the axes.
    wiring. This idea carried forward (route enums, generated URL constants) even
    after JTE itself was dropped.
 3. **For SSR-only hypermedia, `html``` tagged templates beat JSX.** The newest
-   projects migrated `.tsx` → `.ts` and `hono/jsx` → `html\`\``. JSX's real value
-   is client-side reconciliation, which an HDA doesn't use; without that it's just
-   a runtime and a build-time cost. Plain `(vm) => html\`…\`` with
-   `String(result)` is enough.
+   projects migrated `.tsx` → `.ts` and `hono/jsx` → `html\`\``. The `html\`\``
+   variant is **simpler and closer to real HTML**, and needs **no JSX runtime and
+   no extra dependencies**. JSX's real value is client-side reconciliation, which
+   an HDA doesn't use. Plain `(vm) => html\`…\`` with `String(result)` is enough.
 
 ## Crossing the language boundary
 
@@ -85,11 +85,17 @@ for the axes.
 
 ---
 
+## Confirmed by the user
+
+- **`html``` over JSX is a settled preference** — simpler, closer to real HTML,
+  no JSX runtime or extra dependencies.
+- The **Thymeleaf variant stalled deliberately** and is planned to be implemented
+  later (with Claude), not abandoned.
+
 ## To confirm / expand (for the manual pass)
 
-- Whether "JSX → `html``\`" and "codegen direction reversed to Java→TS" are
-  settled preferences or just the `2026-03-15` repo's local choices.
-- The real reason the Thymeleaf variant stalled (guessed as "interest moved on").
+- Whether "codegen direction reversed to Java→TS" is a settled preference or just
+  the `2026-03-15` repo's local choice.
 - Performance numbers, if any, behind the GraalVM boundary decisions.
 - Whether the two-process architecture is fully retired or still has a use case.
 - Anything learned that never made it into a commit message.

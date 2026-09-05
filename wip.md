@@ -31,7 +31,8 @@ different variants; others are just a PoC or demonstrate hypermedia/htmx pattern
 - The timeline shows that I tried out various template engines for use with a Java
   web application.
 - 2025-08-23_ssfe-patterns-thymeleaf-htmx: only started, still needs to be
-  implemented like the JTE variants.
+  implemented like the JTE variants. Planned to be built out later with Claude
+  (see "Future work" below).
 - Currently (September 2026) my preferred template engine is Hono/TS with its
   `html``` tagged template.
 - There are also the folders ../2026-05-01_springboot-hono-docs and
@@ -59,6 +60,10 @@ Deliverables:
 - `docs/Learnings.md` — learnings inferred from how the projects changed over
   time. Claude seeds this from the observable history; the user is expected to
   extend and correct it manually later.
+- `docs/Analysis-Baseline.md` — the commit hash each sibling project was at when
+  the docs were written, so the docs can be refreshed against later upstream
+  commits.
+- `docs/README.md` — index of the above with the suggested reading order.
 
 ## Approach
 
@@ -79,7 +84,7 @@ Deliverables:
 | WP2 | DONE   | `docs/History.md` — chronological story of concepts adopted / dropped and why. |
 | WP3 | DONE   | `docs/Variant-Comparison.md` — concept- and architecture-level comparison. |
 | WP4 | DONE   | `docs/Learnings.md` — learnings seeded from the observable history (user extends later). |
-| WP5 | TODO   | `docs/README.md` index + cross-links; final `wip.md` cleanup. |
+| WP5 | DONE   | `docs/Analysis-Baseline.md` (per-project commit hashes), `docs/README.md` index + cross-links, `README.md` refresh, `wip.md` cleanup. |
 
 ### Catalog entry shape (WP1)
 
@@ -97,16 +102,30 @@ trade-off / when this variant makes sense.
 
 ## TODO
 
+All initial work packages are done.
+
 - [x] WP1 — `docs/Variants.md` (all projects, lightweight)
 - [x] WP2 — `docs/History.md`
 - [x] WP3 — `docs/Variant-Comparison.md`
 - [x] WP4 — `docs/Learnings.md` (seed only)
-- [ ] WP5 — `docs/README.md` index + cross-links, `wip.md` cleanup
+- [x] WP5 — `docs/Analysis-Baseline.md`, `docs/README.md`, `README.md`, cleanup
 
-## Open items (original)
+The two original open items are covered: `History.md` by WP2, `Variant-Comparison.md`
+by WP1 (catalog) + WP3.
 
-- create a file History.md which includes the main differences between the
-  variants — planned as WP2 (`docs/History.md`).
-- create a file Variant-Comparison.md which includes the main differences between
-  the variants. Analysis of the projects will be needed to do this — planned as
-  WP1 (`docs/Variants.md` catalog) + WP3 (`docs/Variant-Comparison.md`).
+## Maintenance
+
+- **Refreshing docs after upstream changes.** `docs/Analysis-Baseline.md` records
+  the commit each sibling project was analysed at. To update: diff
+  `<recorded-hash>..HEAD` in a project, revise the affected `docs/*.md`, then bump
+  that project's row and the analysis date in `Analysis-Baseline.md`.
+- `docs/Learnings.md` is a seed — the user extends it manually with reasoning that
+  isn't visible in commit messages.
+
+## Future work
+
+- **Implement the Thymeleaf variant** (`2025-08-23_ssfe-patterns-thymeleaf-htmx`)
+  with Claude, mirroring the JTE variants' patterns. Update `docs/Variants.md`,
+  `docs/Variant-Comparison.md` and `docs/Analysis-Baseline.md` afterwards.
+- Possibly extend the 2026-05 docs-generator projects to emit per-variant
+  code-docs; this umbrella project stays the high-level companion.

@@ -25,6 +25,9 @@ tables.
 | `2026-03-09_hda-springboot-graalvm-jsx-demo` | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
 | `2026-03-15_hda-quarkus-graalvm-jsx-demo` | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
 
+The `…thymeleaf-htmx` row is only scaffolded — the patterns are planned to be
+built out later (with Claude), mirroring the JTE variants.
+
 ---
 
 ## Axis 1 — Where the HTML is generated
@@ -50,7 +53,8 @@ all — simplest of all, but it abandons the Java investment.
   - `hono/jsx` (`.tsx`) — familiar JSX, a JSX runtime, virtual-DOM-ish.
   - `html``` tagged template (`.ts`) — plain functions `(vm) => html\`…\``,
     `String(result)` is the HTML, no runtime, no vdom.
-  The tagged template is the current preference; the newest projects migrated
+  The tagged template is the current preference: **simpler, closer to real HTML,
+  and no JSX runtime or extra dependencies**. The newest projects migrated
   `.tsx` → `.ts` and JSX → `html\`\``.
 
 ## Axis 3 — The cross-language contract
