@@ -15,7 +15,7 @@ tables.
 | Variant (project) | Backend + language | HTML generated where | View technology (concept) | Dynamic-update style | htmx |
 |---|---|---|---|---|---|
 | `2025-08-23_…jte-htmx` | Spring Boot, Java | in the JVM | plain JTE templates | full page + fragments | 2.x |
-| `2025-08-23_…jte-vc-htmx` | Spring Boot, Java | in the JVM | JTE + server-side View Components | fragments + event-driven refresh | 2.x |
+| `2025-08-23_…jte-vc-htmx` | Spring Boot, Java | in the JVM | JTE + server-side View Components | fragments + event-driven refresh | 4.0.0 |
 | `2025-08-23_…thymeleaf-htmx` | Spring Boot, Java | in the JVM | Thymeleaf fragments/slots | (planned) | 2.x |
 | `2025-12-21_…quarkus-qute-htmx` | Quarkus, Java | in the JVM | Qute templates | fragments, per-module demos | 2.x |
 | `2025-12-27_…hono-htmx` | Hono on Bun, TypeScript | in the (single) JS process | Hono `html``` **and** `hono/jsx` | fragments, per-module demos | 4.0.0 |

@@ -172,7 +172,10 @@ by WP1 (catalog) + WP3.
   files staged; the user executes each in a separate Claude session in that
   project, then returns here.**
   - `2025-08-23_ssfe-patterns-jte-htmx` → `htmx4-upgrade-plan.md` ☐
-  - `2025-08-23_ssfe-patterns-jte-vc-htmx` → `htmx4-upgrade-plan.md` ☐
+  - `2025-08-23_ssfe-patterns-jte-vc-htmx` → ☑ **done 2026-09-05, commit `ae4901e`**
+    ("upgrade to htmx4"): htmx 4 vendored at `src/main/resources/static/js/htmx.org/4.0.0/`,
+    webjar + `webjars-locator` removed from `pom.xml`, all 5 script refs updated.
+    Docs updated. Plan file to be deleted after the user merges.
   - `2025-12-21_ssfe-patterns-quarkus-qute-htmx` → `htmx4-upgrade-plan.md` ☐
   - `2025-12-27_ssfe-patterns-hono-htmx` → ☑ **done 2026-09-05, commit `3daf3da`**
     ("upgrade to htmx4"): htmx 4 vendored at `static/js/htmx.org/4.0.0/`, old

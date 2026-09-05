@@ -54,7 +54,8 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 - **Role:** pattern showcase (the most built-out of the 2025-08 trio).
 - **Stack:** Spring Boot + JTE + [spring-view-component](https://github.com/tschuehly/spring-view-component)
-  (server-side View Components), htmx 2.
+  (server-side View Components), **htmx 4** (vendored under `static/js/…`,
+  upgraded from 2.0.4 on 2026-09-05, commit `ae4901e`).
 - **Distinguishing idea:** components as first-class server objects — a
   component owns its URL constant and its template, the controller returns the
   component instead of a template path, and htmx events (`hx-trigger … from:body`)
