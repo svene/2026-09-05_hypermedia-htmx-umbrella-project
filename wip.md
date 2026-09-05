@@ -95,6 +95,7 @@ Deliverables:
 | WP7 | DONE   | Added the two `2026-09-03_hda-*-browser-hono` projects (browser-side rendering) across all docs: sibling list, `Variants.md` (new section), `Analysis-Baseline.md`, `Variant-Comparison.md` (new Axis-1 model + matrix/axes), `History.md` (new Phase 8), READMEs. |
 | WP8 | DONE   | Resolved open questions 1 & 3: `jsx` in folder names is historical (repo-rename item added to Future work); `hda-dynapage-demo` still runs the `typescript-generator` (Java→TS) plugin — audit table corrected. |
 | WP9 | DONE   | Resolved open questions 4, 5 & 10: GraalVM `Context` is not thread-safe (reason for the pool); two-process / GraalVM / browser-hono are all valid, use-case-dependent. Added "which architecture for which use case" to Future work; updated `Learnings.md`, `History.md`, `Variant-Comparison.md`. |
+| WP10 | DONE  | Resolved open question 6: older projects are on htmx 2 via webjars. Added a Future-work task to upgrade them to htmx 4 and switch to the vendored `static/js/...` asset approach. |
 
 ### Catalog entry shape (WP1)
 
@@ -153,6 +154,17 @@ by WP1 (catalog) + WP3.
   considered valid for hypermedia/htmx webapps — the right choice depends on the
   use case. Write this up as guidance (extends the "When each model makes sense"
   table in `docs/Variant-Comparison.md`).
+- **Bring the older projects up to the current htmx / asset conventions.** For the
+  projects still on **htmx 2 loaded via webjars** — `2025-08-23_ssfe-patterns-jte-htmx`,
+  `2025-08-23_ssfe-patterns-jte-vc-htmx`, `2025-08-23_ssfe-patterns-thymeleaf-htmx`
+  (once implemented), `2025-12-21_ssfe-patterns-quarkus-qute-htmx` — and the
+  vendored-but-still-v2 `2025-12-27_ssfe-patterns-hono-htmx`:
+  1. upgrade to **htmx 4**;
+  2. drop the `/webjars/htmx.org/...` approach and instead **vendor** the htmx
+     (and hyperscript / Alpine) files into the repo under `static/js/...`, as the
+     2026 projects do.
+  Update `docs/Variants.md` / `docs/Variant-Comparison.md` htmx-version columns
+  and `docs/Analysis-Baseline.md` afterwards.
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
   code-docs; this umbrella project stays the high-level companion.
 
@@ -179,8 +191,10 @@ also noted in the relevant `docs/*.md`.
    two-process, GraalVM, and browser-hono architectures are **all valid**; the
    choice is use-case-dependent. See the "which architecture for which use case"
    Future-work entry.
-6. **htmx versions of the 2025 Java variants** (`jte-vc`, `thymeleaf`, `qute`) —
-   pulled via a webjars BOM, not pinned inline; assumed 2.x but not verified.
+6. ~~htmx versions of the 2025 Java variants — assumed 2.x, not verified.~~ —
+   **resolved:** they are on htmx 2 via webjars (`/webjars/htmx.org/...`).
+   Converted into a Future-work task: upgrade to htmx 4 and switch to the vendored
+   `static/js/...` approach used by the 2026 projects.
 7. **`springboot-hono-poc` vs `hda-dynapage-demo`** share identical early git
    history — was `dynapage-demo` forked from the PoC? (Assumed yes.)
 8. **The two 2026-05 docs-generator projects** — should they eventually be folded
