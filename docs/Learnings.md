@@ -53,8 +53,10 @@ for the axes.
    - **Browser-hono** (2026-09) — plain JDK 21 serving JSON, but template code
      ships to the client and first paint needs a JS round-trip.
 
-   None supersedes the others; the right one depends on the use case (see the
-   "which architecture for which use case" item in `../wip.md`).
+   None supersedes the others; the right one depends on the use case — see
+   "Architecture trade-offs" in [Variant-Comparison.md](Variant-Comparison.md).
+   Since the `.ts` templates are identical across all three, the choice is mostly
+   about which *glue* you want to own, and it is reversible.
 7. **The Java↔JS boundary needs deliberate work — first for correctness, then
    speed.** A GraalVM `Context` is **not thread-safe**, so a **pool** of Contexts
    (with the engine/source shared but per-Context state isolated) is *required*

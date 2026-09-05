@@ -11,9 +11,10 @@ Read in this order:
 2. **[History.md](History.md)** — the chronological story: which concepts were
    adopted or dropped from one variant to the next, and why. Told as 8 phases.
 3. **[Variant-Comparison.md](Variant-Comparison.md)** — the variants compared on
-   fixed axes: where HTML is generated, view technology, the cross-language
-   contract, dynamic-update style, native-image/deployment, and a "when to pick
-   which" table.
+   fixed axes (where HTML is generated, view technology, the cross-language
+   contract, dynamic-update style, native-image/deployment), then a deep
+   **two-process vs GraalVM vs browser-hono** trade-off section and a "when to
+   pick which" table.
 4. **[Learnings.md](Learnings.md)** — learnings inferred from how the projects
    changed over time. Seeded from the observable history; **meant to be extended
    manually.**

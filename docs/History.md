@@ -157,7 +157,8 @@ single "final" architecture**. Three are considered valid, chosen per use case:
 3. **Browser-side rendering** (`2026-09-03` pair) — plain JDK 21, server serves
    JSON + a static shell, the templates run in the browser. The most recent step.
 
-Deciding which fits which use case is open work (see `../wip.md`).
+Which fits which use case: see "Architecture trade-offs" in
+[Variant-Comparison.md](Variant-Comparison.md).
 
 ## Throughlines
 
