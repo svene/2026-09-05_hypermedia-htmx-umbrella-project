@@ -97,6 +97,7 @@ Deliverables:
 | WP9 | DONE   | Resolved open questions 4, 5 & 10: GraalVM `Context` is not thread-safe (reason for the pool); two-process / GraalVM / browser-hono are all valid, use-case-dependent. Added "which architecture for which use case" to Future work; updated `Learnings.md`, `History.md`, `Variant-Comparison.md`. |
 | WP10 | DONE  | Resolved open question 6: older projects are on htmx 2 via webjars. Added a Future-work task to upgrade them to htmx 4 and switch to the vendored `static/js/...` asset approach. |
 | WP11 | DONE  | Resolved open question 7: `dynapage-demo` is a copy of `springboot-hono-poc`; the user does this often and it should NOT be documented publicly. Noted internally in Claude memory. |
+| WP12 | DONE  | Resolved open questions 8 & 9: docs-generator relationship undecided → added to Future work; Thymeleaf variant still wanted (no blocker, just deprioritised) → Future-work entry updated. |
 
 ### Catalog entry shape (WP1)
 
@@ -137,8 +138,10 @@ by WP1 (catalog) + WP3.
 ## Future work
 
 - **Implement the Thymeleaf variant** (`2025-08-23_ssfe-patterns-thymeleaf-htmx`)
-  with Claude, mirroring the JTE variants' patterns. Update `docs/Variants.md`,
-  `docs/Variant-Comparison.md` and `docs/Analysis-Baseline.md` afterwards.
+  with Claude, mirroring the JTE variants' patterns. Still wanted — brought to the
+  same state as the other variants — but not top priority so far; no specific
+  blocker. Update `docs/Variants.md`, `docs/Variant-Comparison.md` and
+  `docs/Analysis-Baseline.md` afterwards.
 - **Rename the `jsx` repos.** The `jsx` in `2026-03-07_springboot-graalvm-jsx-poc`,
   `2026-03-09_hda-springboot-graalvm-jsx-demo` and
   `2026-03-15_hda-quarkus-graalvm-jsx-demo` is historical — they use hono `html`
@@ -168,11 +171,15 @@ by WP1 (catalog) + WP3.
   and `docs/Analysis-Baseline.md` afterwards.
 - Possibly extend the 2026-05 docs-generator projects to emit per-variant
   code-docs; this umbrella project stays the high-level companion.
+- **Decide the relationship to the 2026-05 docs-generator projects**
+  (`springboot-hono-docs`, `ssfe-patterns-jte-vc-htmx-docs`) — fold them into this
+  umbrella project, or keep them separate. Not yet decided.
 
 ## Open questions
 
-Collected while analysing the projects — to be worked through together. Each is
-also noted in the relevant `docs/*.md`.
+Collected while analysing the projects. All items below are resolved or moved to
+Future work; kept here as a record. Each is also noted in the relevant
+`docs/*.md`.
 
 1. ~~`2026-03-09` / `2026-03-15` folder names say `...jsx...`~~ — **resolved:**
    `jsx` is historical, they use `html``` templates. Repo rename added to Future
@@ -201,14 +208,16 @@ also noted in the relevant `docs/*.md`.
    `springboot-hono-poc`. The user has done this for several of these projects.
    It is an irrelevant implementation detail — **do not document project-copy
    lineage in the public docs.**
-8. **The two 2026-05 docs-generator projects** — should they eventually be folded
-   into this umbrella project, or stay separate?
-9. **Thymeleaf stall reason** — assumed "interest moved on"; partly answered
-   (planned to be done later with Claude), but was there a specific blocker?
+8. ~~The two 2026-05 docs-generator projects — fold in or keep separate?~~ —
+   **not decided yet**; moved to Future work.
+9. ~~Thymeleaf stall reason?~~ — **resolved:** no specific blocker. The user still
+   wants it brought to the same state as the other variants; it just has not been
+   the top priority. Tracked in Future work.
 10. ~~Browser-side rendering vs GraalVM SSR — which is the future direction?~~ —
     **resolved:** neither supersedes the other; both (plus two-process) are valid,
     use-case-dependent choices. Covered by the "which architecture for which use
     case" Future-work entry.
-11. **`2026-03-09` codegen wording** — its `Variants.md` entry previously said
-    "regenerate Java from TS"; corrected to Java→TS per the git history
-    (`5ecb2e7`). Confirm that matches reality.
+11. ~~`2026-03-09` codegen wording — corrected from "regenerate Java from TS" to
+    Java→TS.~~ — **resolved by evidence:** its `pom.xml` runs
+    `typescript-generator-maven-plugin` + gmavenplus (Java→TS), matching commit
+    `5ecb2e7 switched from TS->Java to Java->TS`. Flag if this is wrong.
