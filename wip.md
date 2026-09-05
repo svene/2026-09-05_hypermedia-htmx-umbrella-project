@@ -105,7 +105,7 @@ Deliverables:
 | WP13 | DONE  | Decision: `2026-03-07_springboot-graalvm-jsx-poc` stays a historical PoC (no codegen migration). Added a "deliberately not updated" note to its `readme.md`; closed the "Codegen-direction consistency" Future-work item; updated `Learnings.md` / `Variants.md` / `Variant-Comparison.md`. |
 | WP14 | DONE  | Replaced all relative directory references (`../…`, `../../2025/…`) with plain project names, since the repos are flat on GitHub. Added a project ↔ GitHub-repo table at the top of `docs/Variants.md` (repos under `github.com/svene/`; `springboot-hono-docs` is local-only). Updated `Analysis-Baseline.md`, both READMEs, `wip.md`. |
 | WP15 | DONE  | Wrote the "Architecture trade-offs — two-process vs GraalVM polyglot vs browser-hono" section in `docs/Variant-Comparison.md` (14-dimension table, per-architecture "Net", low-lock-in note). Closed the matching Future-work item; repointed `History.md` / `Learnings.md` / `docs/README.md`. |
-| WP16 | DONE  | Staged `htmx4-upgrade-plan.md` in the 4 ready older projects (`jte-htmx`, `jte-vc-htmx`, `quarkus-qute-htmx`, `hono-htmx`) for the user to execute in separate sessions. Thymeleaf skipped (variant not implemented). Future-work item updated with a per-project checklist. |
+| WP16 | DONE  | Staged `htmx4-upgrade-plan.md` in the 4 ready older projects (`jte-htmx`, `jte-vc-htmx`, `quarkus-qute-htmx`, `hono-htmx`) for the user to execute in separate sessions. Each plan: copy the htmx 4 asset from an already-upgraded sibling (`5a61350` SB / `77fc6c5` Quarkus), and a "Part 0" step to study those upgrade commits first. Thymeleaf skipped (variant not implemented). Future-work item updated with a per-project checklist. |
 
 ### Catalog entry shape (WP1)
 
