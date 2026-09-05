@@ -9,7 +9,7 @@ Read in this order:
    is, its one distinguishing idea, status, and a pointer to the project. Start
    here.
 2. **[History.md](History.md)** — the chronological story: which concepts were
-   adopted or dropped from one variant to the next, and why. Told as 7 phases.
+   adopted or dropped from one variant to the next, and why. Told as 8 phases.
 3. **[Variant-Comparison.md](Variant-Comparison.md)** — the variants compared on
    fixed axes: where HTML is generated, view technology, the cross-language
    contract, dynamic-update style, native-image/deployment, and a "when to pick

@@ -120,14 +120,39 @@ sites that generate documentation **from the real project source** (tagged-snipp
 extraction), so docs stay in sync with code. Intended to grow into per-variant
 code-docs; this umbrella project is the higher-level companion to them.
 
+## Phase 8 — Rendering moves to the browser (2026-09)
+
+`hda-springboot-browser-hono` and `hda-quarkus-browser-hono`, forked from the
+March GraalVM demos, then the **GraalVM rendering layer was deleted**:
+
+- `/uiroute/*` becomes a plain **JSON API** returning a `{ route, vm }` envelope
+  instead of HTML.
+- A small **htmx 4 extension** (`hono`, esbuild-bundled to `hx-hono.js`)
+  intercepts each response and runs the matching hono `html` template
+  **client-side** to produce the fragment htmx then swaps in.
+- First paint is a static `index.html` shell that bootstraps itself with
+  `hx-trigger="load"`.
+- Runs on a **plain JDK 21** — no GraalVM, no second process. Java stays the
+  source of truth; `typescript-generator` + a gmavenplus script regenerate the
+  `.ts` types/constants on `mvn package`.
+
+This keeps htmx-driven swaps and the same `html``` templates, but the server no
+longer renders HTML at all — it crosses from "HTML over the wire" toward "view
+model over the wire". Still built as Spring Boot / Quarkus twins with a
+per-repo `VARIANT-COMPARISON.md`.
+
 ---
 
 ## Where this stands (September 2026)
 
-Preferred stack: a Java framework (Spring Boot **or** Quarkus) + GraalVM Polyglot
-+ Hono `html` tagged templates in `.ts`, with **Java as the source of truth** for
-view models, route names and action URLs, htmx 4 on the browser, and SSE-based
-live reload in dev.
+Two live directions, both with **Java as the source of truth** (view models, route
+names, action URLs generated Java→TS), **Hono `html` tagged templates in `.ts`**,
+**htmx 4**, and **SSE** live reload in dev:
+
+1. **Server-side via GraalVM polyglot** (`2026-03-09` / `2026-03-15`) — one
+   process, HTML rendered in the JVM, GraalVM JDK at runtime.
+2. **Browser-side rendering** (`2026-09-03` pair) — plain JDK 21, server serves
+   JSON + a static shell, the templates run in the browser. The most recent step.
 
 ## Throughlines
 
@@ -143,3 +168,6 @@ live reload in dev.
   the dynapage demo and settled toward partials.
 - **Process count**: two processes (Phase 4) was a real cost that GraalVM
   (Phase 5) removed without giving up TypeScript templates.
+- **Where rendering runs** kept moving away from the Java process: server JVM →
+  second process → back in the JVM (GraalVM) → the browser (Phase 8). The latest
+  step removes server-side HTML rendering — and the GraalVM dependency — entirely.

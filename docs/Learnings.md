@@ -47,6 +47,10 @@ for the axes.
    a contract to keep in sync. It was tolerated for a while, then removed by
    GraalVM polyglot without giving up TypeScript templates. The GraalVM runtime
    plus boundary-tuning was judged the smaller price.
+   **Later (2026-09) the GraalVM runtime itself was judged a cost worth removing:**
+   the `…browser-hono` pair moves rendering to the browser, so the server is plain
+   JDK 21 serving JSON. Trade: template code ships to the client and first paint
+   needs a JS round-trip. Both directions are currently kept alive.
 7. **The Java↔JS boundary needs deliberate performance work.** What the demos
    converged on: a **pool** of GraalVM Contexts for concurrency; share the
    engine/source but isolate per-context state; **cache** entry-function lookups;
@@ -108,6 +112,8 @@ Which projects have cross-language type generation, and in which direction:
 | `springboot-graalvm-jsx-poc` | **TS→Java** ⚠️ **not migrated** | still uses `javagen/generate-java-from-hono.ts`; a superseded PoC, so possibly fine to leave — decide explicitly |
 | `hda-springboot-graalvm-jsx-demo` | **Java→TS** ✅ | migrated (`5ecb2e7`); `typescript-generator` + gmavenplus for consts/routes/events/action-URLs |
 | `hda-quarkus-graalvm-jsx-demo` | **Java→TS** ✅ | migrated (`0fce481`) |
+| `hda-springboot-browser-hono` | **Java→TS** ✅ | forked from the SB GraalVM demo; keeps `typescript-generator` + gmavenplus |
+| `hda-quarkus-browser-hono` | **Java→TS** ✅ | forked from the Quarkus GraalVM demo; same setup |
 
 Pure-Java and pure-Hono variants have no cross-language contract.
 

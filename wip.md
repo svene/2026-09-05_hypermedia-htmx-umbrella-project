@@ -23,6 +23,8 @@ different variants; others are just a PoC or demonstrate hypermedia/htmx pattern
 - ../2026-03-07_springboot-graalvm-jsx-poc
 - ../2026-03-09_hda-springboot-graalvm-jsx-demo
 - ../2026-03-15_hda-quarkus-graalvm-jsx-demo
+- ../2026-09-03_hda-springboot-browser-hono
+- ../2026-09-03_hda-quarkus-browser-hono
 
 ### Additional notes
 
@@ -35,6 +37,10 @@ different variants; others are just a PoC or demonstrate hypermedia/htmx pattern
   (see "Future work" below).
 - Currently (September 2026) my preferred template engine is Hono/TS with its
   `html``` tagged template.
+- The two `2026-09-03_hda-*-browser-hono` projects are the newest step: the same
+  hono `html` templates, but rendered **in the browser** — `/uiroute/*` is a JSON
+  API and a small htmx 4 extension runs the template client-side. The GraalVM
+  rendering layer from the March demos was removed.
 - There are also the folders ../2026-05-01_springboot-hono-docs and
   ../2026-05-02_ssfe-patterns-jte-vc-htmx-docs which I think I created to generate
   docs from the real code. In a later step these can most likely be extended to
@@ -86,6 +92,7 @@ Deliverables:
 | WP4 | DONE   | `docs/Learnings.md` — learnings seeded from the observable history (user extends later). |
 | WP5 | DONE   | `docs/Analysis-Baseline.md` (per-project commit hashes), `docs/README.md` index + cross-links, `README.md` refresh, `wip.md` cleanup. |
 | WP6 | DONE   | Follow-up: Java→TS codegen confirmed as preference + per-project audit (`docs/Learnings.md`), threaded through `History.md` / `Variant-Comparison.md` / `Variants.md`; "Open questions" section added below. |
+| WP7 | DONE   | Added the two `2026-09-03_hda-*-browser-hono` projects (browser-side rendering) across all docs: sibling list, `Variants.md` (new section), `Analysis-Baseline.md`, `Variant-Comparison.md` (new Axis-1 model + matrix/axes), `History.md` (new Phase 8), READMEs. |
 
 ### Catalog entry shape (WP1)
 
@@ -161,3 +168,9 @@ also noted in the relevant `docs/*.md`.
    into this umbrella project, or stay separate?
 9. **Thymeleaf stall reason** — assumed "interest moved on"; partly answered
    (planned to be done later with Claude), but was there a specific blocker?
+10. **Browser-side rendering vs GraalVM SSR** — are the `2026-09-03_…browser-hono`
+    projects the intended future direction, or one experiment kept alongside the
+    GraalVM demos? The docs currently present both as "live".
+11. **`2026-03-09` codegen wording** — its `Variants.md` entry previously said
+    "regenerate Java from TS"; corrected to Java→TS per the git history
+    (`5ecb2e7`). Confirm that matches reality.

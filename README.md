@@ -11,8 +11,9 @@ documented in that variant's own project, not here.
 
 Over time these projects moved through several Java template engines and, later,
 to generating HTML with Hono — first in a separate server, then inside the JVM via
-GraalVM polyglot. The date prefix on each sibling folder marks when that
-experiment started and roughly tracks the learning journey.
+GraalVM polyglot, and most recently in the browser. The date prefix on each
+sibling folder marks when that experiment started and roughly tracks the learning
+journey.
 
 ## Documents
 

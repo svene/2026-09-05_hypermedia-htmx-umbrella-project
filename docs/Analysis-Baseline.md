@@ -19,6 +19,8 @@ here to see what the umbrella docs still need to catch up on.
 | `../2026-03-07_springboot-graalvm-jsx-poc` | main | `273832e` | 2026-03-10 | todo |
 | `../2026-03-09_hda-springboot-graalvm-jsx-demo` | main | `e854c30` | 2026-09-01 | architecture.md |
 | `../2026-03-15_hda-quarkus-graalvm-jsx-demo` | main | `c59b3dc` | 2026-09-01 | architecture.md |
+| `../2026-09-03_hda-springboot-browser-hono` | main | `5ec1511` | 2026-09-05 | updates to docs |
+| `../2026-09-03_hda-quarkus-browser-hono` | main | `d18bf57` | 2026-09-05 | doc updates |
 | `../2026-05-01_springboot-hono-docs` | master | `9c6ceca` | 2026-05-02 | some examples and settings for code documentation |
 | `../2026-05-02_ssfe-patterns-jte-vc-htmx-docs` | main | `fd414ca` | 2026-05-30 | added intellij idea section to .gitignore |
 

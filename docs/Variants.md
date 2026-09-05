@@ -8,9 +8,10 @@ Folder paths are relative to this umbrella project. The date prefix is the start
 date and roughly marks the point on the learning curve.
 
 Common ground across (almost) all variants: a **Hypermedia-Driven Application** —
-HTML rendered on the server, the browser swaps in fragments with htmx, no SPA.
-They mostly render the same small "people / person" domain so the variants stay
-comparable.
+the browser swaps in HTML fragments with htmx, no SPA, no virtual DOM. HTML is
+rendered on the server in every variant *except* the 2026-09 browser-rendering
+pair, where the same templates run client-side. They mostly render the same small
+"people / person" domain so the variants stay comparable.
 
 ---
 
@@ -128,8 +129,8 @@ comparable.
   esbuild; htmx 4 + hyperscript; Playwright tests; Docker (GraalVM JDK runtime).
 - **Distinguishing idea:** despite the folder name, **no JSX** — plain
   `(vm) => html``` functions, no virtual DOM, no `renderToString`. TS templates
-  sit next to the Java web layer; `mvn` regenerates Java VM types and web-API
-  constants from the TS.
+  sit next to the Java web layer; `mvn` regenerates the **`.ts` types and
+  constants from Java** (`typescript-generator`), Java being the source of truth.
 - **Status:** working demo with architecture / java-ts-integration docs.
 
 ### `../2026-03-15_hda-quarkus-graalvm-jsx-demo`
@@ -141,6 +142,40 @@ comparable.
   its `VARIANT-COMPARISON.md` records exactly what differs from the Spring Boot
   twin (framework idioms only) and what is deliberately kept aligned.
 - **Status:** web layer converged with the Spring Boot twin.
+
+---
+
+## Browser-side rendering (2026-09) — hono templates run in the browser
+
+Forked from the March GraalVM demos, then the GraalVM rendering layer was
+**deleted**. `/uiroute/*` is now a plain JSON API returning a `{ route, vm }`
+envelope; a small **htmx 4 extension** (`hono`, esbuild-bundled to `hx-hono.js`)
+intercepts each response and runs the matching hono `html` template
+**client-side** to produce the fragment htmx swaps in. First paint is a static
+`index.html` shell that bootstraps via `hx-trigger="load"`. Runs on plain
+**JDK 21** — no GraalVM. Java stays the source of truth (`typescript-generator` +
+a gmavenplus script regenerate the `.ts` types/consts on `mvn package`).
+
+### `../2026-09-03_hda-springboot-browser-hono`
+
+- **Role:** the browser-rendering variant of the Spring Boot / hono demo.
+- **Stack:** Spring Boot 4 (plain JDK 21, Spring MVC, `JdbcClient`) + hono `html`
+  templates in the browser; htmx 4 + hyperscript + the `hono` extension;
+  Playwright; Docker (`eclipse-temurin:21-jre`); SSE dev-reload.
+- **Distinguishing idea:** the view model goes over the wire as JSON, not HTML;
+  templating moves to the client while htmx still drives the swaps. No SSR
+  process of any kind.
+- **Status:** working; migrated from the GraalVM demo in one step, docs updated.
+
+### `../2026-09-03_hda-quarkus-browser-hono`
+
+- **Role:** the Quarkus twin of the above.
+- **Stack:** Quarkus 3.32 (plain JDK 21, `quarkus-rest` + `quarkus-rest-jsonb`,
+  CDI, JDBC) + browser-side hono `html`; htmx 4; Playwright; native-image build
+  files; supports minification of the bundle.
+- **Distinguishing idea:** same browser-rendering pattern on Quarkus; built in
+  numbered "slices"; keeps a `VARIANT-COMPARISON.md` against the Spring Boot twin.
+- **Status:** working (slices 1–5 done).
 
 ---
 

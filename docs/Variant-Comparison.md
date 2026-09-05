@@ -24,6 +24,8 @@ tables.
 | `2026-03-07_…graalvm-jsx-poc` | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | `hono/jsx` (`.tsx`) | fragments | 4.0.0 |
 | `2026-03-09_hda-springboot-graalvm-jsx-demo` | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
 | `2026-03-15_hda-quarkus-graalvm-jsx-demo` | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
+| `2026-09-03_hda-springboot-browser-hono` | Spring Boot 4, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
+| `2026-09-03_hda-quarkus-browser-hono` | Quarkus 3.32, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 
 The `…thymeleaf-htmx` row is only scaffolded — the patterns are planned to be
 built out later (with Claude), mirroring the JTE variants.
@@ -32,16 +34,22 @@ built out later (with Claude), mirroring the JTE variants.
 
 ## Axis 1 — Where the HTML is generated
 
-Three models, in the order they were tried:
+Four models, in the order they were tried:
 
 | Model | Variants | Upside | Downside |
 |---|---|---|---|
 | **In-JVM Java template engine** | all 2025-08 + Qute | one process, one language, one build; mature tooling | template-engine ergonomics (path strings, tag rules, verbosity) |
 | **Separate Hono process** (Browser → Java → Hono over HTTP, view model as JSON) | `springboot-hono-poc`, `dynapage-demo` | write HTML in TypeScript; keep all existing Java (security, DB); Hono used exactly like a template engine | two processes to run/deploy; a network hop; a cross-language JSON contract to keep in sync |
 | **GraalVM polyglot in the JVM** (JS renderer runs inside the JVM) | the three 2026-03 projects | TypeScript templates **without** a second process; one deployable | GraalVM runtime; a Java↔JS boundary to tune (context pool, JSON-string passing); JS bundle build step |
+| **In the browser** (htmx `hono` extension runs the templates client-side; `/uiroute/*` is a JSON API) | the two 2026-09 `…browser-hono` projects | plain JDK 21 — no GraalVM, no SSR process at all; server just serves JSON + a static shell; smallest server-side footprint | template code ships to and runs in the browser; first paint needs a JS round-trip; arguably crosses the line from "HTML over the wire" to "view model over the wire" |
 
-The pure-Hono variant (`2025-12-27_…hono-htmx`) is a fourth position: no JVM at
+The pure-Hono variant (`2025-12-27_…hono-htmx`) is a fifth position: no JVM at
 all — simplest of all, but it abandons the Java investment.
+
+The trajectory: HTML built **on the server in the JVM** → **in a second process**
+→ **back in the JVM via GraalVM** → **in the browser**. Each step moved the
+rendering further from the Java process; the last one removes server-side
+rendering entirely.
 
 ## Axis 2 — View technology as a concept
 
@@ -65,13 +73,14 @@ all — simplest of all, but it abandons the Java investment.
 | pure Hono (`hono-htmx`) | none | n/a |
 | Java + separate Hono | view model as **JSON over HTTP** | tried zod + OpenAPI→Java codegen, reverted; then migrated to **Java→TS** (`springboot-hono-poc`) |
 | Java + GraalVM | in-process **Java↔JS** call, JSON string payload | early: generate Java view-model types from TS. Later reversed: **Java→TS** — Java owns the view models, route names and action URLs; TS consumes generated types/constants |
+| Java + browser Hono | view model as **`{route, vm}` JSON to the browser** | **Java→TS** — `typescript-generator` + a gmavenplus script regenerate the `.ts` types and constants from Java on `mvn package` |
 
 The direction of truth flipped over time: TypeScript-first → **Java-first**
-(the current preference). The migration is **not uniform across projects** —
-`springboot-hono-poc`, `hda-dynapage-demo`, `hda-springboot-graalvm-jsx-demo` and
-`hda-quarkus-graalvm-jsx-demo` are Java-first; **`springboot-graalvm-jsx-poc`
-still generates Java from TS** and has not been migrated (see the audit table in
-[Learnings.md](Learnings.md)).
+(the current preference). The migration is **not uniform across projects** — the
+two `…browser-hono` projects, `springboot-hono-poc`, `hda-dynapage-demo`,
+`hda-springboot-graalvm-jsx-demo` and `hda-quarkus-graalvm-jsx-demo` are
+Java-first; **`springboot-graalvm-jsx-poc` still generates Java from TS** and has
+not been migrated (see the audit table in [Learnings.md](Learnings.md)).
 
 ## Axis 4 — Dynamic updates
 
@@ -87,12 +96,15 @@ still generates Java from TS** and has not been migrated (see the audit table in
 
 ## Axis 5 — Native image / deployment
 
-- The **Quarkus** variants (`…qute-htmx`, `…quarkus-graalvm-jsx-demo`) carry
-  native-image build files.
+- The **Quarkus** variants (`…qute-htmx`, `…quarkus-graalvm-jsx-demo`,
+  `…quarkus-browser-hono`) carry native-image build files.
 - The **GraalVM polyglot** demos run on a GraalVM **JDK** (so GraalJS JIT-compiles
   the hot JS) but are **not** native images.
 - The two-process variants ship two runtimes (JVM + Bun/Node); Docker /
   docker-compose appears from `dynapage-demo` onward.
+- The **`…browser-hono`** variants drop back to a **plain JDK 21** runtime
+  (`eclipse-temurin:21-jre` in the Spring Boot Dockerfile) — no GraalVM, no second
+  process; the only build-time extra is the esbuild bundle of `hx-hono.js`.
 
 ---
 
@@ -103,5 +115,6 @@ still generates Java from TS** and has not been migrated (see the audit table in
 | Simplest possible stack, no Java constraint | pure Hono (`2025-12-27_…hono-htmx`) |
 | Stay entirely on the JVM, accept a Java template engine | JTE + View Components (Spring) or Qute (Quarkus) |
 | TypeScript HTML but you have a large Java codebase, and a second process is acceptable | separate Hono process (`springboot-hono-poc` pattern) |
-| TypeScript HTML, one Java codebase, **one** deployable | GraalVM polyglot (`2026-03-09` / `2026-03-15`) — current preference |
-| The above on Quarkus with native-image on the table | `2026-03-15_hda-quarkus-graalvm-jsx-demo` |
+| TypeScript HTML, one Java codebase, **one** deployable, all rendering server-side | GraalVM polyglot (`2026-03-09` / `2026-03-15`) |
+| TypeScript HTML, one Java codebase, **plain JDK** (no GraalVM), server does only JSON — and shipping template code to the browser + a first-paint JS round-trip is acceptable | browser-side Hono (`2026-09-03_hda-*-browser-hono`) — the most recent direction |
+| Any of the GraalVM / browser variants on Quarkus with native-image on the table | `2026-03-15_hda-quarkus-graalvm-jsx-demo` or `2026-09-03_hda-quarkus-browser-hono` |
