@@ -98,6 +98,7 @@ Deliverables:
 | WP10 | DONE  | Resolved open question 6: older projects are on htmx 2 via webjars. Added a Future-work task to upgrade them to htmx 4 and switch to the vendored `static/js/...` asset approach. |
 | WP11 | DONE  | Resolved open question 7: `dynapage-demo` is a copy of `springboot-hono-poc`; the user does this often and it should NOT be documented publicly. Noted internally in Claude memory. |
 | WP12 | DONE  | Resolved open questions 8 & 9: docs-generator relationship undecided → added to Future work; Thymeleaf variant still wanted (no blocker, just deprioritised) → Future-work entry updated. |
+| WP13 | DONE  | Decision: `2026-03-07_springboot-graalvm-jsx-poc` stays a historical PoC (no codegen migration). Added a "deliberately not updated" note to its `readme.md`; closed the "Codegen-direction consistency" Future-work item; updated `Learnings.md` / `Variants.md` / `Variant-Comparison.md`. |
 
 ### Catalog entry shape (WP1)
 
@@ -148,11 +149,11 @@ by WP1 (catalog) + WP3.
   tagged templates, not JSX (except the `2026-03-07` PoC, which still has `.tsx`).
   Rename e.g. `…graalvm-jsx-demo` → `…graalvm-hono-demo`, then update the folder
   paths in `docs/*` and `docs/Analysis-Baseline.md`.
-- **Codegen-direction consistency.** Java→TS is the settled preference, but not
-  every project was migrated. `docs/Learnings.md` has the audit table. Known gap:
-  `2026-03-07_springboot-graalvm-jsx-poc` still generates Java from TS (`javagen/`,
-  `.tsx`). Decide whether to migrate it to Java→TS or leave it as a historical PoC
-  (and note that in the project's own README).
+- ~~**Codegen-direction consistency.**~~ **Decided (2026-09-05):**
+  `2026-03-07_springboot-graalvm-jsx-poc` stays as a **historical PoC** — it keeps
+  `.tsx` and TS→Java generation. A "historical PoC, deliberately not updated" note
+  was added to its `readme.md`. All other projects are on Java→TS
+  (`docs/Learnings.md` audit table). No further action.
 - **"Which architecture for which use case."** The two-process (Java → Hono over
   HTTP), the GraalVM-polyglot, and the browser-hono architectures are all
   considered valid for hypermedia/htmx webapps — the right choice depends on the
