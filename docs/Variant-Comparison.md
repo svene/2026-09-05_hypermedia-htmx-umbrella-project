@@ -12,7 +12,7 @@ tables.
 
 ## Overview matrix
 
-| Variant (folder) | Backend + language | HTML generated where | View technology (concept) | Dynamic-update style | htmx |
+| Variant (project) | Backend + language | HTML generated where | View technology (concept) | Dynamic-update style | htmx |
 |---|---|---|---|---|---|
 | `2025-08-23_…jte-htmx` | Spring Boot, Java | in the JVM | plain JTE templates | full page + fragments | 2.x |
 | `2025-08-23_…jte-vc-htmx` | Spring Boot, Java | in the JVM | JTE + server-side View Components | fragments + event-driven refresh | 2.x |
@@ -40,7 +40,7 @@ Four models, in the order they were tried:
 |---|---|---|---|
 | **In-JVM Java template engine** | all 2025-08 + Qute | one process, one language, one build; mature tooling | template-engine ergonomics (path strings, tag rules, verbosity) |
 | **Separate Hono process** (Browser → Java → Hono over HTTP, view model as JSON) | `springboot-hono-poc`, `dynapage-demo` | write HTML in TypeScript; keep all existing Java (security, DB); Hono used exactly like a template engine | two processes to run/deploy; a network hop; a cross-language JSON contract to keep in sync |
-| **GraalVM polyglot in the JVM** (JS renderer runs inside the JVM) | the three 2026-03 projects | TypeScript templates **without** a second process; one deployable | GraalVM runtime; a Java↔JS boundary to tune (context pool, JSON-string passing); JS bundle build step |
+| **GraalVM polyglot in the JVM** (JS renderer runs inside the JVM) | the three 2026-03 projects | TypeScript templates **without** a second process; one deployable | GraalVM runtime; a Java↔JS boundary to manage — a **`Context` is not thread-safe**, so a Context pool is mandatory, plus JSON-string passing and entry-function caching; JS bundle build step |
 | **In the browser** (htmx `hono` extension runs the templates client-side; `/uiroute/*` is a JSON API) | the two 2026-09 `…browser-hono` projects | plain JDK 21 — no GraalVM, no SSR process at all; server just serves JSON + a static shell; smallest server-side footprint | template code ships to and runs in the browser; first paint needs a JS round-trip; arguably crosses the line from "HTML over the wire" to "view model over the wire" |
 
 The pure-Hono variant (`2025-12-27_…hono-htmx`) is a fifth position: no JVM at
@@ -76,11 +76,10 @@ rendering entirely.
 | Java + browser Hono | view model as **`{route, vm}` JSON to the browser** | **Java→TS** — `typescript-generator` + a gmavenplus script regenerate the `.ts` types and constants from Java on `mvn package` |
 
 The direction of truth flipped over time: TypeScript-first → **Java-first**
-(the current preference). The migration is **not uniform across projects** — the
-two `…browser-hono` projects, `springboot-hono-poc`, `hda-dynapage-demo`,
-`hda-springboot-graalvm-jsx-demo` and `hda-quarkus-graalvm-jsx-demo` are
-Java-first; **`springboot-graalvm-jsx-poc` still generates Java from TS** and has
-not been migrated (see the audit table in [Learnings.md](Learnings.md)).
+(the current preference). Every project is Java-first **except
+`springboot-graalvm-jsx-poc`**, which still generates Java from TS and is
+**deliberately kept that way as a historical PoC** (see the audit table in
+[Learnings.md](Learnings.md)).
 
 ## Axis 4 — Dynamic updates
 
@@ -109,6 +108,11 @@ not been migrated (see the audit table in [Learnings.md](Learnings.md)).
 ---
 
 ## When each model makes sense
+
+The Java + Hono options — **two-process**, **GraalVM polyglot**, **browser-side** —
+are all considered valid; none supersedes the others, the choice is
+use-case-dependent. A fuller "which architecture for which use case" write-up is
+open work (see [`../wip.md`](../wip.md)). First cut:
 
 | If you want… | Reach for |
 |---|---|

@@ -4,8 +4,31 @@ A lightweight index of the sibling projects. Each entry says **what the project
 is** and **the one idea that sets it apart**. Implementation details live in the
 individual project, not here.
 
-Folder paths are relative to this umbrella project. The date prefix is the start
-date and roughly marks the point on the learning curve.
+Each project is referred to by its name only (which is also its GitHub repository
+name — see the table below). The date prefix in the name is the start date and
+roughly marks the point on the learning curve.
+
+## Projects & repositories
+
+All repositories are under **`github.com/svene/`**; the project name *is* the repo
+name.
+
+| Project | Repository | Started |
+|---|---|---|
+| `2025-08-23_ssfe-patterns-jte-htmx` | <https://github.com/svene/2025-08-23_ssfe-patterns-jte-htmx> | 2025-08 |
+| `2025-08-23_ssfe-patterns-jte-vc-htmx` | <https://github.com/svene/2025-08-23_ssfe-patterns-jte-vc-htmx> | 2025-08 |
+| `2025-08-23_ssfe-patterns-thymeleaf-htmx` | <https://github.com/svene/2025-08-23_ssfe-patterns-thymeleaf-htmx> | 2025-08 |
+| `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | <https://github.com/svene/2025-12-21_ssfe-patterns-quarkus-qute-htmx> | 2025-12 |
+| `2025-12-27_ssfe-patterns-hono-htmx` | <https://github.com/svene/2025-12-27_ssfe-patterns-hono-htmx> | 2025-12 |
+| `2025-12-31-springboot-hono-poc` | <https://github.com/svene/2025-12-31-springboot-hono-poc> | 2025-12 |
+| `2026-01-24_hda-dynapage-demo` | <https://github.com/svene/2026-01-24_hda-dynapage-demo> | 2026-01 |
+| `2026-03-07_springboot-graalvm-jsx-poc` | <https://github.com/svene/2026-03-07_springboot-graalvm-jsx-poc> | 2026-03 |
+| `2026-03-09_hda-springboot-graalvm-jsx-demo` | <https://github.com/svene/2026-03-09_hda-springboot-graalvm-jsx-demo> | 2026-03 |
+| `2026-03-15_hda-quarkus-graalvm-jsx-demo` | <https://github.com/svene/2026-03-15_hda-quarkus-graalvm-jsx-demo> | 2026-03 |
+| `2026-09-03_hda-springboot-browser-hono` | <https://github.com/svene/2026-09-03_hda-springboot-browser-hono> | 2026-09 |
+| `2026-09-03_hda-quarkus-browser-hono` | <https://github.com/svene/2026-09-03_hda-quarkus-browser-hono> | 2026-09 |
+| `2026-05-01_springboot-hono-docs` | *local only — not published* | 2026-05 |
+| `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` | <https://github.com/svene/2026-05-02_ssfe-patterns-jte-vc-htmx-docs> | 2026-05 |
 
 Common ground across (almost) all variants: a **Hypermedia-Driven Application** —
 the browser swaps in HTML fragments with htmx, no SPA, no virtual DOM. HTML is
@@ -17,7 +40,7 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 ## Java template-engine era (2025-08)
 
-### `../../2025/2025-08-23_ssfe-patterns-jte-htmx`
+### `2025-08-23_ssfe-patterns-jte-htmx`
 
 - **Role:** pattern showcase.
 - **Stack:** Spring Boot + plain [JTE](https://jte.gg/), htmx 2.
@@ -27,7 +50,7 @@ pair, where the same templates run client-side. They mostly render the same smal
   fragments) — and why Injection scales better.
 - **Status:** working, documents two patterns.
 
-### `../../2025/2025-08-23_ssfe-patterns-jte-vc-htmx`
+### `2025-08-23_ssfe-patterns-jte-vc-htmx`
 
 - **Role:** pattern showcase (the most built-out of the 2025-08 trio).
 - **Stack:** Spring Boot + JTE + [spring-view-component](https://github.com/tschuehly/spring-view-component)
@@ -39,7 +62,7 @@ pair, where the same templates run client-side. They mostly render the same smal
 - **Status:** working; documentation was progressively extracted from the code
   (`s03`–`s05` commits).
 
-### `../../2025/2025-08-23_ssfe-patterns-thymeleaf-htmx`
+### `2025-08-23_ssfe-patterns-thymeleaf-htmx`
 
 - **Role:** pattern showcase — the Thymeleaf counterpart to the JTE variants.
 - **Stack:** Spring Boot + Thymeleaf, htmx 2.
@@ -52,7 +75,7 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 ## Quarkus / Qute (2025-12)
 
-### `../../2025/2025-12-21_ssfe-patterns-quarkus-qute-htmx`
+### `2025-12-21_ssfe-patterns-quarkus-qute-htmx`
 
 - **Role:** pattern showcase, organised as a course (`m00`–`m05` modules:
   plain → JSX-ish → pages → UI patterns → htmx).
@@ -67,7 +90,7 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 ## Hono / TypeScript era (2025-12 →, current preference)
 
-### `../../2025/2025-12-27_ssfe-patterns-hono-htmx`
+### `2025-12-27_ssfe-patterns-hono-htmx`
 
 - **Role:** pattern showcase — the Hono/TS re-do of the SSFE pattern course
   (same `m00`–`m05` module structure as the Qute variant).
@@ -81,7 +104,7 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 ## Spring Boot ↔ Hono bridge (2025-12 → 2026-01)
 
-### `../../2025/2025-12-31-springboot-hono-poc`
+### `2025-12-31-springboot-hono-poc`
 
 - **Role:** architecture PoC.
 - **Stack:** Browser → Spring Boot (Java, security, DB) → Hono (Node/Bun,
@@ -92,7 +115,7 @@ pair, where the same templates run client-side. They mostly render the same smal
   out-of-process.
 - **Status:** working PoC (login `user` / `x21`); has architecture diagrams.
 
-### `../2026-01-24_hda-dynapage-demo`
+### `2026-01-24_hda-dynapage-demo`
 
 - **Role:** demo app comparing update strategies.
 - **Stack:** same two-process Spring Boot + Hono setup; docker-compose;
@@ -107,7 +130,7 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 ## GraalVM polyglot era (2026-03) — Hono templates *inside* the JVM
 
-### `../2026-03-07_springboot-graalvm-jsx-poc`
+### `2026-03-07_springboot-graalvm-jsx-poc`
 
 - **Role:** PoC.
 - **Stack:** Spring Boot + GraalVM Polyglot running `hono/jsx` (`.tsx`) inside
@@ -117,23 +140,23 @@ pair, where the same templates run client-side. They mostly render the same smal
   server, while the templates stay TypeScript/JSX.
 - **Status:** PoC — `hello` / `page` / `layout` components, no domain app.
   Predates the JSX→`html``` and the TS→Java→**Java→TS** codegen migrations, so it
-  still uses `.tsx` and generates Java from TS. Superseded by `2026-03-09`; decide
-  whether to migrate it or keep it as-is (see the audit in
-  [Learnings.md](Learnings.md)).
+  still uses `.tsx` and generates Java from TS. Superseded by `2026-03-09` and
+  **kept as-is on purpose** — its `readme.md` carries a "historical PoC" note
+  (see the audit in [Learnings.md](Learnings.md)).
 
-### `../2026-03-09_hda-springboot-graalvm-jsx-demo`
+### `2026-03-09_hda-springboot-graalvm-jsx-demo`
 
 - **Role:** full demo of the GraalVM-polyglot approach (Spring Boot).
 - **Stack:** Spring Boot 4 (Java 21, `JdbcClient`, Flyway/HSQLDB) + GraalVM
   Polyglot 25 + **hono `html` tagged templates** bundled to one `ssr.js` by
   esbuild; htmx 4 + hyperscript; Playwright tests; Docker (GraalVM JDK runtime).
-- **Distinguishing idea:** despite the folder name, **no JSX** — plain
+- **Distinguishing idea:** despite the `jsx` in the name, **no JSX** — plain
   `(vm) => html``` functions, no virtual DOM, no `renderToString`. TS templates
   sit next to the Java web layer; `mvn` regenerates the **`.ts` types and
   constants from Java** (`typescript-generator`), Java being the source of truth.
 - **Status:** working demo with architecture / java-ts-integration docs.
 
-### `../2026-03-15_hda-quarkus-graalvm-jsx-demo`
+### `2026-03-15_hda-quarkus-graalvm-jsx-demo`
 
 - **Role:** the Quarkus twin of `2026-03-09` — same pattern, other framework.
 - **Stack:** Quarkus (JAX-RS, `@ConfigMapping`, `@Scheduled`, H2) + GraalVM
@@ -156,7 +179,7 @@ intercepts each response and runs the matching hono `html` template
 **JDK 21** — no GraalVM. Java stays the source of truth (`typescript-generator` +
 a gmavenplus script regenerate the `.ts` types/consts on `mvn package`).
 
-### `../2026-09-03_hda-springboot-browser-hono`
+### `2026-09-03_hda-springboot-browser-hono`
 
 - **Role:** the browser-rendering variant of the Spring Boot / hono demo.
 - **Stack:** Spring Boot 4 (plain JDK 21, Spring MVC, `JdbcClient`) + hono `html`
@@ -167,7 +190,7 @@ a gmavenplus script regenerate the `.ts` types/consts on `mvn package`).
   process of any kind.
 - **Status:** working; migrated from the GraalVM demo in one step, docs updated.
 
-### `../2026-09-03_hda-quarkus-browser-hono`
+### `2026-09-03_hda-quarkus-browser-hono`
 
 - **Role:** the Quarkus twin of the above.
 - **Stack:** Quarkus 3.32 (plain JDK 21, `quarkus-rest` + `quarkus-rest-jsonb`,
@@ -185,14 +208,14 @@ These are not app variants; they explore generating documentation *from* the rea
 code. `wip.md` notes they may later be extended to produce code-docs for the
 variants.
 
-### `../2026-05-01_springboot-hono-docs`
+### `2026-05-01_springboot-hono-docs`
 
 - **Stack:** Astro + [Starlight](https://starlight.astro.build/).
 - **Distinguishing idea:** a docs site for the Spring Boot + Hono line of work,
   with experiments in pulling examples/settings from source.
 - **Status:** early — starter kit plus some examples.
 
-### `../2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+### `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
 
 - **Stack:** Astro + Starlight, with an `extract-snippets` step and a `generated/`
   output folder.

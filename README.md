@@ -1,9 +1,10 @@
 # Hypermedia / htmx — Umbrella Documentation
 
 This is an umbrella documentation project. It does not contain an application of
-its own. Instead it documents and compares the family of hypermedia-driven
-(htmx) applications and pattern PoCs kept in the sibling folders under
-`../../2025/` and `../`.
+its own. Instead it documents and compares a family of hypermedia-driven (htmx)
+applications and pattern PoCs, each kept in its own repository under
+[`github.com/svene`](https://github.com/svene). See
+[`docs/Variants.md`](docs/Variants.md) for the project ↔ repository table.
 
 It stays at a **high level** — concepts, the architectural idea behind each
 variant, and how the variants differ. The internals of any one variant are
@@ -11,14 +12,14 @@ documented in that variant's own project, not here.
 
 Over time these projects moved through several Java template engines and, later,
 to generating HTML with Hono — first in a separate server, then inside the JVM via
-GraalVM polyglot, and most recently in the browser. The date prefix on each
-sibling folder marks when that experiment started and roughly tracks the learning
+GraalVM polyglot, and most recently in the browser. The date prefix in each
+project name marks when that experiment started and roughly tracks the learning
 journey.
 
 ## Documents
 
-Start with [`docs/README.md`](docs/README.md), which indexes the four documents
-and the suggested reading order.
+Start with [`docs/README.md`](docs/README.md), which indexes the documents and the
+suggested reading order.
 
 | File | Purpose |
 |------|---------|

@@ -11,25 +11,29 @@ This project is a place for documentation of the various variants of my
 hypermedia / htmx applications. Some sibling projects implement the same app in
 different variants; others are just a PoC or demonstrate hypermedia/htmx patterns.
 
-### Sibling projects (folders relative to this one)
+### Sibling projects (GitHub repos, all under `github.com/svene/`)
 
-- ../../2025/2025-08-23_ssfe-patterns-jte-vc-htmx
-- ../../2025/2025-08-23_ssfe-patterns-jte-htmx
-- ../../2025/2025-08-23_ssfe-patterns-thymeleaf-htmx
-- ../../2025/2025-12-21_ssfe-patterns-quarkus-qute-htmx
-- ../../2025/2025-12-27_ssfe-patterns-hono-htmx
-- ../../2025/2025-12-31-springboot-hono-poc
-- ../2026-01-24_hda-dynapage-demo
-- ../2026-03-07_springboot-graalvm-jsx-poc
-- ../2026-03-09_hda-springboot-graalvm-jsx-demo
-- ../2026-03-15_hda-quarkus-graalvm-jsx-demo
-- ../2026-09-03_hda-springboot-browser-hono
-- ../2026-09-03_hda-quarkus-browser-hono
+The project name *is* the repo name. Locally they are organised into `2025/` and
+`2026/` sub-folders by start year, but on GitHub they are flat — so the docs
+refer to them by name only. Full list + links: `docs/Variants.md`.
+
+- 2025-08-23_ssfe-patterns-jte-vc-htmx
+- 2025-08-23_ssfe-patterns-jte-htmx
+- 2025-08-23_ssfe-patterns-thymeleaf-htmx
+- 2025-12-21_ssfe-patterns-quarkus-qute-htmx
+- 2025-12-27_ssfe-patterns-hono-htmx
+- 2025-12-31-springboot-hono-poc
+- 2026-01-24_hda-dynapage-demo
+- 2026-03-07_springboot-graalvm-jsx-poc
+- 2026-03-09_hda-springboot-graalvm-jsx-demo
+- 2026-03-15_hda-quarkus-graalvm-jsx-demo
+- 2026-09-03_hda-springboot-browser-hono
+- 2026-09-03_hda-quarkus-browser-hono
 
 ### Additional notes
 
-- The date prefixes of the folder names indicate when each project was started and
-  thus also reflect my learning experience over time.
+- The date prefixes of the project names indicate when each project was started
+  and thus also reflect my learning experience over time.
 - The timeline shows that I tried out various template engines for use with a Java
   web application.
 - 2025-08-23_ssfe-patterns-thymeleaf-htmx: only started, still needs to be
@@ -41,8 +45,8 @@ different variants; others are just a PoC or demonstrate hypermedia/htmx pattern
   hono `html` templates, but rendered **in the browser** — `/uiroute/*` is a JSON
   API and a small htmx 4 extension runs the template client-side. The GraalVM
   rendering layer from the March demos was removed.
-- There are also the folders ../2026-05-01_springboot-hono-docs and
-  ../2026-05-02_ssfe-patterns-jte-vc-htmx-docs which I think I created to generate
+- There are also `2026-05-01_springboot-hono-docs` (local only, not on GitHub) and
+  `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` which I think I created to generate
   docs from the real code. In a later step these can most likely be extended to
   create code-docs for the variants.
 
@@ -99,13 +103,14 @@ Deliverables:
 | WP11 | DONE  | Resolved open question 7: `dynapage-demo` is a copy of `springboot-hono-poc`; the user does this often and it should NOT be documented publicly. Noted internally in Claude memory. |
 | WP12 | DONE  | Resolved open questions 8 & 9: docs-generator relationship undecided → added to Future work; Thymeleaf variant still wanted (no blocker, just deprioritised) → Future-work entry updated. |
 | WP13 | DONE  | Decision: `2026-03-07_springboot-graalvm-jsx-poc` stays a historical PoC (no codegen migration). Added a "deliberately not updated" note to its `readme.md`; closed the "Codegen-direction consistency" Future-work item; updated `Learnings.md` / `Variants.md` / `Variant-Comparison.md`. |
+| WP14 | DONE  | Replaced all relative directory references (`../…`, `../../2025/…`) with plain project names, since the repos are flat on GitHub. Added a project ↔ GitHub-repo table at the top of `docs/Variants.md` (repos under `github.com/svene/`; `springboot-hono-docs` is local-only). Updated `Analysis-Baseline.md`, both READMEs, `wip.md`. |
 
 ### Catalog entry shape (WP1)
 
-Per project, a few lines only: folder path + start date, role (app variant /
+Per project, a few lines only: project name + start date, role (app variant /
 PoC / pattern showcase / docs generator), the stack in one line, the one
 distinguishing concept, current status, and "details: see the project". No
-internals.
+internals. A project ↔ GitHub-repo table sits at the top of `docs/Variants.md`.
 
 ### Comparison dimensions (WP3)
 
@@ -147,8 +152,9 @@ by WP1 (catalog) + WP3.
   `2026-03-09_hda-springboot-graalvm-jsx-demo` and
   `2026-03-15_hda-quarkus-graalvm-jsx-demo` is historical — they use hono `html`
   tagged templates, not JSX (except the `2026-03-07` PoC, which still has `.tsx`).
-  Rename e.g. `…graalvm-jsx-demo` → `…graalvm-hono-demo`, then update the folder
-  paths in `docs/*` and `docs/Analysis-Baseline.md`.
+  Rename e.g. `…graalvm-jsx-demo` → `…graalvm-hono-demo`, then update the project
+  names in `docs/*` (the repo table in `docs/Variants.md` and
+  `docs/Analysis-Baseline.md` included).
 - ~~**Codegen-direction consistency.**~~ **Decided (2026-09-05):**
   `2026-03-07_springboot-graalvm-jsx-poc` stays as a **historical PoC** — it keeps
   `.tsx` and TS→Java generation. A "historical PoC, deliberately not updated" note

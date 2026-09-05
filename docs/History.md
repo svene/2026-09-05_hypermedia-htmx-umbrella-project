@@ -145,14 +145,19 @@ per-repo `VARIANT-COMPARISON.md`.
 
 ## Where this stands (September 2026)
 
-Two live directions, both with **Java as the source of truth** (view models, route
-names, action URLs generated Java→TS), **Hono `html` tagged templates in `.ts`**,
-**htmx 4**, and **SSE** live reload in dev:
+The recent work shares a common core — **Java as the source of truth** (view
+models, route names, action URLs generated Java→TS), **Hono `html` tagged
+templates in `.ts`**, **htmx 4**, **SSE** live reload in dev — but there is **no
+single "final" architecture**. Three are considered valid, chosen per use case:
 
-1. **Server-side via GraalVM polyglot** (`2026-03-09` / `2026-03-15`) — one
+1. **Two processes** (`springboot-hono-poc` / `dynapage-demo` pattern) — Java
+   calls a separate Hono process over HTTP for the HTML.
+2. **Server-side via GraalVM polyglot** (`2026-03-09` / `2026-03-15`) — one
    process, HTML rendered in the JVM, GraalVM JDK at runtime.
-2. **Browser-side rendering** (`2026-09-03` pair) — plain JDK 21, server serves
+3. **Browser-side rendering** (`2026-09-03` pair) — plain JDK 21, server serves
    JSON + a static shell, the templates run in the browser. The most recent step.
+
+Deciding which fits which use case is open work (see `../wip.md`).
 
 ## Throughlines
 
@@ -167,7 +172,12 @@ names, action URLs generated Java→TS), **Hono `html` tagged templates in `.ts`
 - **Swap strategy** (full page vs OOB vs `hx-partial`) was explored explicitly in
   the dynapage demo and settled toward partials.
 - **Process count**: two processes (Phase 4) was a real cost that GraalVM
-  (Phase 5) removed without giving up TypeScript templates.
+  (Phase 5) removed without giving up TypeScript templates — though the
+  two-process setup remains a valid option, not a dead end.
 - **Where rendering runs** kept moving away from the Java process: server JVM →
   second process → back in the JVM (GraalVM) → the browser (Phase 8). The latest
   step removes server-side HTML rendering — and the GraalVM dependency — entirely.
+  These are alternatives, not a strict upgrade path: each still suits some use
+  cases.
+- **GraalVM `Context` is not thread-safe** — so the Context pool in the Phase 5/6
+  demos is a correctness requirement, not a performance tweak.

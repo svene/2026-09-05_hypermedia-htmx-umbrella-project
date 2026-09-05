@@ -5,8 +5,9 @@ migrations, and things that were built and then simplified. See
 [History.md](History.md) for the timeline and [Variant-Comparison.md](Variant-Comparison.md)
 for the axes.
 
-> **Status: seed.** These are Claude's reading of the observable history (folder
-> dates, git logs, architecture notes). They are starting points, not settled
+> **Status: seed.** These are Claude's reading of the observable history
+> (project-name dates, git logs, architecture notes). They are starting points,
+> not settled
 > conclusions — extend, correct, and add the reasoning that isn't visible in the
 > commits.
 
@@ -43,19 +44,23 @@ for the axes.
    generator). Java-first won because the whole point was to keep the existing
    Java code, and because the mature Maven plugin beats maintaining a custom one.
    **Not every project was migrated** — see the audit below.
-6. **Two processes is a real, recurring cost** — run, deploy, a network hop, and
-   a contract to keep in sync. It was tolerated for a while, then removed by
-   GraalVM polyglot without giving up TypeScript templates. The GraalVM runtime
-   plus boundary-tuning was judged the smaller price.
-   **Later (2026-09) the GraalVM runtime itself was judged a cost worth removing:**
-   the `…browser-hono` pair moves rendering to the browser, so the server is plain
-   JDK 21 serving JSON. Trade: template code ships to the client and first paint
-   needs a JS round-trip. Both directions are currently kept alive.
-7. **The Java↔JS boundary needs deliberate performance work.** What the demos
-   converged on: a **pool** of GraalVM Contexts for concurrency; share the
-   engine/source but isolate per-context state; **cache** entry-function lookups;
-   pass **JSON strings** across the boundary rather than marshalling object
-   graphs; pass Java **records**, not `Map`s.
+6. **Three JVM+Hono architectures, all kept as valid options.** They appeared in
+   this order, each trading one cost for another:
+   - **Two processes** (Java → Hono over HTTP) — a network hop, two runtimes to
+     deploy, a JSON contract to sync.
+   - **GraalVM polyglot** — one process, but a GraalVM runtime and a Java↔JS
+     boundary to manage.
+   - **Browser-hono** (2026-09) — plain JDK 21 serving JSON, but template code
+     ships to the client and first paint needs a JS round-trip.
+
+   None supersedes the others; the right one depends on the use case (see the
+   "which architecture for which use case" item in `../wip.md`).
+7. **The Java↔JS boundary needs deliberate work — first for correctness, then
+   speed.** A GraalVM `Context` is **not thread-safe**, so a **pool** of Contexts
+   (with the engine/source shared but per-Context state isolated) is *required*
+   for concurrent request handling, not an optimisation. On top of that:
+   **cache** entry-function lookups, pass **JSON strings** across the boundary
+   rather than marshalling object graphs, and pass Java **records**, not `Map`s.
 8. **Collapse many entry points to one dispatcher.** One JS entry function per
    HTTP endpoint became a single `render(route, json)` with a switch. Fewer moving
    parts on both sides of the boundary.
@@ -100,6 +105,10 @@ for the axes.
   truth), reversing the earlier TS→Java direction.
 - The **Thymeleaf variant stalled deliberately** and is planned to be implemented
   later (with Claude), not abandoned.
+- **The GraalVM Context pool exists because a GraalVM `Context` is not
+  thread-safe** — a correctness constraint, not a performance tweak.
+- **Two-process, GraalVM, and browser-hono are all valid architectures**; which
+  to use is use-case-dependent (none is retired or "the winner").
 
 ## Codegen-direction audit (2026-09-05)
 
@@ -109,7 +118,7 @@ Which projects have cross-language type generation, and in which direction:
 |---|---|---|
 | `springboot-hono-poc` | **Java→TS** ✅ | migrated (`ab83834`); removed the TS→Java generator and its Maven plugin |
 | `hda-dynapage-demo` | **Java→TS** ✅ | removed the old TS→Java ("Hono2Java") generator (`8b79818`); the `typescript-generator` Maven plugin is still active in `springboot/pom.xml`, generating `hono/src/generated/types/vm-types.d.ts` (VM interfaces + route/event unions) from Java |
-| `springboot-graalvm-jsx-poc` | **TS→Java** ⚠️ **not migrated** | still uses `javagen/generate-java-from-hono.ts`; a superseded PoC, so possibly fine to leave — decide explicitly |
+| `springboot-graalvm-jsx-poc` | **TS→Java** — **kept on purpose** | still uses `javagen/generate-java-from-hono.ts` and `.tsx`; **decided (2026-09-05) to keep as a historical PoC**, superseded by `2026-03-09`; a note to that effect is in its `readme.md` |
 | `hda-springboot-graalvm-jsx-demo` | **Java→TS** ✅ | migrated (`5ecb2e7`); `typescript-generator` + gmavenplus for consts/routes/events/action-URLs |
 | `hda-quarkus-graalvm-jsx-demo` | **Java→TS** ✅ | migrated (`0fce481`) |
 | `hda-springboot-browser-hono` | **Java→TS** ✅ | forked from the SB GraalVM demo; keeps `typescript-generator` + gmavenplus |
@@ -117,11 +126,11 @@ Which projects have cross-language type generation, and in which direction:
 
 Pure-Java and pure-Hono variants have no cross-language contract.
 
-**Action:** decide whether `springboot-graalvm-jsx-poc` should be migrated to
-Java→TS for consistency or left as a historical PoC (and say so in its README).
+**Resolved (2026-09-05):** `springboot-graalvm-jsx-poc` is kept as a historical
+PoC — no migration. Its `readme.md` now carries a "deliberately not updated" note.
+Every other project is Java→TS.
 
 ## To confirm / expand (for the manual pass)
 
 - Performance numbers, if any, behind the GraalVM boundary decisions.
-- Whether the two-process architecture is fully retired or still has a use case.
 - Anything learned that never made it into a commit message.
