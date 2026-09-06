@@ -256,8 +256,9 @@ starts.**
   `2025/2025-08-23_ssfe-patterns-thymeleaf-htmx` (currently a bare skeleton: one
   `page1.html`, one `PagesController`, empty `MyService`/`MyRepository`, htmx 2
   via webjars). Claude edits files only; **the user reviews and commits each work
-  package** — in the Thymeleaf repo for WP-T0…WP-T4/WP-T6, in the Qute repo for
-  the optional WP-T7, in this umbrella repo for WP-T5.
+  package** — in the Thymeleaf repo for WP-T0…WP-T4 + WP-T2.5, in the Qute repo
+  for WP-T7 + WP-T9, in the docs-project repo for WP-T6, in this umbrella repo for
+  WP-T5.
 - This umbrella repo's usual "only reads the siblings" rule is deliberately
   suspended for this item — the user asked for the build-out to be done here with
   Claude.
@@ -269,7 +270,11 @@ structural model: it is the other "Java SSR template engine" course, so it
 already shows what the module set looks like without JSX. The **JTE-VC project**
 (`2025-08-23_ssfe-patterns-jte-vc-htmx`) is the Spring-Boot wiring model
 (controllers, URL constants, `static/` asset layout, `main.css` / `simplepage.css`,
-`maincard`, the per-demo code panel).
+`maincard`). JTE-VC also shows how the in-app code docs were *removed* again and
+replaced by `docs:start`/`docs:end` markers + a "Docs" back-link once the write-ups
+moved to `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (commits `9e94470` →
+`6dc16fb`) — Thymeleaf follows that end state, not the earlier code-panel one (see
+decision 4 and WP-T2.5).
 
 Module set — **same demos as Qute**, i.e. the full course **minus the JSX module
 and minus the "Experiments" section** ("the one named 'experimental'" — only
@@ -308,30 +313,36 @@ cross-variant comparison.
    copied from `2025-08-23_ssfe-patterns-jte-vc-htmx`. This also clears the open
    htmx-4 checklist line for Thymeleaf (see "Bring the older projects up…" above)
    — no separate `htmx4-upgrade-plan.md` needed.
-4. **Per-demo code panel** — each demo page shows its own template + controller
-   source in a code panel (Qute's `codeexplanation` / JTE-VC's `simplepage.css`
-   `.codearea`). Backed by a small `CodeSnippet` record. Done as part of each
-   module WP, not a separate WP.
-5. **Out of scope now** (optional follow-ups): `docs:start`/`docs:end` snippet
-   markers + `http://localhost:4321/…` "Docs" back-links for the
-   `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` extractor (WP-T6, only if wanted);
-   native-image; tests beyond one context-loads smoke test.
+4. ~~**Per-demo code panel**~~ **Reversed 2026-09-06 by the user.** WP-T1/WP-T2
+   built the in-app code panels (`CodeSnippet` record, `code-panel.html`,
+   `M01Snippets`/`M03Snippets`); the user then pointed out JTE-VC did the same
+   thing early on and later *pulled the docs out* into
+   `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`, leaving only `docs:start`/
+   `docs:end` markers + a `<hr>` + "Docs" back-link in each demo (commits
+   `9e94470`…`6dc16fb`). **WP-T2.5 removes the panels and applies that same
+   pattern**; WP-T3/WP-T4 are built that way from the start (no panels). The
+   Thymeleaf snippet pages + extractor on the docs-project side are WP-T6.
+5. **Out of scope now** (optional follow-ups): authoring the Thymeleaf `.mdx`
+   pages + a snippet extractor inside `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+   (WP-T6); native-image; tests beyond one context-loads smoke test.
 
 ### Work packages
 
-Each row = one manual review + commit by the user. WP-T0…WP-T4 and WP-T6 commit
-in the Thymeleaf repo; WP-T5 commits here.
+Each row = one manual review + commit by the user. WP-T0…WP-T4, WP-T2.5 and WP-T6
+commit in the Thymeleaf repo; WP-T5 commits here; WP-T7 and WP-T9 in the Qute repo.
 
 | WP | Repo | Status | Deliverable |
 |----|------|--------|-------------|
-| WP-T0 | thymeleaf | **DONE 2026-09-06** | **Skeleton + shared infra + build.** `pom.xml` (htmx 4 vendored, `htmx.org` + `webjars-locator-lite` removed); `application.properties` (`spring.application.name`) + `application-dev.properties` (`spring.thymeleaf.cache=false`); vendored `static/js/htmx.org/4.0.0/htmx.js` (102 KB) + `static/css/bulma/1.0.4/bulma.min.css` (662 KB) + `static/main.css` + `static/simplepage.css` (copied from JTE-VC); shared fragments `fragments/layout.html` (`page(title, content)` via `~{}` fragment expr), `fragments/page-head.html` (`head(title)`), `fragments/maincard.html` (`card(url,title,subtitle,recommendation)`, `th:utext`), `fragments/code-panel.html` (`panel(snippets)` over `List<CodeSnippet>`) + `ssfepatterns/components/CodeSnippet` record; `ssfepatterns/m00main/MainController` serves `/` → `m00main/index.html` shell (title/subtitle + a placeholder comment where module sections go); removed `web/PagesController` + `core/MyService` + `persistence/MyRepository` + `templates/pages/page1.html`; `readme.adoc`. **Verified:** `mvn clean compile` green; `mvn spring-boot:run -Dspring-boot.run.profiles=dev` boots, `GET /` → 200 renders the shell, `/js/htmx.org/4.0.0/htmx.js` + `/css/bulma/1.0.4/bulma.min.css` + `/main.css` → 200. |
+| WP-T0 | thymeleaf | **DONE 2026-09-06** | **Skeleton + shared infra + build.** `pom.xml` (htmx 4 vendored, `htmx.org` + `webjars-locator-lite` removed); `application.properties` (`spring.application.name`) + `application-dev.properties` (`spring.thymeleaf.cache=false`); vendored `static/js/htmx.org/4.0.0/htmx.js` (102 KB) + `static/css/bulma/1.0.4/bulma.min.css` (662 KB) + `static/main.css` + `static/simplepage.css` (copied from JTE-VC); shared fragments `fragments/layout.html` (`page(title, content)` via `~{}` fragment expr), `fragments/page-head.html` (`head(title)`), `fragments/maincard.html` (`card(url,title,subtitle,recommendation)`, `th:utext`), `fragments/code-panel.html` (`panel(snippets)` over `List<CodeSnippet>`) + `ssfepatterns/components/CodeSnippet` record; `ssfepatterns/m00main/MainController` serves `/` → `m00main/index.html` shell (title/subtitle + a placeholder comment where module sections go); removed `web/PagesController` + `core/MyService` + `persistence/MyRepository` + `templates/pages/page1.html`; `readme.adoc`. **Verified:** `mvn clean compile` green; `mvn spring-boot:run -Dspring-boot.run.profiles=dev` boots, `GET /` → 200 renders the shell (the `CodeSnippet` record + `code-panel.html` here were later removed in WP-T2.5), `/js/htmx.org/4.0.0/htmx.js` + `/css/bulma/1.0.4/bulma.min.css` + `/main.css` → 200. |
 | WP-T1 | thymeleaf | **DONE 2026-09-06** | **m01 Simple Pages** — `m01simplepages/M01Controller` (one controller, `D01_URL`…`D05_URL`, `menuUrls()`) + `M01Snippets` (illustrative code-panel excerpts); templates `m01simplepages/d01…d05.html`; fragments `fragments/helloworld.html` (no-param), `helloworldparams.html` (`(greeting, greetee)`), `helloworldcontent.html` (`(content)` slot via `<th:block th:replace="${content}">`). d03 reads `?greetee=` (default "You"); d04 passes markup with `~{::#slot/content()}`; d05 nests the same fragment (`~{::#outer/content()}` → inner `~{::#nested/content()}`). `MainController` now `model.addAllAttributes(M01Controller.menuUrls())`; `m00main/index.html` gained the "Simple Pages" `<section>` (5 `maincard` calls). **Verified:** `mvn clean compile` green; app boots (dev); `GET /`, `/m01/d01`…`/m01/d05` (+`?greetee=World`) all → 200; d02 shows the fragment, d03 → "Hey World!", d04 → slot markup inside `.area-border`, d05 → nested `.area-border`, code panels populated, menu cards link correctly. |
 | WP-T2 | thymeleaf | **DONE 2026-09-06** | **m03 Page Patterns** — `m03pages/M03Controller` (`D01_URL`…`D03_URL`, `D04P1_URL`/`D04P2_URL`, `menuUrls()`) + `M03Snippets`. d01 content page via the shared `fragments/layout.html`; d02 same + `@RequestParam("greeting")` (default "Hello"); d03 custom page — builds its own document, only reuses `fragments/page-head` — + the same param; d04 MPA = `d04p1`/`d04p2` sharing new `fragments/m03d04-layout.html` (`layoutMpa(content)`; nav highlight from `selectedMenu`, `p1Url`/`p2Url` model attrs). `MainController` +`M03Controller.menuUrls()`; `m00main/index.html` +"Page Patterns" `<section>` (4 cards). Also fixed a WP-T0 carry-over: the multi-line HTML comment inside `fragments/layout.html` leaked into every page — converted it (and the new m03d04-layout one) to a Thymeleaf `<!--/* */-->` parser comment. **Verified:** `mvn clean compile` green; app boots; `GET /`, `/m03/d01`, `/m03/d02` (+`?greeting=Hey You!` and default), `/m03/d03?greeting=…`, `/m03/d04p1`, `/m03/d04p2` all → 200; d02/d03 echo the greeting, d03 renders its own `<head>`, d04p1/p2 nav shows `is-selected` on the current page, menu cards + query strings correct. |
-| WP-T3 | thymeleaf | TODO | **m04 UI Patterns** — d01 parent/child (slot content via `~{}`), d02 forwarder (`th:if` delegates to a second fragment); code panels; `m00` "UI Patterns" section. |
-| WP-T4 | thymeleaf | TODO | **m05 htmx Patterns** — `M05D01` page + `M05D01Message` fragment endpoint (`@RequestParam("message")`), button with `hx-get` / `hx-target`, result swapped in; code panel; `m00` "HTMX Patterns" section. Full course now runs. |
+| WP-T2.5 | thymeleaf | **DONE 2026-09-06** | **Drop the in-app code-snippet docs** (user request — mirror JTE-VC commits `9e94470`…`6dc16fb`). Deleted `components/CodeSnippet.java`, `fragments/code-panel.html`, `m01simplepages/M01Snippets.java`, `m03pages/M03Snippets.java` (+ empty `components/` pkg). `M01Controller`/`M03Controller` no longer put `snippets` on the model (handlers with no other model use lost the `Model` param; `M03Controller.addMpaModel` keeps only `selectedMenu`/`p1Url`/`p2Url`). Every m01 `d01…d05` + m03 `d01`,`d02`,`d03`,`d04p1`,`d04p2` template: `code-panel` include → `<!-- docs:start page -->` / `<!-- docs:end page -->` around the demo body + `<hr>` + `<a href="http://localhost:4321/technologies/02_thymeleaf/m0X/">Docs</a>` (m03 MPA link sits in `fragments/m03d04-layout.html`). `readme.adoc` updated (docs live in the separate site; `docs:*` markers noted; `code-panel` dropped from the fragment list). **Verified:** `mvn clean compile` green; app boots; all 11 routes → 200; rendered pages carry the markers + Docs link and **no `codearea`**; params (`?greetee=`, `?greeting=`) and the d04 nav highlight still work. Docs-URL slug (`02_thymeleaf/m0X` + anchors) to be finalised in WP-T6. |
+| WP-T3 | thymeleaf | TODO | **m04 UI Patterns** — d01 parent/child (slot content via `~{}`), d02 forwarder (`th:if` delegates to a second fragment); `docs:start`/`docs:end` markers + `<hr>`+"Docs" back-link (no code panels); `m00` "UI Patterns" section. |
+| WP-T4 | thymeleaf | TODO | **m05 htmx Patterns** — `M05` controller: `d01` page + a message fragment endpoint (`@RequestParam("message")`), button with `hx-get` / `hx-target`, result swapped in; `docs:start`/`docs:end` markers + back-link (no code panel); `m00` "HTMX Patterns" section. Full course now runs. |
 | WP-T5 | umbrella | TODO | **Umbrella docs catch-up.** `docs/Variants.md` (status → built; htmx 4; module-course description). `docs/Variant-Comparison.md` (Thymeleaf row → `in the JVM` / `Thymeleaf fragments/slots` / built / htmx **4**; drop the "only scaffolded" caveat + the "not built out" aside). `docs/History.md` (Phase 1 Thymeleaf line: implemented 2026-09 as the fragment/slot take on the course). `docs/Learnings.md` (#14 "unfinished experiments" + the confirmed-by-user Thymeleaf line). `docs/Analysis-Baseline.md` (bump the Thymeleaf row hash + date to the user's WP-T4 commit). `wip.md` (this section → DONE; tick the Thymeleaf htmx-4 checklist line). |
-| WP-T6 | thymeleaf | OPTIONAL | **Docs-extraction hooks** — add `docs:start`/`docs:end` markers and `http://localhost:4321/technologies/…` "Docs" back-links to the demo templates/controllers, mirroring the JTE-VC demos, so `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` can extract Thymeleaf snippets. Only if the user wants it. |
+| WP-T6 | docs project | OPTIONAL | **Thymeleaf pages in `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`** — the in-app markers/back-links already exist (WP-T2.5/T3/T4). Remaining: an `extract-snippets/extract-thymeleaf-snippets.js` (srcRoot = `../../2025/2025-08-23_ssfe-patterns-thymeleaf-htmx`), `.mdx` pages under `src/content/docs/technologies/02_Thymeleaf/` (`s01.mdx` is a "To Be Done" stub; sidebar entry already wired), and reconcile the back-link slug/anchors the Thymeleaf demos point at. Also decide `m01/m03/m04/m05` vs the docs project's `sNN` page naming. |
 | WP-T7 | qute | OPTIONAL | **Delete greeting leftovers from `2025-12-21_ssfe-patterns-quarkus-qute-htmx`** — the user confirmed the greeting bits are archetype leftovers "from the very beginning" and can go: `org/acme/GreetingResource.java` + its `*Test`/`*IT`, `HomeResource` + `home.html`, `p01greeting/` + `greetingpage.html`. Its own review + commit; scope-check the exact file list against that repo first. |
+| WP-T9 | qute | TODO | **Drop the in-app code-snippet docs from `2025-12-21_ssfe-patterns-quarkus-qute-htmx`** (user request — same treatment as Thymeleaf WP-T2.5 / JTE-VC `9e94470`…`6dc16fb`). Remove the `M0XD0XCode` `@TemplateData` interfaces, the `*_code.html` templates, `components/CodeSnippet.java` + `codeexplanation.html`, and the `{#include …_code}` calls; add `docs:start`/`docs:end` markers + a `<hr>` + "Docs" back-link to each demo (`technologies/06_… ` slug TBD — Qute course covers m01/m03/m04/m05). Its own review + commit; can be done alongside WP-T7. |
 
 ### Open choices — resolved (2026-09-06, by the user)
 
