@@ -7,7 +7,8 @@ the umbrella docs still need to catch up on.
 - Analysis date: **2026-09-05**
 - All projects analysed on branch `main` unless noted.
 - Project name = GitHub repo name under `github.com/svene/` (see
-  [Variants.md](Variants.md) for links). `springboot-hono-docs` is local-only.
+  [Variants.md](Variants.md) for links). The throwaway spike
+  `2026-05-01_springboot-hono-docs` (local-only, superseded) is not tracked here.
 
 | Project | Branch | Commit at analysis | Date | Subject |
 |---|---|---|---|---|
@@ -23,7 +24,6 @@ the umbrella docs still need to catch up on.
 | `2026-03-15_hda-quarkus-graalvm-jsx-demo` | main | `74384ac` | 2026-09-05 | vendored bulma |
 | `2026-09-03_hda-springboot-browser-hono` | main | `68371c1` | 2026-09-05 | vendored bulma |
 | `2026-09-03_hda-quarkus-browser-hono` | main | `8c50787` | 2026-09-05 | vendored bulma |
-| `2026-05-01_springboot-hono-docs` | master | `9c6ceca` | 2026-05-02 | some examples and settings for code documentation |
 | `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` | main | `fd414ca` | 2026-05-30 | added intellij idea section to .gitignore |
 
 ## Refreshing the docs after upstream changes

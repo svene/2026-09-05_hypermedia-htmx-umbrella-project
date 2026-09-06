@@ -113,12 +113,15 @@ The Quarkus repo's `VARIANT-COMPARISON.md` pins what legitimately differs betwee
 the twins (framework idioms — JAX-RS vs Spring MVC, `@Scheduled` styles, H2 vs
 HSQLDB) versus what is deliberately kept aligned.
 
-## Phase 7 — Documentation generation (2026-05)
+## Phase 7 — A documentation site (2026-05)
 
-`springboot-hono-docs` and `ssfe-patterns-jte-vc-htmx-docs`: Astro + Starlight
-sites that generate documentation **from the real project source** (tagged-snippet
-extraction), so docs stay in sync with code. Intended to grow into per-variant
-code-docs; this umbrella project is the higher-level companion to them.
+`springboot-hono-docs` was a short spike to check whether Astro + Starlight was a
+workable documentation tool for these variants. It was, so it was thrown away and
+`ssfe-patterns-jte-vc-htmx-docs` was started as the real documentation site: prose
+by hand, but every code sample **extracted from the real variant source** by tag
+markers, so the docs can't drift from the code. It already covers the JTE-VC and
+Hono variants. Intended to grow into per-variant code-docs; this umbrella project
+is the higher-level companion to it.
 
 ## Phase 8 — Rendering moves to the browser (2026-09)
 

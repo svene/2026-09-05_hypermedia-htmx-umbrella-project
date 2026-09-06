@@ -27,7 +27,6 @@ name.
 | `2026-03-15_hda-quarkus-graalvm-jsx-demo` | <https://github.com/svene/2026-03-15_hda-quarkus-graalvm-jsx-demo> | 2026-03 |
 | `2026-09-03_hda-springboot-browser-hono` | <https://github.com/svene/2026-09-03_hda-springboot-browser-hono> | 2026-09 |
 | `2026-09-03_hda-quarkus-browser-hono` | <https://github.com/svene/2026-09-03_hda-quarkus-browser-hono> | 2026-09 |
-| `2026-05-01_springboot-hono-docs` | *local only — not published* | 2026-05 |
 | `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` | <https://github.com/svene/2026-05-02_ssfe-patterns-jte-vc-htmx-docs> | 2026-05 |
 
 Common ground across (almost) all variants: a **Hypermedia-Driven Application** —
@@ -209,24 +208,25 @@ a gmavenplus script regenerate the `.ts` types/consts on `mvn package`).
 
 ---
 
-## Documentation generators (2026-05)
+## Documentation site (2026-05)
 
-These are not app variants; they explore generating documentation *from* the real
-code. `wip.md` notes they may later be extended to produce code-docs for the
-variants.
-
-### `2026-05-01_springboot-hono-docs`
-
-- **Stack:** Astro + [Starlight](https://starlight.astro.build/).
-- **Distinguishing idea:** a docs site for the Spring Boot + Hono line of work,
-  with experiments in pulling examples/settings from source.
-- **Status:** early — starter kit plus some examples.
+Not an app variant — a separate site that documents the variants. `wip.md` notes
+it may later be extended into per-variant code-docs.
 
 ### `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
 
-- **Stack:** Astro + Starlight, with an `extract-snippets` step and a `generated/`
-  output folder.
-- **Distinguishing idea:** docs for the JTE-VC pattern showcase built by
-  **extracting tagged snippets from the actual project source** so the docs stay
-  in sync with the code.
-- **Status:** has generated content for the Hono/JSX modules (`m03`).
+- **Stack:** [Astro](https://astro.build/) + [Starlight](https://starlight.astro.build/),
+  with an `extract-snippets/` step (Node) whose output lands in the git-ignored
+  `generated/` folder.
+- **Distinguishing idea:** the prose is hand-written, but every code sample is
+  **extracted from the real variant source** by tag markers, so the docs cannot
+  drift from the code. `npm run extract-snippets` rebuilds the samples; `npm run
+  dev` serves the site.
+- **Status:** covers the JTE-VC (`2025-08-23_ssfe-patterns-jte-vc-htmx`) and Hono
+  (`2025-12-27_ssfe-patterns-hono-htmx`) variants; the sidebar is scaffolded for
+  Thymeleaf, JSX-Spring-Hono and the two Graal-JSX demos as future additions.
+
+> An earlier throwaway project, `2026-05-01_springboot-hono-docs` (local only),
+> was just a spike to confirm Astro / Starlight is a workable documentation tool
+> for these variants. It served that purpose and is superseded by the project
+> above.

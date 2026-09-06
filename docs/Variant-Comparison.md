@@ -4,9 +4,9 @@ The variants compared at the level of **concepts and architecture**, not
 implementation detail. For what each project is, see the [catalog](Variants.md);
 for how it got there, see [History.md](History.md).
 
-Scope: the app / pattern-showcase variants. The two 2026-05 Astro/Starlight
-projects are documentation generators, not variants, and are left out of the
-tables.
+Scope: the app / pattern-showcase variants. `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+(the documentation site, and its throwaway predecessor `2026-05-01_springboot-hono-docs`)
+is not a variant and is left out of the tables.
 
 ---
 

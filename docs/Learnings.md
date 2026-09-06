@@ -107,9 +107,12 @@ for the axes.
 
 ## Meta / documentation
 
-16. **Docs-from-code is a separate concern, started later (2026-05).** Snippet
-    extraction from real source keeps docs in sync; this umbrella project is the
-    higher-level companion to those generators.
+16. **Docs-from-code is a separate concern, started later (2026-05).** After a
+    quick throwaway spike (`2026-05-01_springboot-hono-docs`) confirmed Astro /
+    Starlight was a workable tool, `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+    became the real documentation site: hand-written prose, but every code sample
+    extracted from real variant source by tag markers so it can't drift. This
+    umbrella project is the higher-level companion to it.
 
 ---
 

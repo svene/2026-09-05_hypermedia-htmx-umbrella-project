@@ -45,10 +45,15 @@ refer to them by name only. Full list + links: `docs/Variants.md`.
   hono `html` templates, but rendered **in the browser** — `/uiroute/*` is a JSON
   API and a small htmx 4 extension runs the template client-side. The GraalVM
   rendering layer from the March demos was removed.
-- There are also `2026-05-01_springboot-hono-docs` (local only, not on GitHub) and
-  `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` which I think I created to generate
-  docs from the real code. In a later step these can most likely be extended to
-  create code-docs for the variants.
+- `2026-05-01_springboot-hono-docs` (local only, not on GitHub) was a throwaway
+  **experiment** to find out whether Astro / Starlight is a usable documentation
+  tool for these apps/variants. It proved OK and is now superseded.
+- `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` is the **actual documentation
+  project** that came out of that experiment: an Astro / Starlight site that
+  extracts tagged snippets from the real variant source (`extract-snippets/`,
+  output in the git-ignored `generated/`). It already documents the JTE-VC and
+  Hono variants and is meant to show snippets from more variants over time. In a
+  later step it can be extended into per-variant code-docs.
 
 ## Scope of the umbrella project
 
@@ -106,6 +111,9 @@ Deliverables:
 | WP14 | DONE  | Replaced all relative directory references (`../…`, `../../2025/…`) with plain project names, since the repos are flat on GitHub. Added a project ↔ GitHub-repo table at the top of `docs/Variants.md` (repos under `github.com/svene/`; `springboot-hono-docs` is local-only). Updated `Analysis-Baseline.md`, both READMEs, `wip.md`. |
 | WP15 | DONE  | Wrote the "Architecture trade-offs — two-process vs GraalVM polyglot vs browser-hono" section in `docs/Variant-Comparison.md` (14-dimension table, per-architecture "Net", low-lock-in note). Closed the matching Future-work item; repointed `History.md` / `Learnings.md` / `docs/README.md`. |
 | WP16 | DONE  | Staged `htmx4-upgrade-plan.md` in the 4 ready older projects (`jte-htmx`, `jte-vc-htmx`, `quarkus-qute-htmx`, `hono-htmx`) for the user to execute in separate sessions. Each plan: copy the htmx 4 asset from an already-upgraded sibling (`5a61350` SB / `77fc6c5` Quarkus), and a "Part 0" step to study those upgrade commits first. Thymeleaf skipped (variant not implemented). Future-work item updated with a per-project checklist. |
+| WP17 | DONE  | Umbrella docs: corrected the 2026-05 framing. `2026-05-01_springboot-hono-docs` recast as a throwaway feasibility spike (Astro / Starlight as a docs tool — answered yes) and dropped from the repo table + `Analysis-Baseline.md`, kept only as a one-line footnote; `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` recast as the real docs site (tagged-snippet extraction from live variant source; covers JTE-VC + Hono, sidebar scaffolded for the rest). Updated `Variants.md`, `History.md` (Phase 7), `Variant-Comparison.md`, `Learnings.md` #16, `Analysis-Baseline.md`, `wip.md` + Future-work bullets. |
+| WP18 | DONE  | In `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (sibling repo — user commits there): `git mv README.md README_org.md`; rewrote `README1.md` with **Usage** (`npm install` → `npm run extract-snippets` → `npm run dev`, open `:4321`, note the `:3000` variant server for the demo iframes), **Dev cycle** (edit a variant's source → `npm run extract-snippets` rebuilds `generated/` → Starlight hot-reloads), a note on how to add a snippet, and the project's purpose. |
+| WP19 | DONE  | Fixed the docs-snippet marker leak in `2025-12-27_ssfe-patterns-hono-htmx` (sibling repo — user commits there): in `src/m01html/m01d01.ts`…`m01d05.ts` (the only `html``` templates carrying inline markers) replaced `{/*docs:end page*/}` / `{/*docs:start page*/}` with `<!-- docs:end page -->` / `<!-- docs:start page -->`. `.tsx` modules untouched (real JSX comments there). Verified: re-ran `npm run extract-snippets` — `generated/` m01 snippets byte-identical (the `<a …>Docs</a>` back-link is still carved out), and the markers are now invisible HTML comments in the browser. |
 
 ### Catalog entry shape (WP1)
 
@@ -210,8 +218,10 @@ by WP1 (catalog) + WP3.
   Thymeleaf is un-built. **Done: all 8 committed + pushed 2026-09-05
   (`vendored bulma`); `docs/Analysis-Baseline.md` rows refreshed.**
   `bulma-vendoring-plan.md` can be deleted.
-- **`2025-12-27_ssfe-patterns-hono-htmx`: docs-snippet markers leak into the
-  rendered page.** The M01 "Simple Pages using HTML Helper" demos (module
+- ~~**`2025-12-27_ssfe-patterns-hono-htmx`: docs-snippet markers leak into the
+  rendered page.**~~ **DONE via WP19 (2026-09-06)** — `{/*docs:*page*/}` → HTML
+  comments in `src/m01html/m01d0{1..5}.ts`; extraction verified unchanged.
+  Original context kept below. The M01 "Simple Pages using HTML Helper" demos (module
   `m01html`, routes `/m01/d01`…) show the literal text `{/*docs:start page*/}` /
   `{/*docs:end page*/}` in the browser. Cause: those files (`src/m01html/m01d0*.ts`,
   `src/components/*.ts`) build HTML with hono's `html``` tagged template, where
@@ -224,11 +234,14 @@ by WP1 (catalog) + WP3.
   comment syntax is irrelevant to extraction and an HTML comment is invisible in
   the browser. Grep `src` for `docs:start` / `docs:end` in `.ts` files.
   (Copied from that project's Claude memory so it can be dropped there.)
-- Possibly extend the 2026-05 docs-generator projects to emit per-variant
-  code-docs; this umbrella project stays the high-level companion.
-- **Decide the relationship to the 2026-05 docs-generator projects**
-  (`springboot-hono-docs`, `ssfe-patterns-jte-vc-htmx-docs`) — fold them into this
-  umbrella project, or keep them separate. Not yet decided.
+- Possibly extend `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` into per-variant
+  code-docs for every variant — its sidebar is already scaffolded for JTE,
+  Thymeleaf, Hono/JSX, JSX-Spring-Hono and Graal-JSX (Spring / Quarkus). This
+  umbrella project stays the high-level companion.
+- **Decide the relationship to `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`** — fold
+  it into this umbrella project, or keep it separate. Not yet decided.
+  (`2026-05-01_springboot-hono-docs` was only a feasibility spike — nothing to
+  fold in.)
 
 ## Open questions
 
@@ -264,7 +277,10 @@ Future work; kept here as a record. Each is also noted in the relevant
    It is an irrelevant implementation detail — **do not document project-copy
    lineage in the public docs.**
 8. ~~The two 2026-05 docs-generator projects — fold in or keep separate?~~ —
-   **not decided yet**; moved to Future work.
+   **clarified (2026-09-06):** `2026-05-01_springboot-hono-docs` was only a
+   feasibility spike (Astro / Starlight as a docs tool); `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+   is the real docs project. Whether to fold the latter in is still **not decided
+   yet**; kept in Future work.
 9. ~~Thymeleaf stall reason?~~ — **resolved:** no specific blocker. The user still
    wants it brought to the same state as the other variants; it just has not been
    the top priority. Tracked in Future work.
