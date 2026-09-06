@@ -157,7 +157,8 @@ by WP1 (catalog) + WP3.
   with Claude, mirroring the JTE variants' patterns. Still wanted — brought to the
   same state as the other variants — but not top priority so far; no specific
   blocker. Update `docs/Variants.md`, `docs/Variant-Comparison.md` and
-  `docs/Analysis-Baseline.md` afterwards.
+  `docs/Analysis-Baseline.md` afterwards. **Started 2026-09-06** — plan and work
+  packages in "[Thymeleaf variant build-out](#thymeleaf-variant-build-out)" below.
 - **Rename the `jsx` repos.** The `jsx` in `2026-03-07_springboot-graalvm-jsx-poc`,
   `2026-03-09_hda-springboot-graalvm-jsx-demo` and
   `2026-03-15_hda-quarkus-graalvm-jsx-demo` is historical — they use hono `html`
@@ -242,6 +243,104 @@ by WP1 (catalog) + WP3.
   it into this umbrella project, or keep it separate. Not yet decided.
   (`2026-05-01_springboot-hono-docs` was only a feasibility spike — nothing to
   fold in.)
+
+## Thymeleaf variant build-out
+
+Plan for the "Implement the Thymeleaf variant" Future-work item. **Analysis done
+2026-09-06; work packages below are for the user to review before implementation
+starts.**
+
+### Where the work happens
+
+- All implementation edits are in the sibling repo
+  `2025/2025-08-23_ssfe-patterns-thymeleaf-htmx` (currently a bare skeleton: one
+  `page1.html`, one `PagesController`, empty `MyService`/`MyRepository`, htmx 2
+  via webjars). Claude edits files only; **the user reviews and commits each work
+  package** — in that repo for WP-T0…WP-T4/WP-T6, in this umbrella repo for
+  WP-T5.
+- This umbrella repo's usual "only reads the siblings" rule is deliberately
+  suspended for this item — the user asked for the build-out to be done here with
+  Claude.
+
+### Reference projects and the target demo set
+
+The **Quarkus/Qute course** (`2025-12-21_ssfe-patterns-quarkus-qute-htmx`) is the
+structural model: it is the other "Java SSR template engine" course, so it
+already shows what the module set looks like without JSX. The **JTE-VC project**
+(`2025-08-23_ssfe-patterns-jte-vc-htmx`) is the Spring-Boot wiring model
+(controllers, URL constants, `static/` asset layout, `main.css` / `simplepage.css`,
+`maincard`, the per-demo code panel).
+
+Module set — **same demos as Qute**, i.e. the full course **minus the JSX module
+and minus the "Experiments" section** ("the one named 'experimental'" — only
+JTE-VC has it: `main_09_experiments-section`, the "Swap Webcomponent" PoC —
+excluded):
+
+| Module | Keep? | Demos |
+|--------|-------|-------|
+| `m00` main menu | yes | landing page: card menu linking every demo |
+| `m01` Simple Pages | yes | d01 basic page from a template · d02 page includes a fragment · d03 page + fragment with parameters · d04 content/slot parameter page→fragment · d05 nested fragments |
+| `m02` JSX | **no** | not applicable to a Java template engine (Qute skips it too) |
+| `m03` Page Patterns | yes | d01 content page · d02 content page taking a request param · d03 custom page taking a param · d04 MPA example (two pages sharing a nav layout) |
+| `m04` UI Patterns | yes | d01 parent/child (slot content passed down) · d02 forwarder (fragment delegates to another) |
+| `m05` htmx Patterns | yes | d01 URL components (button `hx-get`s a fragment endpoint, htmx swaps the result) |
+| `m09` Experiments | **no** | "the one named 'experimental'" — excluded per the user |
+
+→ 12 demo pages + the main menu. **Module numbers stay `m00/m01/m03/m04/m05`
+(gap at `m02`)** so demos line up by number with the Qute variant for
+cross-variant comparison.
+
+### Design decisions (please confirm on review)
+
+1. **Thymeleaf idioms, core only** — `th:fragment` / `th:insert` / `th:replace` /
+   `~{…}` fragment expressions for insertion and slots; `th:fragment="name(p)"`
+   for parameters. **No `thymeleaf-layout-dialect` dependency** — the project's
+   own `notes.adoc` frames this as "fragments and slots", and core Thymeleaf
+   covers every demo. Templates are natural-templating `.html` under
+   `src/main/resources/templates/`.
+2. **Package layout** `org.svenehrke.demo.ssfepatterns.m0X…` (mirrors Qute's
+   `dev.svenehrke.demo.ssfepatterns.m0X…`). The skeleton's
+   `web.PagesController`, `core.MyService`, `persistence.MyRepository` and
+   `templates/pages/page1.html` are removed.
+3. **htmx 4 + vendored assets from the start** — drop `org.webjars.npm:htmx.org`
+   and `webjars-locator-lite` from `pom.xml`; vendor
+   `static/js/htmx.org/4.0.0/htmx.js` and `static/css/bulma/1.0.4/bulma.min.css`
+   copied from `2025-08-23_ssfe-patterns-jte-vc-htmx`. This also clears the open
+   htmx-4 checklist line for Thymeleaf (see "Bring the older projects up…" above)
+   — no separate `htmx4-upgrade-plan.md` needed.
+4. **Per-demo code panel** — each demo page shows its own template + controller
+   source in a code panel (Qute's `codeexplanation` / JTE-VC's `simplepage.css`
+   `.codearea`). Backed by a small `CodeSnippet` record. Done as part of each
+   module WP, not a separate WP.
+5. **Out of scope now** (optional follow-ups): `docs:start`/`docs:end` snippet
+   markers + `http://localhost:4321/…` "Docs" back-links for the
+   `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` extractor (WP-T6, only if wanted);
+   native-image; tests beyond one context-loads smoke test.
+
+### Work packages
+
+Each row = one manual review + commit by the user. WP-T0…WP-T4 and WP-T6 commit
+in the Thymeleaf repo; WP-T5 commits here.
+
+| WP | Repo | Status | Deliverable |
+|----|------|--------|-------------|
+| WP-T0 | thymeleaf | TODO | **Skeleton + shared infra + build.** `pom.xml` (htmx 4 vendored, webjars removed); `application.properties` + `application-dev.properties` (`spring.thymeleaf.cache=false` in dev); vendored `static/js/htmx.org/4.0.0/htmx.js`, `static/css/bulma/1.0.4/bulma.min.css`, `static/main.css`, `static/simplepage.css` (copied from JTE-VC); shared fragments `fragments/layout.html` (content slot), `fragments/page-head.html`, `fragments/maincard.html`, `fragments/code-panel.html` + `CodeSnippet` record; `MainController` `/` → `m00` main page rendering the shell (title/subtitle, no cards yet); remove `page1.html` / `PagesController` / `MyService` / `MyRepository`; `readme.adoc`. Verify: `mvn spring-boot:run`, `/` renders. |
+| WP-T1 | thymeleaf | TODO | **m01 Simple Pages** — `M01` controller(s) with `S0…`/`URL` constants (JTE-VC `PlainJTEController` style), 5 demo templates + the `helloworld` / `helloworldparams` / `helloworldcontent` / nested fragments, per-demo code panels, and the "Simple Pages" card section on the `m00` page. Verify each of the 5 routes. |
+| WP-T2 | thymeleaf | TODO | **m03 Page Patterns** — `M03` controllers incl. the two MPA pages sharing `fragments/m03d04-layout.html` (nav with selected state); `@RequestParam("greeting")` demos (d02/d03); code panels; `m00` "Page Patterns" section. |
+| WP-T3 | thymeleaf | TODO | **m04 UI Patterns** — d01 parent/child (slot content via `~{}`), d02 forwarder (`th:if` delegates to a second fragment); code panels; `m00` "UI Patterns" section. |
+| WP-T4 | thymeleaf | TODO | **m05 htmx Patterns** — `M05D01` page + `M05D01Message` fragment endpoint (`@RequestParam("message")`), button with `hx-get` / `hx-target`, result swapped in; code panel; `m00` "HTMX Patterns" section. Full course now runs. |
+| WP-T5 | umbrella | TODO | **Umbrella docs catch-up.** `docs/Variants.md` (status → built; htmx 4; module-course description). `docs/Variant-Comparison.md` (Thymeleaf row → `in the JVM` / `Thymeleaf fragments/slots` / built / htmx **4**; drop the "only scaffolded" caveat + the "not built out" aside). `docs/History.md` (Phase 1 Thymeleaf line: implemented 2026-09 as the fragment/slot take on the course). `docs/Learnings.md` (#14 "unfinished experiments" + the confirmed-by-user Thymeleaf line). `docs/Analysis-Baseline.md` (bump the Thymeleaf row hash + date to the user's WP-T4 commit). `wip.md` (this section → DONE; tick the Thymeleaf htmx-4 checklist line). |
+| WP-T6 | thymeleaf | OPTIONAL | **Docs-extraction hooks** — add `docs:start`/`docs:end` markers and `http://localhost:4321/technologies/…` "Docs" back-links to the demo templates/controllers, mirroring the JTE-VC demos, so `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` can extract Thymeleaf snippets. Only if the user wants it. |
+
+### Open choices for the user
+
+- **One `M0XController` per module vs one class per demo.** JTE-VC plain-JTE uses
+  a single `PlainJTEController` with all five `URL` constants + handlers; Qute
+  uses one class per demo (`M01D01`, `M01D02`, …). Proposing the **single
+  controller per module** (less ceremony, matches the closest Spring reference).
+- **`p01` greeting page.** Qute has a standalone `p01greeting` demo that the other
+  courses don't. Proposing to **skip it** (not part of "the same demos" the other
+  variants share). Say if you want it in.
 
 ## Open questions
 
