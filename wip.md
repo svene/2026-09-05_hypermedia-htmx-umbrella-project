@@ -256,8 +256,8 @@ starts.**
   `2025/2025-08-23_ssfe-patterns-thymeleaf-htmx` (currently a bare skeleton: one
   `page1.html`, one `PagesController`, empty `MyService`/`MyRepository`, htmx 2
   via webjars). Claude edits files only; **the user reviews and commits each work
-  package** — in that repo for WP-T0…WP-T4/WP-T6, in this umbrella repo for
-  WP-T5.
+  package** — in the Thymeleaf repo for WP-T0…WP-T4/WP-T6, in the Qute repo for
+  the optional WP-T7, in this umbrella repo for WP-T5.
 - This umbrella repo's usual "only reads the siblings" rule is deliberately
   suspended for this item — the user asked for the build-out to be done here with
   Claude.
@@ -324,23 +324,21 @@ in the Thymeleaf repo; WP-T5 commits here.
 
 | WP | Repo | Status | Deliverable |
 |----|------|--------|-------------|
-| WP-T0 | thymeleaf | TODO | **Skeleton + shared infra + build.** `pom.xml` (htmx 4 vendored, webjars removed); `application.properties` + `application-dev.properties` (`spring.thymeleaf.cache=false` in dev); vendored `static/js/htmx.org/4.0.0/htmx.js`, `static/css/bulma/1.0.4/bulma.min.css`, `static/main.css`, `static/simplepage.css` (copied from JTE-VC); shared fragments `fragments/layout.html` (content slot), `fragments/page-head.html`, `fragments/maincard.html`, `fragments/code-panel.html` + `CodeSnippet` record; `MainController` `/` → `m00` main page rendering the shell (title/subtitle, no cards yet); remove `page1.html` / `PagesController` / `MyService` / `MyRepository`; `readme.adoc`. Verify: `mvn spring-boot:run`, `/` renders. |
-| WP-T1 | thymeleaf | TODO | **m01 Simple Pages** — `M01` controller(s) with `S0…`/`URL` constants (JTE-VC `PlainJTEController` style), 5 demo templates + the `helloworld` / `helloworldparams` / `helloworldcontent` / nested fragments, per-demo code panels, and the "Simple Pages" card section on the `m00` page. Verify each of the 5 routes. |
+| WP-T0 | thymeleaf | **DONE 2026-09-06** | **Skeleton + shared infra + build.** `pom.xml` (htmx 4 vendored, `htmx.org` + `webjars-locator-lite` removed); `application.properties` (`spring.application.name`) + `application-dev.properties` (`spring.thymeleaf.cache=false`); vendored `static/js/htmx.org/4.0.0/htmx.js` (102 KB) + `static/css/bulma/1.0.4/bulma.min.css` (662 KB) + `static/main.css` + `static/simplepage.css` (copied from JTE-VC); shared fragments `fragments/layout.html` (`page(title, content)` via `~{}` fragment expr), `fragments/page-head.html` (`head(title)`), `fragments/maincard.html` (`card(url,title,subtitle,recommendation)`, `th:utext`), `fragments/code-panel.html` (`panel(snippets)` over `List<CodeSnippet>`) + `ssfepatterns/components/CodeSnippet` record; `ssfepatterns/m00main/MainController` serves `/` → `m00main/index.html` shell (title/subtitle + a placeholder comment where module sections go); removed `web/PagesController` + `core/MyService` + `persistence/MyRepository` + `templates/pages/page1.html`; `readme.adoc`. **Verified:** `mvn clean compile` green; `mvn spring-boot:run -Dspring-boot.run.profiles=dev` boots, `GET /` → 200 renders the shell, `/js/htmx.org/4.0.0/htmx.js` + `/css/bulma/1.0.4/bulma.min.css` + `/main.css` → 200. |
+| WP-T1 | thymeleaf | TODO | **m01 Simple Pages** — one `M01Controller` with five `D0X_URL` constants + handlers (JTE-VC `PlainJTEController` style), 5 demo templates + the `helloworld` / `helloworldparams` / `helloworldcontent` / nested fragments, per-demo code panels, and the "Simple Pages" card section on the `m00` page. Verify each of the 5 routes. |
 | WP-T2 | thymeleaf | TODO | **m03 Page Patterns** — `M03` controllers incl. the two MPA pages sharing `fragments/m03d04-layout.html` (nav with selected state); `@RequestParam("greeting")` demos (d02/d03); code panels; `m00` "Page Patterns" section. |
 | WP-T3 | thymeleaf | TODO | **m04 UI Patterns** — d01 parent/child (slot content via `~{}`), d02 forwarder (`th:if` delegates to a second fragment); code panels; `m00` "UI Patterns" section. |
 | WP-T4 | thymeleaf | TODO | **m05 htmx Patterns** — `M05D01` page + `M05D01Message` fragment endpoint (`@RequestParam("message")`), button with `hx-get` / `hx-target`, result swapped in; code panel; `m00` "HTMX Patterns" section. Full course now runs. |
 | WP-T5 | umbrella | TODO | **Umbrella docs catch-up.** `docs/Variants.md` (status → built; htmx 4; module-course description). `docs/Variant-Comparison.md` (Thymeleaf row → `in the JVM` / `Thymeleaf fragments/slots` / built / htmx **4**; drop the "only scaffolded" caveat + the "not built out" aside). `docs/History.md` (Phase 1 Thymeleaf line: implemented 2026-09 as the fragment/slot take on the course). `docs/Learnings.md` (#14 "unfinished experiments" + the confirmed-by-user Thymeleaf line). `docs/Analysis-Baseline.md` (bump the Thymeleaf row hash + date to the user's WP-T4 commit). `wip.md` (this section → DONE; tick the Thymeleaf htmx-4 checklist line). |
 | WP-T6 | thymeleaf | OPTIONAL | **Docs-extraction hooks** — add `docs:start`/`docs:end` markers and `http://localhost:4321/technologies/…` "Docs" back-links to the demo templates/controllers, mirroring the JTE-VC demos, so `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` can extract Thymeleaf snippets. Only if the user wants it. |
+| WP-T7 | qute | OPTIONAL | **Delete greeting leftovers from `2025-12-21_ssfe-patterns-quarkus-qute-htmx`** — the user confirmed the greeting bits are archetype leftovers "from the very beginning" and can go: `org/acme/GreetingResource.java` + its `*Test`/`*IT`, `HomeResource` + `home.html`, `p01greeting/` + `greetingpage.html`. Its own review + commit; scope-check the exact file list against that repo first. |
 
-### Open choices for the user
+### Open choices — resolved (2026-09-06, by the user)
 
-- **One `M0XController` per module vs one class per demo.** JTE-VC plain-JTE uses
-  a single `PlainJTEController` with all five `URL` constants + handlers; Qute
-  uses one class per demo (`M01D01`, `M01D02`, …). Proposing the **single
-  controller per module** (less ceremony, matches the closest Spring reference).
-- **`p01` greeting page.** Qute has a standalone `p01greeting` demo that the other
-  courses don't. Proposing to **skip it** (not part of "the same demos" the other
-  variants share). Say if you want it in.
+- **One `M0XController` per module** (not one class per demo). Applied from WP-T1 on.
+- **`p01` greeting page: skip it.** The greeting demos are archetype leftovers
+  "from the very beginning"; not replicated in Thymeleaf, and can be deleted from
+  the Qute project — tracked as optional **WP-T7**.
 
 ## Open questions
 
