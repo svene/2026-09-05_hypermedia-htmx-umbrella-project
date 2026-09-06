@@ -26,7 +26,13 @@ Starting point: Spring Boot + htmx, HTML from a Java template engine.
   event (`hx-trigger … from:body`) refreshes it in place. Less stringly-typed
   wiring; this became the most built-out of the trio.
 - **Thymeleaf** (`ssfe-patterns-thymeleaf-htmx`). Begun as a side-by-side
-  comparison, never finished — interest had already moved on.
+  comparison, then left at a skeleton for a year — interest had already moved on.
+  **Built out 2026-09-06** (with Claude) as the fragment/slot take on the same
+  `m01/m03/m04/m05` course the Qute variant runs: `th:fragment` / `th:replace` /
+  `~{…}` fragment expressions, core Thymeleaf (no layout-dialect), htmx 4 +
+  vendored assets. Pattern write-ups go in
+  `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (demo templates carry
+  `docs:start`/`docs:end` markers), not in-app.
 
 **Recurring friction:** Java template-engine ergonomics — path strings, unclosed-tag
 rules, verbosity.

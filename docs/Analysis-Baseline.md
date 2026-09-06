@@ -4,7 +4,9 @@ The commit each project was at **when the docs in this folder were written**. Wh
 a project gains new commits later, diff from the hash recorded here to see what
 the umbrella docs still need to catch up on.
 
-- Analysis date: **2026-09-05**
+- Analysis date: **2026-09-05** (Thymeleaf row refreshed 2026-09-06 after the
+  variant was built out with Claude — see the umbrella project's `wip.md`
+  "Thymeleaf variant build-out")
 - All projects analysed on branch `main` unless noted.
 - Project name = GitHub repo name under `github.com/svene/` (see
   [Variants.md](Variants.md) for links). The throwaway spike
@@ -14,7 +16,7 @@ the umbrella docs still need to catch up on.
 |---|---|---|---|---|
 | `2025-08-23_ssfe-patterns-jte-htmx` | main | `e2cba81` | 2026-09-05 | htmx4 upgrade |
 | `2025-08-23_ssfe-patterns-jte-vc-htmx` | main | `5089f49` | 2026-09-05 | bulma vendored |
-| `2025-08-23_ssfe-patterns-thymeleaf-htmx` | main | `07b4d91` | 2025-08-23 | springboot code: controller working |
+| `2025-08-23_ssfe-patterns-thymeleaf-htmx` | main | `b95869e` | 2026-09-06 | WP-T4 done — variant built out (m00 + m01/m03/m04/m05) |
 | `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | main | `6049e32` | 2026-09-05 | vendored bulma |
 | `2025-12-27_ssfe-patterns-hono-htmx` | main | `7400027` | 2026-09-05 | vendored bulma |
 | `2025-12-31-springboot-hono-poc` | main | `4e6f9aa` | 2026-09-05 | vendored bulma |

@@ -16,7 +16,7 @@ is not a variant and is left out of the tables.
 |---|---|---|---|---|---|
 | `2025-08-23_…jte-htmx` | Spring Boot, Java | in the JVM | plain JTE templates | full page + fragments | 4.0.0 |
 | `2025-08-23_…jte-vc-htmx` | Spring Boot, Java | in the JVM | JTE + server-side View Components | fragments + event-driven refresh | 4.0.0 |
-| `2025-08-23_…thymeleaf-htmx` | Spring Boot, Java | in the JVM | Thymeleaf fragments/slots | (planned) | 2.x |
+| `2025-08-23_…thymeleaf-htmx` | Spring Boot, Java | in the JVM | Thymeleaf fragments/slots | fragments, per-module demos | 4.0.0 |
 | `2025-12-21_…quarkus-qute-htmx` | Quarkus, Java | in the JVM | Qute templates | fragments, per-module demos | 4.0.0 |
 | `2025-12-27_…hono-htmx` | Hono on Bun, TypeScript | in the (single) JS process | Hono `html``` **and** `hono/jsx` | fragments, per-module demos | 4.0.0 |
 | `2025-12-31-springboot-hono-poc` | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono `html``` / JSX | fragments | 2.0.8 → 4.0.0 |
@@ -27,8 +27,11 @@ is not a variant and is left out of the tables.
 | `2026-09-03_hda-springboot-browser-hono` | Spring Boot 4, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 | `2026-09-03_hda-quarkus-browser-hono` | Quarkus 3.32, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 
-The `…thymeleaf-htmx` row is only scaffolded — the patterns are planned to be
-built out later (with Claude), mirroring the JTE variants.
+The `…thymeleaf-htmx` row was built out 2026-09-06 (with Claude) as the
+fragment/slot take on the same `m01/m03/m04/m05` course the Qute variant runs
+(no JSX module, no "experiments" section); htmx 4 + vendored assets from the
+start. Pattern write-ups live in `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+(demos carry `docs:start`/`docs:end` markers), not in-app.
 
 ---
 
@@ -56,7 +59,9 @@ rendering entirely.
 - **Java engines.** *Plain JTE* teaches page assembly (Injection vs Inclusion).
   *JTE + View Components* raises the unit of composition from "template file" to
   "server object that owns its URL and template". *Qute* is the same idea on
-  Quarkus. *Thymeleaf* is the fragment/slot take (not built out).
+  Quarkus. *Thymeleaf* is the fragment/slot take — `th:fragment` / `th:replace` /
+  `~{…}` fragment expressions, core Thymeleaf with no layout-dialect (built out
+  2026-09-06).
 - **TypeScript.** Two styles, evaluated head-to-head across several projects:
   - `hono/jsx` (`.tsx`) — familiar JSX, a JSX runtime, virtual-DOM-ish.
   - `html``` tagged template (`.ts`) — plain functions `(vm) => html\`…\``,

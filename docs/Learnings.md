@@ -75,8 +75,9 @@ for the axes.
 10. **htmx major version is worth keeping uniform across variants.** The 2 → 4
     upgrade happened late; the 2026 GraalVM/browser projects moved first, then the
     older 2025 Java variants + `hono-htmx` were retrofitted on 2026-09-05 (each
-    from a shared `htmx4-upgrade-plan.md`). Only the un-built Thymeleaf variant is
-    still on htmx 2. Mixed majors add cognitive load when comparing variants. The
+    from a shared `htmx4-upgrade-plan.md`); the Thymeleaf variant was built out
+    on htmx 4 directly (2026-09-06), so **every variant is now on htmx 4**. Mixed
+    majors add cognitive load when comparing variants. The
     2→4 diffs were small here — mainly the vendored script swap; where `hx-*` was
     used, quoting extended `from:` selectors and turning bare
     `hx-trigger="click consume"` into `hx-on:click`.
@@ -92,9 +93,13 @@ for the axes.
     makes the variants comparable at all.
 13. **OOB swaps vs `hx-partial`: partial won on readability.** From the dynapage
     demo. Default to partials; reserve OOB for genuine multi-region updates.
-14. **Unfinished experiments are still data.** The Thymeleaf variant was only
-    started before interest moved on — that "moved on" is itself a signal about
-    where the value was.
+14. **A deferred variant, finished on demand.** The Thymeleaf variant sat at a
+    skeleton for a year — interest had moved to TypeScript templates — then was
+    built out in full (2026-09-06, with Claude) once the umbrella project made the
+    gap visible. The long pause is itself a signal about where the value was; that
+    it could then be completed quickly says the pattern set was well understood by
+    that point. It follows the Qute course exactly (`m01/m03/m04/m05`, no JSX
+    module, no experiments), which also confirms the course had stabilised.
 15. **Pin front-end assets: vendored, version-namespaced, no webjars/CDN.** The
     settled convention is a file in the repo at
     `…/js/htmx.org/4.0.0/htmx.js`, `…/css/bulma/1.0.4/bulma.min.css`, etc. It
@@ -122,8 +127,9 @@ for the axes.
   no JSX runtime or extra dependencies.
 - **Java→TS code generation is the settled preference** (Java is the source of
   truth), reversing the earlier TS→Java direction.
-- The **Thymeleaf variant stalled deliberately** and is planned to be implemented
-  later (with Claude), not abandoned.
+- The **Thymeleaf variant stalled deliberately**, then was built out with Claude
+  on 2026-09-06 — the fragment/slot take (`th:fragment` / `th:replace` / `~{…}`,
+  core Thymeleaf) on the shared `m01/m03/m04/m05` course.
 - **The GraalVM Context pool exists because a GraalVM `Context` is not
   thread-safe** — a correctness constraint, not a performance tweak.
 - **Two-process, GraalVM, and browser-hono are all valid architectures**; which

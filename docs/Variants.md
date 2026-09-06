@@ -67,12 +67,19 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 ### `2025-08-23_ssfe-patterns-thymeleaf-htmx`
 
-- **Role:** pattern showcase — the Thymeleaf counterpart to the JTE variants.
-- **Stack:** Spring Boot + Thymeleaf, htmx 2.
-- **Distinguishing idea:** re-express the same component/insertion patterns with
-  Thymeleaf fragments and slots.
-- **Status:** **only started** — controller wired up, patterns not yet filled in
-  to the level of the JTE variants. Planned to be implemented later with Claude.
+- **Role:** pattern showcase — the Thymeleaf counterpart to the JTE / Qute
+  variants.
+- **Stack:** Spring Boot + Thymeleaf (core, **no** layout-dialect), **htmx 4**,
+  vendored `static/js/htmx.org/4.0.0/` + `static/css/bulma/1.0.4/`.
+- **Distinguishing idea:** the same component / insertion / slot patterns
+  expressed with `th:fragment` / `th:replace` / `~{…}` fragment expressions.
+- **Structure:** a landing page plus modules `m01` Simple Pages, `m03` Page
+  Patterns, `m04` UI Patterns, `m05` htmx Patterns — the same course the Qute
+  variant runs, with the JSX module and the "experiments" section deliberately
+  omitted (the `m02` gap is kept so demos line up by number across variants).
+- **Status:** built out 2026-09-06 (with Claude). Pattern write-ups live in
+  `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`, not in-app — the demo templates
+  carry `docs:start`/`docs:end` markers and link back to it.
 
 ---
 
