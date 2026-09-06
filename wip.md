@@ -255,21 +255,14 @@ by WP1 (catalog) + WP3.
   other pattern-course projects (JTE-VC, Thymeleaf, Qute, Hono) share. Bringing
   it up to the full `m01/m03/m04/m05` course would make the family complete, but
   the user has flagged this as low priority. Update `docs/*` afterwards.
-- **_(optional, low priority)_ Standardise on `sNN` naming (`s` = *series*,
-  `d` = *demo*)** — the user's settled intent: `s` is the target scheme, clearer
-  than `m` (whose meaning is forgotten). WP-T11 migrated the docs site to `mNN`
-  only because the majority already used it; this item is the deferred reversal:
-  - Docs site: rename every `technologies/*/mNN.mdx` → `sNN.mdx`, plus the
-    snippet `outFile`s / imports, across all variants at once.
-  - Repoint the in-app "Docs" back-links accordingly (Thymeleaf and Qute point at
-    `mNN` today; the JTE-VC variant still points at the stale `.../demos/sNN/…`
-    and would be fixed to the real `sNN` path here).
-  - **`2025-08-23_ssfe-patterns-jte-vc-htmx` is already the reference for the
-    target `s` convention** — its files (`jte/plainjte/sNNdMM.jte`,
-    `.../s0Ndemos/…`), packages (`org.svenehrke.demo.web.s0N…`) and routes
-    (`/s01d01`, `/ui/s03pages/s03d01`, …) all use `sNN` already; leave it as-is
-    and align the rest to it. (Considered renaming *that* project's files to
-    `mNN` for consistency — decided against it 2026-09-06: `s` is the future.)
+- ~~**Standardise on `sNN` naming (`s` = *series*, `d` = *demo*)**~~ **DONE
+  2026-09-06** via WP-S1…WP-S4 (see the "sNN standardisation" table below). The
+  Thymeleaf, Qute and Hono variant apps (packages, class names, routes, template
+  folders, in-app Docs back-links) and every docs-site page + extractor now use
+  `sNN`. `2025-08-23_ssfe-patterns-jte-vc-htmx` was already `sNN` and was left
+  as-is (its stale `/demos/sNN/` back-links were repointed to the real
+  `/technologies/01_jte-vc/sNN/` path). Renaming that project's files to `mNN`
+  for consistency was considered and rejected — `s` is the target.
 - ~~**Decide the relationship to the docs project**~~ **Decided (2026-09-06): keep
   it separate.** `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (to be renamed — see
   WP-T10) serves a **different purpose** from this umbrella project and is not to
@@ -423,9 +416,9 @@ imports + iframe `src` routes) so extraction stays working after each step.
 | WP-S1 | thymeleaf + docs | **DONE 2026-09-06** | Renamed `2025-08-23_ssfe-patterns-thymeleaf-htmx` `mNN`→`sNN`. **Thymeleaf repo (1 commit):** `git mv` java packages `m00main`→`s00main` / `m01simplepages`→`s01simplepages` / `m03pages`→`s03pages` / `m04uipatterns`→`s04uipatterns` / `m05htmxpatterns`→`s05htmxpatterns`, classes `M0NController`→`S0NController` (`MainController` unchanged), fragments `m03d04-layout.html`→`s03d04-layout.html` + `m04-*`→`s04-*`, template dirs. Content: `/m0N/d0N`→`/s0N/d0N` routes, `menuUrls` keys `m0Nd0N`→`s0Nd0N`, `th:replace ~{fragments/s04-…}`, view-name strings, `S0NController` refs/imports, `maincard.html` comment, javadoc `m0N —`→`s0N —`, `readme.adoc` (module table + `s0X…/S0XController`), the "s02 = JSX" comment, Docs back-links `…/02_thymeleaf/s0N/`. `mvn clean compile` green; app boots; all 15 `/s0N/…` routes → 200, old `/m01/d01` → 404, menu hrefs + back-link (`…/02_thymeleaf/s04/`) correct. **Docs repo (1 commit):** `extract-thymeleaf-snippets.js` — `s01simplepages`…/`S0NController`/`s03d04-layout`/`s04-*`; `git mv technologies/02_Thymeleaf/m0N.mdx`→`s0N.mdx` (×4) + `@snippets/thymeleaf/pages/s0N…/` imports + iframe `src` `localhost:8080/s0N/d0N`. `rm -rf generated/snippets && npm run extract-snippets` clean; `npm run build` green — pages at `/technologies/02_thymeleaf/s0N/`. |
 | WP-S2 | qute + docs | **DONE 2026-09-06** | Renamed `2025-12-21_ssfe-patterns-quarkus-qute-htmx` `mNN`→`sNN`. **Qute repo (1 commit):** `git mv` packages `m00main`→`s00main` / `m01plain`→`s01plain` / `m03pages`→`s03pages` / `m04uipatterns`→`s04uipatterns` / `m05htmx`→`s05htmx`; classes `M01D01`…`M01D05`→`S01D01`…, `M0NMenus`→`S0NMenus`, `M0NRouting`→`S0NRouting` (nested `M0ND0NRouting`/`M05D01MessageRouting`→`S…` via content replace); `MainResource`/`MainCardInfo` kept. Template dirs + files `m0N.html`/`m0Nd0N*.html`→`s…`. Content: `M0ND0`→`S0ND0` (classes + `M0ND0N_CARD_INFO`), `@CheckedTemplate` `Templates.m0Nd0N()`→`s0Nd0N()` + basePath, `{#include …/s0Nplain/s0N.html}`, `{S0ND0NRouting:URL}`, routes `/m0N/d0N`→`/s0N/d0N`, Docs back-links `…/07_qute/s0N/`. `./mvnw -DskipTests clean package` green; app boots; all 15 `/s0N/…` routes → 200, old `/m01/d01`→404, menu hrefs + `/s04/d01` back-link (`…/07_qute/s04/`) + `hx-get="/s05/d01/message…"` correct. **Docs repo (1 commit):** `extract-qute-snippets.js` (`s01plain`/`S01D0N`/`S0NRouting`/`s03d04mpalayout`/`s04d0N*` + `pages/s0N/` outFiles); `git mv technologies/07_Qute/m0N.mdx`→`s0N.mdx` (×4) + `@snippets/qute/pages/s0N/` + `components/s03d04mpalayout`/`s04d0N*` imports + iframe `src` `localhost:8080/s0N/d0N`. `rm -rf generated/snippets && npm run extract-snippets` clean; `npm run build` green — pages at `/technologies/07_qute/s0N/`. |
 | WP-S3 | hono + docs | **DONE 2026-09-06** | Renamed `2025-12-27_ssfe-patterns-hono-htmx` `mNN`→`sNN`. **Hono repo (1 commit):** `git mv` `src/m00hello`→`s00hello` / `m01html`→`s01html` / `m02jsx`→`s02jsx` / `m03pages`→`s03pages` / `m04uipatterns`→`s04uipatterns` / `m05htmx`→`s05htmx` + every `m0N.tsx` / `m0Nd0N.ts(x)` / `m03d04mpa*.tsx` file. Content (global `\bm0[0-5]`→`s0$1`, `\bM0[0-5]`→`S0$1` across `.ts`/`.tsx`): `mainpage.tsx` imports + `<S0NMenu>` + `s0N.init()`, per-module `s0N.tsx` imports/exports (`S0NMenu`, `s0N`, `s0Nd0N_init`), `S01D01`/`S01D02` `URL` consts + all `s0Nd0N` module objects, `S03d04MpaLayout`, routes `/m0N/d0N`→`/s0N/d0N`, Docs back-links `…/03_hono/s0N/`. `bun run dev` — all 18 `/s0N/…` routes (incl. `s02` jsx) → 200, old `/m01/d01`→404, menu hrefs + `/s01/d01` back-link (`…/03_hono/s01/`) correct, no runtime errors. **Docs repo (1 commit):** `extract-hono-snippets.js` (`src/s01html`… + `s0Npage`/`s0N` vars + `pages/s0N/…` + `s0Nd0N*` args); `git mv technologies/03_Hono/m0N.mdx`→`s0N.mdx` (×5, incl. `m02`→`s02`) + `m90_tnt.mdx`→`s90_tnt.mdx` + `@snippets/hono/pages/s0N/s0N…` imports + `S0N…TSX` bindings + iframe `src` `localhost:3000/s0N/d0N`. `rm -rf generated/snippets && npm run extract-snippets` clean; `npm run build` green — pages at `/technologies/03_hono/s0N/` + `/s90_tnt/`. |
-| WP-S4 | docs | TODO | JTE-VC's *variant* is already `sNN`; only its docs pages need reverting: `technologies/01_JTE-VC/m0N.mdx`→`s0N.mdx` (×6), `@snippets/m0N…`→`@snippets/s0N…` imports + `M0N…`→`S0N…` binding names, `extract-jte-vc-snippets.js` outFiles `m0N`→`s0N`. **And** repoint the JTE-VC variant's 17 in-app back-links `…/demos/s0N/#…` → `…/technologies/01_jte-vc/s0N/#…` (real path this time). `npm run build` green + sidebar spot-check. |
+| WP-S4 | docs + jte-vc variant | **DONE 2026-09-06** | JTE-VC's *variant* was already `sNN` — only its docs pages + the stale back-links. **Docs repo (1 commit):** `git mv technologies/01_JTE-VC/m0N.mdx`→`s0N.mdx` (×6), `@snippets/m0N…`→`@snippets/s0N…` imports + `M0N…`→`S0N…` binding names (`[Demo]` links keep the real `/s01d01` app routes), `extract-jte-vc-snippets.js` outFiles `${outRoot}/m0N…`→`${outRoot}/s0N…` (the `allowedTags: ['class','s01d01']` marker names + `title="s01d01.jte"` stay). **jte-vc variant repo (1 commit):** 17 in-app back-links `http://localhost:4321/demos/s0N/#…` → `…/technologies/01_jte-vc/s0N/#…` (the real path — `/demos/` never existed). `mvn clean compile` green; anchors verified against built pages (e.g. `S02D01.jte` → `…/s02/#1-basic-view-component-page`). Full docs rebuild green — **every page now `sNN`**: `01_jte-vc/s01…s06`, `02_thymeleaf/s01/s03/s04/s05`, `03_hono/s01…s05` + `s90_tnt`, `07_qute/s01/s03/s04/s05`. |
 
-Order: S1 → S2 → S3 → S4 (independent, but do docs slice within each so `npm run extract-snippets` never breaks between commits).
+Order: S1 → S2 → S3 → S4 (independent, but do docs slice within each so `npm run extract-snippets` never breaks between commits). **All four DONE 2026-09-06.**
 
 ### Open choices — resolved (2026-09-06, by the user)
 
