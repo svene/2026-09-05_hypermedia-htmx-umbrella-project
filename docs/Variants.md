@@ -217,8 +217,12 @@ a gmavenplus script regenerate the `.ts` types/consts on `mvn package`).
 
 ## Documentation site (2026-05)
 
-Not an app variant — a separate site that documents the variants. `wip.md` notes
-it may later be extended into per-variant code-docs.
+Not an app variant — a separate site that documents the variants. It is
+**deliberately kept separate** from this umbrella project (decided 2026-09-06):
+different purpose — per-variant, code-level docs with source extracted from the
+real variant, versus this project's high-level concepts and cross-variant
+comparison. It is to be extended to cover every pattern variant (and renamed,
+since it is no longer JTE-VC-only) — see `wip.md`.
 
 ### `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
 

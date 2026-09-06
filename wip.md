@@ -242,14 +242,31 @@ by WP1 (catalog) + WP3.
   comment syntax is irrelevant to extraction and an HTML comment is invisible in
   the browser. Grep `src` for `docs:start` / `docs:end` in `.ts` files.
   (Copied from that project's Claude memory so it can be dropped there.)
-- Possibly extend `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` into per-variant
-  code-docs for every variant — its sidebar is already scaffolded for JTE,
-  Thymeleaf, Hono/JSX, JSX-Spring-Hono and Graal-JSX (Spring / Quarkus). This
+- **Every pattern variant documented in `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`**
+  — tracked as **WP-T6** (Thymeleaf), **WP-T10** (Qute + rename the docs project,
+  which is no longer JTE-VC-only) and **WP-T11** (the "nothing left uncovered"
+  check + sidebar taxonomy) in the build-out table below. Its sidebar is already
+  scaffolded for JTE, Thymeleaf, Hono/JSX, JSX-Spring-Hono and Graal-JSX
+  (Spring / Quarkus); the JSX / Graal rows stay out of scope for now. This
   umbrella project stays the high-level companion.
-- **Decide the relationship to `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`** — fold
-  it into this umbrella project, or keep it separate. Not yet decided.
+- **Playwright e2e tests for every pattern project** — a `playwright/` folder per
+  project, modelled on the browser-hono demos. Tracked as **WP-T12** below.
+- ~~**Decide the relationship to the docs project**~~ **Decided (2026-09-06): keep
+  it separate.** `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (to be renamed — see
+  WP-T10) serves a **different purpose** from this umbrella project and is not to
+  be folded in:
+  - **This umbrella project** — high-level only: concepts, the architectural idea
+    per variant, cross-variant differences, the timeline, learnings. Prose, no
+    code extraction.
+  - **The docs project** — per-variant, code-level: hand-written prose *plus* code
+    samples **extracted from the real variant source** by `docs:start`/`docs:end`
+    markers, page-per-module, with live demo `<iframe>`s. It documents *how one
+    variant works*, in detail.
+
+  They are companions, not duplicates: the umbrella links out to the docs project
+  for the details; the docs project doesn't try to compare variants.
   (`2026-05-01_springboot-hono-docs` was only a feasibility spike — nothing to
-  fold in.)
+  fold in either way.)
 
 ## Thymeleaf variant build-out
 
@@ -335,8 +352,14 @@ cross-variant comparison.
 
 ### Work packages
 
-Each row = one manual review + commit by the user. WP-T0…WP-T4, WP-T2.5 and WP-T6
-commit in the Thymeleaf repo; WP-T5 commits here; WP-T7 and WP-T9 in the Qute repo.
+Each row = one manual review + commit by the user. WP-T0…WP-T4 + WP-T2.5 commit
+in the Thymeleaf repo; WP-T5 commits here; WP-T7 + WP-T9 in the Qute repo; WP-T6,
+WP-T10, WP-T11 in the docs-project repo; WP-T12 spans every pattern project.
+
+WP-T6…WP-T12 are follow-ups that came out of the Thymeleaf build-out but reach
+past it: the docs site now covers more than Thymeleaf, and the user asked for the
+Qute variant to get the same in-app→docs migration and for every pattern project
+to get Playwright tests.
 
 | WP | Repo | Status | Deliverable |
 |----|------|--------|-------------|
@@ -347,9 +370,12 @@ commit in the Thymeleaf repo; WP-T5 commits here; WP-T7 and WP-T9 in the Qute re
 | WP-T3 | thymeleaf | **DONE 2026-09-06** | **m04 UI Patterns** — `m04uipatterns/M04Controller` (`D01_URL`/`D02_URL`, `menuUrls()`); templates `m04uipatterns/d01.html`/`d02.html` (both via `fragments/layout`). d01 parent/child: `fragments/m04-parent.html` (`parent(greeting)`) builds slot markup interpolating `greeting` and passes it down to `fragments/m04-child.html` (`child(slot1)`, `<th:block th:replace="${slot1}">`) via `~{::#slot1/content()}`. d02 forwarder: `fragments/m04-forwarder-first.html` (`first(greeting)`) — `th:with` flag; if the greeting says "forward" it `th:replace`s `fragments/m04-forwarder-second.html` (`second(greeting)`), else renders `First: …`. **Gotcha hit & fixed:** `th:replace` outranks `th:if` in attribute precedence, so `th:if`+`th:replace` on one element replaced unconditionally — wrapped the `th:replace` in a separate `<th:block th:if>`. `MainController` +`M04Controller.menuUrls()`; `m00main/index.html` +"UI Patterns" `<section>` (2 cards). `docs:start`/`docs:end` markers + `<hr>`+"Docs" back-link (`…/m04/`), no code panels. **Verified:** `mvn clean compile` green; app boots; `GET /`, `/m04/d01`, `/m04/d02` → 200; d01 shows Parent→Child slot text "…Greeting: hello", d02 shows `First: hello` for the plain call and `Second: hello with forward` for the forwarding call; menu cards link correctly. |
 | WP-T4 | thymeleaf | **DONE 2026-09-06** | **m05 htmx Patterns** — `m05htmxpatterns/M05Controller`: `D01_URL` page + `D01_MESSAGE_URL` (`/m05/d01/message`) fragment handler (`@RequestParam("message")`, default text). `templates/m05htmxpatterns/d01.html` (via `fragments/layout`) — button `th:attr="hx-get=${messageUrl + '?message=hello'}"` + `hx-target="#my-message"`, an empty `<div id="my-message">`, and a `<pre>` echoing the URL. `templates/m05htmxpatterns/d01-message.html` — bare `<h3 th:text="|${message}!|">` (no doctype/html wrapper; `docs:start component` markers as `<!--/* */-->` so the swapped fragment stays clean). `MainController` +`M05Controller.menuUrls()`; `m00main/index.html` +"HTMX Patterns" `<section>` (1 card: "URL Components"). **Verified:** `mvn clean compile` green; app boots; `/m05/d01` → 200 with `hx-get="/m05/d01/message?message=hello"` on the button; `/m05/d01/message` → `<h3>Hello from the message fragment!</h3>`, `?message=hello` → `<h3>hello!</h3>`. **Full-course smoke:** all 15 routes (`/`, m01×5, m03×5, m04×2, m05 + its fragment) → 200. |
 | WP-T5 | umbrella | **DONE 2026-09-06** | **Umbrella docs catch-up.** `docs/Variants.md` — Thymeleaf entry rewritten (built out; htmx 4 + vendored; `th:fragment`/`th:replace`/`~{…}`; `m01/m03/m04/m05` course, `m02` gap kept; write-ups in the docs site). `docs/Variant-Comparison.md` — overview-matrix row → `fragments, per-module demos` / `4.0.0`; "only scaffolded" note replaced; Axis-2 bullet updated. `docs/History.md` — Phase 1 Thymeleaf bullet: built out 2026-09-06. `docs/Learnings.md` — #14 reframed ("deferred variant, finished on demand"), #10 now "every variant is on htmx 4", confirmed-by-user bullet updated. `docs/Analysis-Baseline.md` — Thymeleaf row → `b95869e` / 2026-09-06; top analysis-date note added. `wip.md` — Future-work "Implement the Thymeleaf variant" struck through as DONE, htmx-4 + bulma checklist lines ticked, sibling-list note updated. |
-| WP-T6 | docs project | OPTIONAL | **Thymeleaf pages in `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`** — the in-app markers/back-links already exist (WP-T2.5/T3/T4). Remaining: an `extract-snippets/extract-thymeleaf-snippets.js` (srcRoot = `../../2025/2025-08-23_ssfe-patterns-thymeleaf-htmx`), `.mdx` pages under `src/content/docs/technologies/02_Thymeleaf/` (`s01.mdx` is a "To Be Done" stub; sidebar entry already wired), and reconcile the back-link slug/anchors the Thymeleaf demos point at. Also decide `m01/m03/m04/m05` vs the docs project's `sNN` page naming. |
+| WP-T6 | docs project | TODO | **Thymeleaf pages in the docs site** (the Thymeleaf slice of WP-T11) — the in-app markers/back-links already exist (WP-T2.5/T3/T4). Remaining: an `extract-snippets/extract-thymeleaf-snippets.js` (srcRoot = `../../2025/2025-08-23_ssfe-patterns-thymeleaf-htmx`), `.mdx` pages under `src/content/docs/technologies/02_Thymeleaf/` (`s01.mdx` is a "To Be Done" stub; sidebar entry already wired), and reconcile the back-link slug/anchors the Thymeleaf demos point at (currently `technologies/02_thymeleaf/m0X/`). Also decide `m01/m03/m04/m05` vs the docs project's `sNN` page naming (feeds the WP-T11 taxonomy decision). |
 | WP-T7 | qute | OPTIONAL | **Delete greeting leftovers from `2025-12-21_ssfe-patterns-quarkus-qute-htmx`** — the user confirmed the greeting bits are archetype leftovers "from the very beginning" and can go: `org/acme/GreetingResource.java` + its `*Test`/`*IT`, `HomeResource` + `home.html`, `p01greeting/` + `greetingpage.html`. Its own review + commit; scope-check the exact file list against that repo first. |
-| WP-T9 | qute | TODO | **Drop the in-app code-snippet docs from `2025-12-21_ssfe-patterns-quarkus-qute-htmx`** (user request — same treatment as Thymeleaf WP-T2.5 / JTE-VC `9e94470`…`6dc16fb`). Remove the `M0XD0XCode` `@TemplateData` interfaces, the `*_code.html` templates, `components/CodeSnippet.java` + `codeexplanation.html`, and the `{#include …_code}` calls; add `docs:start`/`docs:end` markers + a `<hr>` + "Docs" back-link to each demo (`technologies/06_… ` slug TBD — Qute course covers m01/m03/m04/m05). Its own review + commit; can be done alongside WP-T7. |
+| WP-T9 | qute | TODO | **Drop the in-app code-snippet docs from `2025-12-21_ssfe-patterns-quarkus-qute-htmx`** (user request — same treatment as Thymeleaf WP-T2.5 / JTE-VC `9e94470`…`6dc16fb`). Remove the `M0XD0XCode` `@TemplateData` interfaces, the `*_code.html` templates, `components/CodeSnippet.java` + `codeexplanation.html`, and the `{#include …_code}` calls; add `docs:start`/`docs:end` markers + a `<hr>` + "Docs" back-link to each demo. This is the **in-app half** of the Qute migration; the docs-site half is WP-T10. Its own review + commit; can be done alongside WP-T7. |
+| WP-T10 | docs project | TODO | **Qute → docs site (docs-site half; pairs with WP-T9).** Add `extract-snippets/extract-qute-snippets.js` (srcRoot = `../../2025/2025-12-21_ssfe-patterns-quarkus-qute-htmx`) wired into `npm run extract-snippets`, `.mdx` pages for the Qute course (its `m01/m03/m04/m05` demos) under a new `src/content/docs/technologies/07_Qute/` (or similar) with a matching `astro.config.mjs` sidebar entry, and reconcile the back-link slug the WP-T9 demos point at. **Also: rename the docs project.** `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` is no longer JTE-VC-only — pick a neutral name (e.g. `2026-05-02_ssfe-patterns-htmx-docs` or `…-hypermedia-patterns-docs`), then update: the folder, the GitHub repo, `astro.config.mjs` `title`, `README`/`README_org`, the `@app` vite alias + every `extract-*-snippets.js` srcRoot, and all references in this umbrella's `docs/*` + `wip.md`. |
+| WP-T11 | docs project | TODO | **Every pattern variant covered in the docs site.** Audit `src/content/docs/technologies/` and make sure each SSFE-pattern-course variant has real pages (not a "To Be Done" stub): `01_JTE` (`s01`–`s06`) and `03_Hono` (`m01`–`m05`) already have content — confirm which project each documents (the `@app` alias points at `…jte-vc-htmx`, so `01_JTE` is really the JTE-VC project's sections). Then: **Thymeleaf** (via WP-T6), **Qute** (via WP-T10), and **plain JTE** `2025-08-23_ssfe-patterns-jte-htmx` — decide if it needs its own pages/extractor or is adequately represented by the JTE-VC `s01` section. Decide the sidebar taxonomy (`0N_Name` dirs; today: JTE, Thymeleaf, Hono JSX, JsxSpringHono, GraalJSXSpring, GraalJSXQuarkus — plus the new Qute entry) and the page-naming (`sNN` vs `mNN`). The JSX / Spring-Hono / Graal-JSX rows are out of scope here — pattern-course variants only. Depends on WP-T6 + WP-T10; this row is the "nothing left uncovered" check + the taxonomy decision. |
+| WP-T12 | each pattern project | TODO | **Playwright e2e tests.** Add a self-contained `playwright/` folder to each SSFE-pattern project, modelled on `2026-09-03_hda-springboot-browser-hono/playwright/`: own `package.json` (`@playwright/test` + `@types/node`, script `"test": "npx playwright test"`), `playwright.config.ts` (`testDir: './tests'`, chromium, `reporter: 'html'`, a `webServer` block that builds + starts the app fresh — `reuseExistingServer: false`, `timeout: 120_000` — on the project's port), `.gitignore` (`node_modules/`, `test-results/`, `playwright-report/`, `blob-report/`, `playwright/.cache/`), and `tests/main.spec.ts`. Tests: landing page loads + lists the module sections; each demo route loads and shows its key content; the m05/htmx demo clicks the button and asserts `#my-message` updates. One `playwright/` folder per project = one commit each. <br> ☐ `2025-08-23_ssfe-patterns-jte-htmx` (Spring Boot, :8080) · ☐ `2025-08-23_ssfe-patterns-jte-vc-htmx` (Spring Boot, :8080) · ☐ `2025-08-23_ssfe-patterns-thymeleaf-htmx` (Spring Boot, :8080; jar `target/2025-08-23_ssfe-patterns-thymeleaf-htmx-1.0-SNAPSHOT.jar`) · ☐ `2025-12-21_ssfe-patterns-quarkus-qute-htmx` (Quarkus, :8080; `./mvnw package -DskipTests` → `java -jar target/quarkus-app/quarkus-run.jar`) · ☐ `2025-12-27_ssfe-patterns-hono-htmx` (Bun, :3000; `bun run dev`) |
 
 ### Open choices — resolved (2026-09-06, by the user)
 
@@ -392,10 +418,12 @@ Future work; kept here as a record. Each is also noted in the relevant
    It is an irrelevant implementation detail — **do not document project-copy
    lineage in the public docs.**
 8. ~~The two 2026-05 docs-generator projects — fold in or keep separate?~~ —
-   **clarified (2026-09-06):** `2026-05-01_springboot-hono-docs` was only a
-   feasibility spike (Astro / Starlight as a docs tool); `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
-   is the real docs project. Whether to fold the latter in is still **not decided
-   yet**; kept in Future work.
+   **resolved (2026-09-06): keep `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+   separate.** It serves a different purpose from this umbrella project —
+   per-variant, code-level docs with source extracted from the real variant
+   (page-per-module, demo iframes), versus this project's high-level concepts and
+   cross-variant comparison. Companions, not duplicates. `2026-05-01_springboot-hono-docs`
+   was only a feasibility spike. See the Future-work entry for the full framing.
 9. ~~Thymeleaf stall reason?~~ — **resolved:** no specific blocker. The user still
    wants it brought to the same state as the other variants; it just has not been
    the top priority. Tracked in Future work.
