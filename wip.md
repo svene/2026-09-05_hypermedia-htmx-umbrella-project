@@ -243,11 +243,11 @@ by WP1 (catalog) + WP3.
   the browser. Grep `src` for `docs:start` / `docs:end` in `.ts` files.
   (Copied from that project's Claude memory so it can be dropped there.)
 - **Every pattern variant documented in `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`**
-  — the pattern-course variants are now all covered: JTE-VC, Thymeleaf (**WP-T6**),
-  Hono, Qute (**WP-T10**). Remaining: the docs-site taxonomy tidy-up (**WP-T11**:
-  `01_JTE`→`01_JTE-VC`, `sNN`→`mNN`), the folder/repo rename (**WP-T10b**), and
-  two optional items below. The JSX / Spring-Hono / Graal-JSX sidebar rows stay
-  out of scope. This umbrella project stays the high-level companion.
+  — done: JTE-VC (`01_JTE-VC`, `mNN`), Thymeleaf (**WP-T6**), Hono, Qute
+  (**WP-T10**); taxonomy tidy-up + `sNN`→`mNN` done (**WP-T11**). Remaining: the
+  folder/repo rename (**WP-T10b**), and two optional items below. The JSX /
+  Spring-Hono / Graal-JSX sidebar rows stay out of scope. This umbrella project
+  stays the high-level companion.
 - **Playwright e2e tests for every pattern project** — a `playwright/` folder per
   project, modelled on the browser-hono demos. Tracked as **WP-T12** below.
 - **_(optional, low priority)_ Build out `2025-08-23_ssfe-patterns-jte-htmx`** —
@@ -255,12 +255,21 @@ by WP1 (catalog) + WP3.
   other pattern-course projects (JTE-VC, Thymeleaf, Qute, Hono) share. Bringing
   it up to the full `m01/m03/m04/m05` course would make the family complete, but
   the user has flagged this as low priority. Update `docs/*` afterwards.
-- **_(optional, low priority)_ Rename the docs-site pages `mNN` → `sNN`** — the
-  user's own naming is `s` = *series* (a group of demos), `d` = *demo*, which he
-  considers clearer than `m` (meaning since forgotten). WP-T11 migrates everything
-  to `mNN` because the majority already uses it; this item is the deferred
-  reversal — rename every `technologies/*/mNN.mdx` → `sNN.mdx`, and the snippet
-  `outFile`s / imports to match, across all variants at once.
+- **_(optional, low priority)_ Standardise on `sNN` naming (`s` = *series*,
+  `d` = *demo*)** — the user's settled intent: `s` is the target scheme, clearer
+  than `m` (whose meaning is forgotten). WP-T11 migrated the docs site to `mNN`
+  only because the majority already used it; this item is the deferred reversal:
+  - Docs site: rename every `technologies/*/mNN.mdx` → `sNN.mdx`, plus the
+    snippet `outFile`s / imports, across all variants at once.
+  - Repoint the in-app "Docs" back-links accordingly (Thymeleaf and Qute point at
+    `mNN` today; the JTE-VC variant still points at the stale `.../demos/sNN/…`
+    and would be fixed to the real `sNN` path here).
+  - **`2025-08-23_ssfe-patterns-jte-vc-htmx` is already the reference for the
+    target `s` convention** — its files (`jte/plainjte/sNNdMM.jte`,
+    `.../s0Ndemos/…`), packages (`org.svenehrke.demo.web.s0N…`) and routes
+    (`/s01d01`, `/ui/s03pages/s03d01`, …) all use `sNN` already; leave it as-is
+    and align the rest to it. (Considered renaming *that* project's files to
+    `mNN` for consistency — decided against it 2026-09-06: `s` is the future.)
 - ~~**Decide the relationship to the docs project**~~ **Decided (2026-09-06): keep
   it separate.** `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (to be renamed — see
   WP-T10) serves a **different purpose** from this umbrella project and is not to
@@ -364,9 +373,9 @@ cross-variant comparison.
 
 Each row = one manual review + commit by the user. WP-T0…WP-T4 + WP-T2.5 commit
 in the Thymeleaf repo; WP-T5 commits here; WP-T7 + WP-T9 in the Qute repo;
-WP-T11 in the docs-project repo; **WP-T6 and WP-T10 are two commits each**
-(sibling repo + docs-project repo); WP-T10b is a user folder/repo rename then an
-umbrella sweep; WP-T12 spans every pattern project.
+**WP-T6 and WP-T10 are two commits each** (a variant/sibling repo + the
+docs-project repo); WP-T11 is one docs-project commit; WP-T10b is a user
+folder/repo rename then an umbrella sweep; WP-T12 spans every pattern project.
 
 WP-T6…WP-T12 are follow-ups that came out of the Thymeleaf build-out but reach
 past it: the docs site now covers more than Thymeleaf, and the user asked for the
@@ -387,7 +396,7 @@ to get Playwright tests.
 | WP-T9 | qute | **DONE 2026-09-06** | **Dropped the in-app code-snippet docs from `2025-12-21_ssfe-patterns-quarkus-qute-htmx`** (same treatment as Thymeleaf WP-T2.5 / JTE-VC `9e94470`…`6dc16fb`). **Deleted:** 12 `M0XD0XCode.java` `@TemplateData` interfaces (`m01plain/M01D01Code`…`M05htmx/M05D01Code`); 12 `*_code.html` panel templates; the orphaned `components/CodeSnippet.java` + `components/codeexplanation.html` (both were untracked — never wired in). **Edited** the 12 demo templates (`m01d01`…`m05d01`): removed the `{#include …_code}{/include}` call, wrapped the demo body in `<!-- docs:start page -->` / `<!-- docs:end page -->`, added `<hr>` + `<a href="http://localhost:4321/technologies/07_qute/m0X/">Docs</a>`. Also cleaned m03d03's dead `{!TODO:!}` / `{! ${new CustomPageWithParamCode…} !}` lines; converted m01d02's `{! Include Component: !}` → `<!-- -->`; m03d02 kept its CRLF line endings. **Back-link slug `07_qute` is provisional** — reconcile in WP-T10/WP-T11 (taxonomy). No Java controller/routing code referenced `*Code`. **Verified:** `./mvnw -DskipTests clean package` green (Qute build-time template validation passes); app boots; all 14 routes (`/`, m01×5, m03×5, m04×2, m05) → 200 with **zero** `_code`/`M0XD0XCode`/`codeexplanation`/`codearea` in any rendered page. This is the in-app half; the docs-site half (Qute `.mdx` pages + `extract-qute-snippets.js`) is WP-T10. |
 | WP-T10 | qute + docs project | **DONE 2026-09-06** (rename deferred) | **Qute → docs site** (pairs with WP-T9). Two commits. <br> **Part A — qute repo:** `// docs:start`/`// docs:end` markers on the demo controllers (`m01plain/M01D01`…`M01D05` tag `page`; `m03pages/M03Routing` tags `d01`…`d04`; `m04uipatterns/M04Routing` `d01`/`d02`; `m05htmx/M05Routing` `d01`), `<!-- docs:* -->` markers on the fragments (`components/helloworld`, `helloworldparams`, `helloworldcontent`, `m04uipatterns/m04d01parent`/`m04d01child`/`m04d02first`/`m04d02second`, `m05htmx/m05d01message` = tag `component`; `components/bulmapage`, `components/page_head` = tag `page`), markers on `m03d04p1.html`/`m03d04p2.html`, and deleted the dead empty stub `m03pages/page04mpapage2.html`. `./mvnw -DskipTests clean package` green; all 15 routes → 200. <br> **Part B — docs-project repo:** `extract-snippets/extract-qute-snippets.js` (35 snippets → `generated/snippets/qute/`), wired into `extract-all-snippets.js`; `src/content/docs/technologies/07_Qute/m01.mdx`,`m03.mdx`,`m04.mdx`,`m05.mdx` (`<D0NJava/>` + `<D0N/>` + fragments, iframe heights measured from the running app: m01 140/180/180/300/390, m03 140/140/340/650, m04 235/225, m05 380); `astro.config.mjs` — added the `Qute` sidebar entry (`technologies/07_Qute`) and **generalised the site `title`** to "Server Side Frontend Patterns" (was "…with plain JTE and ViewComponents"). `npm run build` green — 4 pages at `/technologies/07_qute/m0X/`. **Slug `07_qute` matches the WP-T9 back-links** — provisional, may move if WP-T11 renumbers. <br> ⏸ **Rename NOT done** — folder + GitHub-repo rename is an outward-facing, user-only action. See the checklist under "Rename the docs project" below. |
 | WP-T10b | user, then umbrella | TODO | **Rename the docs project** `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (no longer JTE-VC-only). **The user does the rename manually — later — on their own:** pick a neutral name (`…_ssfe-patterns-htmx-docs` / `…_ssfe-hypermedia-patterns-docs`), `mv` the local folder, rename the GitHub repo + update the remote. **Then, when the user says so, Claude adapts the docs:** sweep every occurrence of the old name in the umbrella `docs/*` + `wip.md` (and in any variant's in-app "Docs" back-link that encodes it — none do today; all use `http://localhost:4321/…`). Nothing else needs touching: the `@app` vite alias and every `extract-*-snippets.js` srcRoot point at the *variant* repos (`../../2025/…`), so a same-depth folder rename doesn't affect them. |
-| WP-T11 | docs project | TODO | **Docs-site taxonomy tidy-up + coverage check** (all decisions made 2026-09-06 by the user). Coverage is complete for the pattern-course variants: `01_JTE` = **JTE-VC** (`s01`–`s06`), `02_Thymeleaf` (`m01/m03/m04/m05`, WP-T6), `03_Hono` (`m01`–`m05`), `07_Qute` (`m01/m03/m04/m05`, WP-T10). This WP does two renames in `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`: **(a)** `technologies/01_JTE/` → `technologies/01_JTE-VC/` and sidebar label `JTE` → `JTE-VC` (the dir has always been the JTE-VC project); **(b)** migrate its page files `s01.mdx`…`s06.mdx` → `m01.mdx`…`m06.mdx` (1:1) so every variant's pages use `mNN` — update the `.mdx` filenames, their `import` paths, and the JTE-VC extractor's `outFile`/`outRoot` in `extract-jte-vc-snippets.js` accordingly (`s0N_…` → `m0N_…`). Any in-app "Docs" back-links in the JTE-VC variant repo that point at `/demos/sNN/` get repointed too. Then `npm run build` + spot-check the sidebar. **Not in scope:** `2025-08-23_ssfe-patterns-jte-htmx` coverage and a possible `mNN`→`sNN` re-rename — both are separate optional Future-work items (below). JSX / Spring-Hono / Graal-JSX rows also out of scope. |
+| WP-T11 | docs project | **DONE 2026-09-06** | **Docs-site taxonomy tidy-up** — one commit, docs-project repo only. `git mv technologies/01_JTE/ → 01_JTE-VC/`, `git mv s0N.mdx → m0N.mdx` (×6); rewrote the `@snippets/s0…` import paths + `S0…`→`M0…` binding names inside the 6 pages (the `[Demo]` links keep the real `sNN` app routes); `extract-jte-vc-snippets.js` — `outFile` paths `${outRoot}/s0N…` → `${outRoot}/m0N…` (the `allowedTags: ['class','s01d01']` stay — those are the marker names in `PlainJTEController.java`, not user-visible); `astro.config.mjs` sidebar `label: 'JTE'` / `directory: '…/01_JTE'` → `'JTE-VC'` / `'…/01_JTE-VC'`. Clean `rm -rf generated/snippets && npm run extract-snippets && npm run build` → green, 6 pages at `/technologies/01_jte-vc/m0N/`, snippets render, sidebar shows "JTE-VC", heading anchors unchanged. <br> **The jte-vc variant's in-app "Docs" back-links were left untouched** (still `http://localhost:4321/demos/s0N/#…`): a `s→m` repoint was made and then reverted per the user — since `s` is the target scheme (see the "Standardise on `sNN`" Future-work item), repointing those to `m` now would be churn to undo later. They stay stale until that item repoints everything to `s` at once. <br> **Not in scope** (separate optional Future-work items): `2025-08-23_ssfe-patterns-jte-htmx` build-out; the `mNN`→`sNN` standardisation. |
 | WP-T12 | each pattern project | TODO | **Playwright e2e tests.** Add a self-contained `playwright/` folder to each SSFE-pattern project, modelled on `2026-09-03_hda-springboot-browser-hono/playwright/`: own `package.json` (`@playwright/test` + `@types/node`, script `"test": "npx playwright test"`), `playwright.config.ts` (`testDir: './tests'`, chromium, `reporter: 'html'`, a `webServer` block that builds + starts the app fresh — `reuseExistingServer: false`, `timeout: 120_000` — on the project's port), `.gitignore` (`node_modules/`, `test-results/`, `playwright-report/`, `blob-report/`, `playwright/.cache/`), and `tests/main.spec.ts`. Tests: landing page loads + lists the module sections; each demo route loads and shows its key content; the m05/htmx demo clicks the button and asserts `#my-message` updates. One `playwright/` folder per project = one commit each. <br> ☐ `2025-08-23_ssfe-patterns-jte-htmx` (Spring Boot, :8080) · ☐ `2025-08-23_ssfe-patterns-jte-vc-htmx` (Spring Boot, :8080) · ☐ `2025-08-23_ssfe-patterns-thymeleaf-htmx` (Spring Boot, :8080; jar `target/2025-08-23_ssfe-patterns-thymeleaf-htmx-1.0-SNAPSHOT.jar`) · ☐ `2025-12-21_ssfe-patterns-quarkus-qute-htmx` (Quarkus, :8080; `./mvnw package -DskipTests` → `java -jar target/quarkus-app/quarkus-run.jar`) · ☐ `2025-12-27_ssfe-patterns-hono-htmx` (Bun, :3000; `bun run dev`) |
 
 ### Open choices — resolved (2026-09-06, by the user)
