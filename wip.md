@@ -48,7 +48,7 @@ refer to them by name only. Full list + links: `docs/Variants.md`.
 - `2026-05-01_springboot-hono-docs` (local only, not on GitHub) was a throwaway
   **experiment** to find out whether Astro / Starlight is a usable documentation
   tool for these apps/variants. It proved OK and is now superseded.
-- `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` is the **actual documentation
+- `2026-05-02_hda-htmx-patterns-docs` is the **actual documentation
   project** that came out of that experiment: an Astro / Starlight site that
   extracts tagged snippets from the real variant source (`extract-snippets/`,
   output in the git-ignored `generated/`). It already documents the JTE-VC and
@@ -111,8 +111,8 @@ Deliverables:
 | WP14 | DONE  | Replaced all relative directory references (`../…`, `../../2025/…`) with plain project names, since the repos are flat on GitHub. Added a project ↔ GitHub-repo table at the top of `docs/Variants.md` (repos under `github.com/svene/`; `springboot-hono-docs` is local-only). Updated `Analysis-Baseline.md`, both READMEs, `wip.md`. |
 | WP15 | DONE  | Wrote the "Architecture trade-offs — two-process vs GraalVM polyglot vs browser-hono" section in `docs/Variant-Comparison.md` (14-dimension table, per-architecture "Net", low-lock-in note). Closed the matching Future-work item; repointed `History.md` / `Learnings.md` / `docs/README.md`. |
 | WP16 | DONE  | Staged `htmx4-upgrade-plan.md` in the 4 ready older projects (`jte-htmx`, `jte-vc-htmx`, `quarkus-qute-htmx`, `hono-htmx`) for the user to execute in separate sessions. Each plan: copy the htmx 4 asset from an already-upgraded sibling (`5a61350` SB / `77fc6c5` Quarkus), and a "Part 0" step to study those upgrade commits first. Thymeleaf skipped (variant not implemented). Future-work item updated with a per-project checklist. |
-| WP17 | DONE  | Umbrella docs: corrected the 2026-05 framing. `2026-05-01_springboot-hono-docs` recast as a throwaway feasibility spike (Astro / Starlight as a docs tool — answered yes) and dropped from the repo table + `Analysis-Baseline.md`, kept only as a one-line footnote; `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` recast as the real docs site (tagged-snippet extraction from live variant source; covers JTE-VC + Hono, sidebar scaffolded for the rest). Updated `Variants.md`, `History.md` (Phase 7), `Variant-Comparison.md`, `Learnings.md` #16, `Analysis-Baseline.md`, `wip.md` + Future-work bullets. |
-| WP18 | DONE  | In `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (sibling repo — user commits there): `git mv README.md README_org.md`; rewrote `README1.md` with **Usage** (`npm install` → `npm run extract-snippets` → `npm run dev`, open `:4321`, note the `:3000` variant server for the demo iframes), **Dev cycle** (edit a variant's source → `npm run extract-snippets` rebuilds `generated/` → Starlight hot-reloads), a note on how to add a snippet, and the project's purpose. |
+| WP17 | DONE  | Umbrella docs: corrected the 2026-05 framing. `2026-05-01_springboot-hono-docs` recast as a throwaway feasibility spike (Astro / Starlight as a docs tool — answered yes) and dropped from the repo table + `Analysis-Baseline.md`, kept only as a one-line footnote; `2026-05-02_hda-htmx-patterns-docs` recast as the real docs site (tagged-snippet extraction from live variant source; covers JTE-VC + Hono, sidebar scaffolded for the rest). Updated `Variants.md`, `History.md` (Phase 7), `Variant-Comparison.md`, `Learnings.md` #16, `Analysis-Baseline.md`, `wip.md` + Future-work bullets. |
+| WP18 | DONE  | In `2026-05-02_hda-htmx-patterns-docs` (sibling repo — user commits there): `git mv README.md README_org.md`; rewrote `README1.md` with **Usage** (`npm install` → `npm run extract-snippets` → `npm run dev`, open `:4321`, note the `:3000` variant server for the demo iframes), **Dev cycle** (edit a variant's source → `npm run extract-snippets` rebuilds `generated/` → Starlight hot-reloads), a note on how to add a snippet, and the project's purpose. |
 | WP19 | DONE  | Fixed the docs-snippet marker leak in `2025-12-27_ssfe-patterns-hono-htmx` (sibling repo — user commits there): in `src/m01html/m01d01.ts`…`m01d05.ts` (the only `html``` templates carrying inline markers) replaced `{/*docs:end page*/}` / `{/*docs:start page*/}` with `<!-- docs:end page -->` / `<!-- docs:start page -->`. `.tsx` modules untouched (real JSX comments there). Verified: re-ran `npm run extract-snippets` — `generated/` m01 snippets byte-identical (the `<a …>Docs</a>` back-link is still carved out), and the markers are now invisible HTML comments in the browser. |
 
 ### Catalog entry shape (WP1)
@@ -240,7 +240,7 @@ by WP1 (catalog) + WP3.
   comment syntax is irrelevant to extraction and an HTML comment is invisible in
   the browser. Grep `src` for `docs:start` / `docs:end` in `.ts` files.
   (Copied from that project's Claude memory so it can be dropped there.)
-- **Every pattern variant documented in `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`**
+- **Every pattern variant documented in `2026-05-02_hda-htmx-patterns-docs`**
   — done: JTE-VC (`01_JTE-VC`, `mNN`), Thymeleaf (**WP-T6**), Hono, Qute
   (**WP-T10**); taxonomy tidy-up + `sNN`→`mNN` done (**WP-T11**). Remaining: the
   folder/repo rename (**WP-T10b**), and two optional items below. The JSX /
@@ -263,9 +263,8 @@ by WP1 (catalog) + WP3.
   `/technologies/01_jte-vc/sNN/` path). Renaming that project's files to `mNN`
   for consistency was considered and rejected — `s` is the target.
 - ~~**Decide the relationship to the docs project**~~ **Decided (2026-09-06): keep
-  it separate.** `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (to be renamed — see
-  WP-T10) serves a **different purpose** from this umbrella project and is not to
-  be folded in:
+  it separate.** `2026-05-02_hda-htmx-patterns-docs` serves a **different
+  purpose** from this umbrella project and is not to be folded in:
   - **This umbrella project** — high-level only: concepts, the architectural idea
     per variant, cross-variant differences, the timeline, learnings. Prose, no
     code extraction.
@@ -307,7 +306,7 @@ already shows what the module set looks like without JSX. The **JTE-VC project**
 (controllers, URL constants, `static/` asset layout, `main.css` / `simplepage.css`,
 `maincard`). JTE-VC also shows how the in-app code docs were *removed* again and
 replaced by `docs:start`/`docs:end` markers + a "Docs" back-link once the write-ups
-moved to `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (commits `9e94470` →
+moved to `2026-05-02_hda-htmx-patterns-docs` (commits `9e94470` →
 `6dc16fb`) — Thymeleaf follows that end state, not the earlier code-panel one (see
 decision 4 and WP-T2.5).
 
@@ -352,13 +351,13 @@ cross-variant comparison.
    built the in-app code panels (`CodeSnippet` record, `code-panel.html`,
    `M01Snippets`/`M03Snippets`); the user then pointed out JTE-VC did the same
    thing early on and later *pulled the docs out* into
-   `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`, leaving only `docs:start`/
+   `2026-05-02_hda-htmx-patterns-docs`, leaving only `docs:start`/
    `docs:end` markers + a `<hr>` + "Docs" back-link in each demo (commits
    `9e94470`…`6dc16fb`). **WP-T2.5 removes the panels and applies that same
    pattern**; WP-T3/WP-T4 are built that way from the start (no panels). The
    Thymeleaf snippet pages + extractor on the docs-project side are WP-T6.
 5. **Out of scope now** (optional follow-ups): authoring the Thymeleaf `.mdx`
-   pages + a snippet extractor inside `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+   pages + a snippet extractor inside `2026-05-02_hda-htmx-patterns-docs`
    (WP-T6); native-image; tests beyond one context-loads smoke test.
 
 ### Work packages
@@ -429,7 +428,7 @@ separate list because they block nothing else and can happen at any time.
 
 | WP | Repo | Status | Deliverable |
 |----|------|--------|-------------|
-| WP-T10b | user, then umbrella | TODO | **Rename the docs project** `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` (no longer JTE-VC-only). **User, manually:** pick a neutral name (`…_ssfe-patterns-htmx-docs` / `…_ssfe-hypermedia-patterns-docs`), `mv` the local folder, rename the GitHub repo + update the remote. **Then Claude:** sweep every occurrence of the old name in the umbrella `docs/*` + `wip.md` (and in any variant's in-app "Docs" back-link that encodes it — none do today; all use `http://localhost:4321/…`). Nothing else needs touching: the `@app` vite alias and every `extract-*-snippets.js` srcRoot point at the *variant* repos (`../../2025/…`), so a same-depth folder rename doesn't affect them. |
+| WP-T10b | user, then umbrella | **DONE 2026-09-09** | **Renamed the docs project** `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` → `2026-05-02_hda-htmx-patterns-docs` (no longer JTE-VC-only). **User:** `mv` the local folder, renamed the GitHub repo (`https://github.com/svene/2026-05-02_hda-htmx-patterns-docs`), `git remote set-url`. **Claude — reference sweep:** old name → new across the umbrella `docs/*` (`Variants.md` repo table + section heading + 2 prose refs, `Analysis-Baseline.md` baseline row, `History.md` ×2, `Learnings.md` #16, `Variant-Comparison.md` ×2) and `wip.md` (~10 refs + this row); dropped the now-stale "to be renamed" / "(and renamed…)" asides. Also in the **thymeleaf variant repo** — `readme.adoc` + 4 `S0NController` javadocs (**user commits there**) — and the docs project's own `package.json` + `package-lock.json` `name` field (**user commits there**). No in-app "Docs" back-link encoded the old name (all use `http://localhost:4321/…`); the `@app` vite alias + `extract-*-snippets.js` srcRoots point at the variant repos, unaffected by a same-depth folder rename. |
 | WP-T10c | user, then umbrella | TODO | **Rename the `graalvm-jsx` repos.** `jsx` in `2026-03-07_springboot-graalvm-jsx-poc`, `2026-03-09_hda-springboot-graalvm-jsx-demo` and `2026-03-15_hda-quarkus-graalvm-jsx-demo` is historical — they use hono `html``` tagged templates, not JSX (except the `2026-03-07` PoC, which still has `.tsx`). **User, manually:** rename e.g. `…graalvm-jsx-demo` → `…graalvm-hono-demo` (local folders + GitHub repos + remotes). **Then Claude:** update the project names across the umbrella `docs/*` (the repo table in `docs/Variants.md` and `docs/Analysis-Baseline.md` included) + `wip.md`. |
 
 ### Open choices — resolved (2026-09-06, by the user)
@@ -473,7 +472,7 @@ Future work; kept here as a record. Each is also noted in the relevant
    It is an irrelevant implementation detail — **do not document project-copy
    lineage in the public docs.**
 8. ~~The two 2026-05 docs-generator projects — fold in or keep separate?~~ —
-   **resolved (2026-09-06): keep `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+   **resolved (2026-09-06): keep `2026-05-02_hda-htmx-patterns-docs`
    separate.** It serves a different purpose from this umbrella project —
    per-variant, code-level docs with source extracted from the real variant
    (page-per-module, demo iframes), versus this project's high-level concepts and

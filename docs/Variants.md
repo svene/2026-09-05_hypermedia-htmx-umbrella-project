@@ -25,9 +25,9 @@ name.
 | `2026-03-07_springboot-graalvm-jsx-poc` | <https://github.com/svene/2026-03-07_springboot-graalvm-jsx-poc> | 2026-03 |
 | `2026-03-09_hda-springboot-graalvm-jsx-demo` | <https://github.com/svene/2026-03-09_hda-springboot-graalvm-jsx-demo> | 2026-03 |
 | `2026-03-15_hda-quarkus-graalvm-jsx-demo` | <https://github.com/svene/2026-03-15_hda-quarkus-graalvm-jsx-demo> | 2026-03 |
+| `2026-05-02_hda-htmx-patterns-docs` | <https://github.com/svene/2026-05-02_hda-htmx-patterns-docs> | 2026-05 |
 | `2026-09-03_hda-springboot-browser-hono` | <https://github.com/svene/2026-09-03_hda-springboot-browser-hono> | 2026-09 |
 | `2026-09-03_hda-quarkus-browser-hono` | <https://github.com/svene/2026-09-03_hda-quarkus-browser-hono> | 2026-09 |
-| `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` | <https://github.com/svene/2026-05-02_ssfe-patterns-jte-vc-htmx-docs> | 2026-05 |
 
 Common ground across (almost) all variants: a **Hypermedia-Driven Application** —
 the browser swaps in HTML fragments with htmx, no SPA, no virtual DOM. HTML is
@@ -78,7 +78,7 @@ pair, where the same templates run client-side. They mostly render the same smal
   variant runs, with the JSX module and the "experiments" section deliberately
   omitted (the `m02` gap is kept so demos line up by number across variants).
 - **Status:** built out 2026-09-06 (with Claude). Pattern write-ups live in
-  `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`, not in-app — the demo templates
+  `2026-05-02_hda-htmx-patterns-docs`, not in-app — the demo templates
   carry `docs:start`/`docs:end` markers and link back to it.
 
 ---
@@ -221,10 +221,9 @@ Not an app variant — a separate site that documents the variants. It is
 **deliberately kept separate** from this umbrella project (decided 2026-09-06):
 different purpose — per-variant, code-level docs with source extracted from the
 real variant, versus this project's high-level concepts and cross-variant
-comparison. It is to be extended to cover every pattern variant (and renamed,
-since it is no longer JTE-VC-only) — see `wip.md`.
+comparison. It is to be extended to cover every pattern variant — see `wip.md`.
 
-### `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+### `2026-05-02_hda-htmx-patterns-docs`
 
 - **Stack:** [Astro](https://astro.build/) + [Starlight](https://starlight.astro.build/),
   with an `extract-snippets/` step (Node) whose output lands in the git-ignored

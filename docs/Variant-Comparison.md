@@ -4,7 +4,7 @@ The variants compared at the level of **concepts and architecture**, not
 implementation detail. For what each project is, see the [catalog](Variants.md);
 for how it got there, see [History.md](History.md).
 
-Scope: the app / pattern-showcase variants. `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+Scope: the app / pattern-showcase variants. `2026-05-02_hda-htmx-patterns-docs`
 (the documentation site, and its throwaway predecessor `2026-05-01_springboot-hono-docs`)
 is not a variant and is left out of the tables.
 
@@ -30,7 +30,7 @@ is not a variant and is left out of the tables.
 The `…thymeleaf-htmx` row was built out 2026-09-06 (with Claude) as the
 fragment/slot take on the same `m01/m03/m04/m05` course the Qute variant runs
 (no JSX module, no "experiments" section); htmx 4 + vendored assets from the
-start. Pattern write-ups live in `2026-05-02_ssfe-patterns-jte-vc-htmx-docs`
+start. Pattern write-ups live in `2026-05-02_hda-htmx-patterns-docs`
 (demos carry `docs:start`/`docs:end` markers), not in-app.
 
 ---
