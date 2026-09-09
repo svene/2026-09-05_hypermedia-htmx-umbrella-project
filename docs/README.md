@@ -5,9 +5,12 @@ and cross-variant differences only. Per-project internals live in each project.
 
 Read in this order:
 
-1. **[Variants.md](Variants.md)** — the catalog. Opens with the project ↔ GitHub
-   repository table, then for each project: what it is, its one distinguishing
-   idea, and status. Start here.
+1. **[Variants.md](Variants.md)** — the catalog. Opens with the two project
+   groups — **A · SSFE pattern showcases** (one per template technology) and
+   **B · "person" use-case apps** (one per technology/architecture), plus the
+   docs tooling — then the project ↔ GitHub repository table (with a **Group**
+   column) and, per project, what it is, its one distinguishing idea, and status.
+   Start here.
 2. **[History.md](History.md)** — the chronological story: which concepts were
    adopted or dropped from one variant to the next, and why. Told as 8 phases.
 3. **[Variant-Comparison.md](Variant-Comparison.md)** — the variants compared on

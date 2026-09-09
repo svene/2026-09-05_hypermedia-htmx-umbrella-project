@@ -114,6 +114,7 @@ Deliverables:
 | WP17 | DONE  | Umbrella docs: corrected the 2026-05 framing. `2026-05-01_springboot-hono-docs` recast as a throwaway feasibility spike (Astro / Starlight as a docs tool — answered yes) and dropped from the repo table + `Analysis-Baseline.md`, kept only as a one-line footnote; `2026-05-02_hda-htmx-patterns-docs` recast as the real docs site (tagged-snippet extraction from live variant source; covers JTE-VC + Hono, sidebar scaffolded for the rest). Updated `Variants.md`, `History.md` (Phase 7), `Variant-Comparison.md`, `Learnings.md` #16, `Analysis-Baseline.md`, `wip.md` + Future-work bullets. |
 | WP18 | DONE  | In `2026-05-02_hda-htmx-patterns-docs` (sibling repo — user commits there): `git mv README.md README_org.md`; rewrote `README1.md` with **Usage** (`npm install` → `npm run extract-snippets` → `npm run dev`, open `:4321`, note the `:3000` variant server for the demo iframes), **Dev cycle** (edit a variant's source → `npm run extract-snippets` rebuilds `generated/` → Starlight hot-reloads), a note on how to add a snippet, and the project's purpose. |
 | WP19 | DONE  | Fixed the docs-snippet marker leak in `2025-12-27_ssfe-patterns-hono-htmx` (sibling repo — user commits there): in `src/m01html/m01d01.ts`…`m01d05.ts` (the only `html``` templates carrying inline markers) replaced `{/*docs:end page*/}` / `{/*docs:start page*/}` with `<!-- docs:end page -->` / `<!-- docs:start page -->`. `.tsx` modules untouched (real JSX comments there). Verified: re-ran `npm run extract-snippets` — `generated/` m01 snippets byte-identical (the `<a …>Docs</a>` back-link is still carved out), and the markers are now invisible HTML comments in the browser. |
+| WP20 | **DONE 2026-09-09** | **Made the two project groups explicit in the docs.** `docs/Variants.md`: new "**Two groups of projects**" intro (Group A · SSFE pattern showcases / Group B · "person" use-case apps / docs tooling); a **Group** column added to the project↔repo table; the catalog restructured under `## Group A` / `## Group B` / `## Documentation tooling` headings with the era sub-sections demoted to `###` and project entries to `####` (heading-anchor slugs unchanged, so cross-links still resolve). `docs/README.md`: the Variants.md entry in the reading order now leads with the two groups. `docs/Variant-Comparison.md`: **Group** column in the overview matrix, scope paragraph notes that most axes only vary within Group B, Axis-4 bullet expanded. **`hda-dynapage-demo` entry rewritten** — confirmed against the repo (`hono/src/app/parts/`): it builds the editable-table screen **four ways** as separate app parts — `p01` OOB swap, `p04` `hx-partial`, `p02` event-driven/JSX (response is a client-side event, Alpine receiver, no HTML), `p03` event-driven/HTML — not just "OOB vs `hx-partial`". Files: `docs/Variants.md`, `docs/README.md`, `docs/Variant-Comparison.md`. |
 
 ### Catalog entry shape (WP1)
 
@@ -255,6 +256,13 @@ by WP1 (catalog) + WP3.
   other pattern-course projects (JTE-VC, Thymeleaf, Qute, Hono) share. Bringing
   it up to the full `m01/m03/m04/m05` course would make the family complete, but
   the user has flagged this as low priority. Update `docs/*` afterwards.
+- ~~**Make the two project groups explicit in the docs**~~ **DONE 2026-09-09
+  (WP20).** `docs/Variants.md` restructured under `## Group A — SSFE pattern
+  showcases` / `## Group B — "person" use-case apps` / `## Documentation tooling`,
+  with a "Two groups of projects" intro and a **Group** column in the repo table;
+  `docs/README.md` + `docs/Variant-Comparison.md` echo the split; the
+  `hda-dynapage-demo` entry now names all four htmx update strategies it builds
+  (OOB / `hx-partial` / event-JSX / event-HTML), confirmed against the repo.
 - ~~**Standardise on `sNN` naming (`s` = *series*, `d` = *demo*)**~~ **DONE
   2026-09-06** via WP-S1…WP-S4 (see the "sNN standardisation" table below). The
   Thymeleaf, Qute and Hono variant apps (packages, class names, routes, template

@@ -91,8 +91,10 @@ for the axes.
 12. **One shared domain keeps comparisons meaningful.** Rendering the same
     "people / person" domain everywhere is a deliberate constraint; it's what
     makes the variants comparable at all.
-13. **OOB swaps vs `hx-partial`: partial won on readability.** From the dynapage
-    demo. Default to partials; reserve OOB for genuine multi-region updates.
+13. **OOB swaps vs `hx-partial`: the user finds partials more readable.** From the
+    dynapage demo, comparing the two *swap mechanisms* (the demo also has two
+    event-driven takes on a separate axis). Default to partials; reserve OOB for
+    genuine multi-region updates.
 14. **A deferred variant, finished on demand.** The Thymeleaf variant sat at a
     skeleton for a year — interest had moved to TypeScript templates — then was
     built out in full (2026-09-06, with Claude) once the umbrella project made the

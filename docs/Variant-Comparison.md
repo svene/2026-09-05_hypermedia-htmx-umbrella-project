@@ -4,28 +4,36 @@ The variants compared at the level of **concepts and architecture**, not
 implementation detail. For what each project is, see the [catalog](Variants.md);
 for how it got there, see [History.md](History.md).
 
-Scope: the app / pattern-showcase variants. `2026-05-02_hda-htmx-patterns-docs`
-(the documentation site, and its throwaway predecessor `2026-05-01_springboot-hono-docs`)
+Scope: the app / pattern-showcase variants, in the two groups the
+[catalog](Variants.md) defines — **A · SSFE pattern showcases** (`…ssfe-patterns-*`,
+one per template technology) and **B · "person" use-case apps** (the same domain
+app, one per technology/architecture). `2026-05-02_hda-htmx-patterns-docs` (the
+documentation site, and its throwaway predecessor `2026-05-01_springboot-hono-docs`)
 is not a variant and is left out of the tables.
+
+Most axes below (where HTML is generated, the cross-language contract,
+native-image) only vary **within Group B** — the Group A showcases are all
+single-process, single-language, server-rendered and differ only in *view
+technology* (Axis 2).
 
 ---
 
 ## Overview matrix
 
-| Variant (project) | Backend + language | HTML generated where | View technology (concept) | Dynamic-update style | htmx |
-|---|---|---|---|---|---|
-| `2025-08-23_…jte-htmx` | Spring Boot, Java | in the JVM | plain JTE templates | full page + fragments | 4.0.0 |
-| `2025-08-23_…jte-vc-htmx` | Spring Boot, Java | in the JVM | JTE + server-side View Components | fragments + event-driven refresh | 4.0.0 |
-| `2025-08-23_…thymeleaf-htmx` | Spring Boot, Java | in the JVM | Thymeleaf fragments/slots | fragments, per-module demos | 4.0.0 |
-| `2025-12-21_…quarkus-qute-htmx` | Quarkus, Java | in the JVM | Qute templates | fragments, per-module demos | 4.0.0 |
-| `2025-12-27_…hono-htmx` | Hono on Bun, TypeScript | in the (single) JS process | Hono `html``` **and** `hono/jsx` | fragments, per-module demos | 4.0.0 |
-| `2025-12-31-springboot-hono-poc` | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono `html``` / JSX | fragments | 2.0.8 → 4.0.0 |
-| `2026-01-24_hda-dynapage-demo` | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono components | **OOB vs `hx-partial`, compared** | 2.0.8 → 4.0.0 |
-| `2026-03-07_…graalvm-jsx-poc` | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | `hono/jsx` (`.tsx`) | fragments | 4.0.0 |
-| `2026-03-09_hda-springboot-graalvm-hono-demo` | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
-| `2026-03-15_hda-quarkus-graalvm-hono-demo` | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
-| `2026-09-03_hda-springboot-browser-hono` | Spring Boot 4, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
-| `2026-09-03_hda-quarkus-browser-hono` | Quarkus 3.32, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
+| Variant (project) | Group | Backend + language | HTML generated where | View technology (concept) | Dynamic-update style | htmx |
+|---|---|---|---|---|---|---|
+| `2025-08-23_…jte-htmx` | A | Spring Boot, Java | in the JVM | plain JTE templates | full page + fragments | 4.0.0 |
+| `2025-08-23_…jte-vc-htmx` | A | Spring Boot, Java | in the JVM | JTE + server-side View Components | fragments + event-driven refresh | 4.0.0 |
+| `2025-08-23_…thymeleaf-htmx` | A | Spring Boot, Java | in the JVM | Thymeleaf fragments/slots | fragments, per-module demos | 4.0.0 |
+| `2025-12-21_…quarkus-qute-htmx` | A | Quarkus, Java | in the JVM | Qute templates | fragments, per-module demos | 4.0.0 |
+| `2025-12-27_…hono-htmx` | A | Hono on Bun, TypeScript | in the (single) JS process | Hono `html``` **and** `hono/jsx` | fragments, per-module demos | 4.0.0 |
+| `2025-12-31-springboot-hono-poc` | B | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono `html``` / JSX | fragments | 2.0.8 → 4.0.0 |
+| `2026-01-24_hda-dynapage-demo` | B | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono components | **4 strategies compared:** OOB · `hx-partial` · event-JSX · event-HTML | 2.0.8 → 4.0.0 |
+| `2026-03-07_…graalvm-jsx-poc` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | `hono/jsx` (`.tsx`) | fragments | 4.0.0 |
+| `2026-03-09_hda-springboot-graalvm-hono-demo` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
+| `2026-03-15_hda-quarkus-graalvm-hono-demo` | B | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
+| `2026-09-03_hda-springboot-browser-hono` | B | Spring Boot 4, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
+| `2026-09-03_hda-quarkus-browser-hono` | B | Quarkus 3.32, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 
 The `…thymeleaf-htmx` row was built out 2026-09-06 (with Claude) as the
 fragment/slot take on the same `m01/m03/m04/m05` course the Qute variant runs
@@ -92,9 +100,14 @@ The direction of truth flipped over time: TypeScript-first → **Java-first**
 - **Event-driven refresh** — `hx-trigger="… from:body"` on a component so it
   reloads itself when something elsewhere changes (introduced with JTE View
   Components).
-- **OOB swaps vs `hx-partial`** — compared directly in `dynapage-demo` on an
-  editable table with row-edit and bulk-delete; `hx-partial` came out more
-  readable and is the style carried into the GraalVM demos.
+- **Update-strategy bake-off** — `dynapage-demo` builds one editable table (row
+  edit + bulk delete) **four ways**, as separate parts of the app: **OOB swap**,
+  **`hx-partial`**, **event-driven / JSX** (action response is just a client-side
+  event, an Alpine receiver reacts — no HTML) and **event-driven / HTML** (same,
+  but markup comes back too). Between the two **swap mechanisms**, the user finds
+  `hx-partial` more readable than **OOB**, and it is the style carried into the
+  GraalVM demos; the event-driven takes are a different mechanism, not ranked
+  against it.
 - Nested-form avoidance — the `form=` attribute pattern for a selection table
   (from `dynapage-demo`).
 
