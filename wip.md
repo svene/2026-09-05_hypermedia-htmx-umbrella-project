@@ -25,8 +25,8 @@ refer to them by name only. Full list + links: `docs/Variants.md`.
 - 2025-12-31-springboot-hono-poc
 - 2026-01-24_hda-dynapage-demo
 - 2026-03-07_springboot-graalvm-jsx-poc
-- 2026-03-09_hda-springboot-graalvm-jsx-demo
-- 2026-03-15_hda-quarkus-graalvm-jsx-demo
+- 2026-03-09_hda-springboot-graalvm-hono-demo
+- 2026-03-15_hda-quarkus-graalvm-hono-demo
 - 2026-09-03_hda-springboot-browser-hono
 - 2026-09-03_hda-quarkus-browser-hono
 
@@ -161,11 +161,12 @@ by WP1 (catalog) + WP3.
   `docs/Learnings.md` and `docs/Analysis-Baseline.md` updated (WP-T5). Left open:
   the docs-project side (**WP-T6**) and the two Qute clean-ups (**WP-T7**,
   **WP-T9**).
-- **Rename the `jsx` repos.** Tracked as **WP-T10c** in
-  "[Rename work packages](#rename-work-packages-wp-t10b-wp-t10c)" — the `jsx` in
-  the three `2026-03-*-graalvm-jsx-*` project names is historical (they use hono
-  `html``` tagged templates, not JSX). User renames the folders + GitHub repos;
-  Claude then updates the project names across `docs/*` + `wip.md`.
+- ~~**Rename the `jsx` repos.**~~ **DONE 2026-09-09 (WP-T10c).** The two GraalVM
+  *demo* repos are now `…graalvm-hono-demo` (they use hono `html``` tagged
+  templates, not JSX); `2026-03-07_springboot-graalvm-jsx-poc` keeps its name
+  (still `.tsx` + TS→Java, a deliberate historical PoC). Names swept across
+  `docs/*` + `wip.md` and the affected sibling repos — see WP-T10c in
+  "[Rename work packages](#rename-work-packages-wp-t10b-wp-t10c)".
 - ~~**Codegen-direction consistency.**~~ **Decided (2026-09-05):**
   `2026-03-07_springboot-graalvm-jsx-poc` stays as a **historical PoC** — it keeps
   `.tsx` and TS→Java generation. A "historical PoC, deliberately not updated" note
@@ -429,7 +430,7 @@ separate list because they block nothing else and can happen at any time.
 | WP | Repo | Status | Deliverable |
 |----|------|--------|-------------|
 | WP-T10b | user, then umbrella | **DONE 2026-09-09** | **Renamed the docs project** `2026-05-02_ssfe-patterns-jte-vc-htmx-docs` → `2026-05-02_hda-htmx-patterns-docs` (no longer JTE-VC-only). **User:** `mv` the local folder, renamed the GitHub repo (`https://github.com/svene/2026-05-02_hda-htmx-patterns-docs`), `git remote set-url`. **Claude — reference sweep:** old name → new across the umbrella `docs/*` (`Variants.md` repo table + section heading + 2 prose refs, `Analysis-Baseline.md` baseline row, `History.md` ×2, `Learnings.md` #16, `Variant-Comparison.md` ×2) and `wip.md` (~10 refs + this row); dropped the now-stale "to be renamed" / "(and renamed…)" asides. Also in the **thymeleaf variant repo** — `readme.adoc` + 4 `S0NController` javadocs (**user commits there**) — and the docs project's own `package.json` + `package-lock.json` `name` field (**user commits there**). No in-app "Docs" back-link encoded the old name (all use `http://localhost:4321/…`); the `@app` vite alias + `extract-*-snippets.js` srcRoots point at the variant repos, unaffected by a same-depth folder rename. |
-| WP-T10c | user, then umbrella | TODO | **Rename the `graalvm-jsx` repos.** `jsx` in `2026-03-07_springboot-graalvm-jsx-poc`, `2026-03-09_hda-springboot-graalvm-jsx-demo` and `2026-03-15_hda-quarkus-graalvm-jsx-demo` is historical — they use hono `html``` tagged templates, not JSX (except the `2026-03-07` PoC, which still has `.tsx`). **User, manually:** rename e.g. `…graalvm-jsx-demo` → `…graalvm-hono-demo` (local folders + GitHub repos + remotes). **Then Claude:** update the project names across the umbrella `docs/*` (the repo table in `docs/Variants.md` and `docs/Analysis-Baseline.md` included) + `wip.md`. |
+| WP-T10c | user, then umbrella | **DONE 2026-09-09** | **Renamed the two GraalVM *demo* repos** (`jsx` → `hono` — they use hono `html``` tagged templates, not JSX): `2026-03-09_hda-springboot-graalvm-jsx-demo` → `…-graalvm-hono-demo`, `2026-03-15_hda-quarkus-graalvm-jsx-demo` → `…-graalvm-hono-demo`. `2026-03-07_springboot-graalvm-jsx-poc` **keeps its name** — still `.tsx` + TS→Java, a deliberate historical PoC. **User:** `mv` the local folders, renamed the GitHub repos + `git remote set-url`. **Claude — reference sweep:** old → new across the umbrella `docs/*` (`Variants.md` repo table + 2 section headings, `Analysis-Baseline.md` ×2 rows, `History.md` Phase 5/6 prose, `Learnings.md` codegen-audit table ×2, `Variant-Comparison.md` capability table + "which variant" table) and `wip.md` (project list + Future-work pointer + this row). Also in sibling repos (**user commits there**): `2026-03-07…jsx-poc/readme.md` back-reference; `2026-09-03_hda-quarkus-browser-hono/VARIANT-COMPARISON.md`; and in the two renamed repos themselves — `pom.xml` (`artifactId` + Spring `<name>`/`<description>`, also fixing a stale `2026-03-07` date), the Quarkus repo's `VARIANT-COMPARISON.md` self/twin refs, the Spring repo's `playwright/playwright.config.ts` jar path. **Not touched:** `.idea/*` module names (IDE-regenerated); the separate `2026-06-07_se-homepage` project (published blog posts + project list — GitHub redirects the old repo URLs; user's call). |
 
 ### Open choices — resolved (2026-09-06, by the user)
 

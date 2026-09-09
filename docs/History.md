@@ -80,7 +80,7 @@ two languages.
 
 ## Phase 5 — Collapse to one process with GraalVM (2026-03)
 
-`springboot-graalvm-jsx-poc`, then `hda-springboot-graalvm-jsx-demo`: run the
+`springboot-graalvm-jsx-poc`, then `hda-springboot-graalvm-hono-demo`: run the
 JavaScript renderer **inside the JVM** via GraalVM Polyglot. No second server; the
 templates stay TypeScript. esbuild bundles them to one `ssr.js`.
 
@@ -97,7 +97,7 @@ Things learned here:
 
 ## Phase 6 — Convergence and simplification (2026-03-15 onward)
 
-`hda-quarkus-graalvm-jsx-demo` was built as the framework-agnostic twin of the
+`hda-quarkus-graalvm-hono-demo` was built as the framework-agnostic twin of the
 Spring Boot demo, then both repos were synced. The changes made along the way are
 the current preferred style:
 

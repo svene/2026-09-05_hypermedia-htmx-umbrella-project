@@ -23,8 +23,8 @@ name.
 | `2025-12-31-springboot-hono-poc` | <https://github.com/svene/2025-12-31-springboot-hono-poc> | 2025-12 |
 | `2026-01-24_hda-dynapage-demo` | <https://github.com/svene/2026-01-24_hda-dynapage-demo> | 2026-01 |
 | `2026-03-07_springboot-graalvm-jsx-poc` | <https://github.com/svene/2026-03-07_springboot-graalvm-jsx-poc> | 2026-03 |
-| `2026-03-09_hda-springboot-graalvm-jsx-demo` | <https://github.com/svene/2026-03-09_hda-springboot-graalvm-jsx-demo> | 2026-03 |
-| `2026-03-15_hda-quarkus-graalvm-jsx-demo` | <https://github.com/svene/2026-03-15_hda-quarkus-graalvm-jsx-demo> | 2026-03 |
+| `2026-03-09_hda-springboot-graalvm-hono-demo` | <https://github.com/svene/2026-03-09_hda-springboot-graalvm-hono-demo> | 2026-03 |
+| `2026-03-15_hda-quarkus-graalvm-hono-demo` | <https://github.com/svene/2026-03-15_hda-quarkus-graalvm-hono-demo> | 2026-03 |
 | `2026-05-02_hda-htmx-patterns-docs` | <https://github.com/svene/2026-05-02_hda-htmx-patterns-docs> | 2026-05 |
 | `2026-09-03_hda-springboot-browser-hono` | <https://github.com/svene/2026-09-03_hda-springboot-browser-hono> | 2026-09 |
 | `2026-09-03_hda-quarkus-browser-hono` | <https://github.com/svene/2026-09-03_hda-quarkus-browser-hono> | 2026-09 |
@@ -157,7 +157,7 @@ pair, where the same templates run client-side. They mostly render the same smal
   **kept as-is on purpose** — its `readme.md` carries a "historical PoC" note
   (see the audit in [Learnings.md](Learnings.md)).
 
-### `2026-03-09_hda-springboot-graalvm-jsx-demo`
+### `2026-03-09_hda-springboot-graalvm-hono-demo`
 
 - **Role:** full demo of the GraalVM-polyglot approach (Spring Boot).
 - **Stack:** Spring Boot 4 (Java 21, `JdbcClient`, Flyway/HSQLDB) + GraalVM
@@ -169,7 +169,7 @@ pair, where the same templates run client-side. They mostly render the same smal
   constants from Java** (`typescript-generator`), Java being the source of truth.
 - **Status:** working demo with architecture / java-ts-integration docs.
 
-### `2026-03-15_hda-quarkus-graalvm-jsx-demo`
+### `2026-03-15_hda-quarkus-graalvm-hono-demo`
 
 - **Role:** the Quarkus twin of `2026-03-09` — same pattern, other framework.
 - **Stack:** Quarkus (JAX-RS, `@ConfigMapping`, `@Scheduled`, H2) + GraalVM

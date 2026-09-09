@@ -22,8 +22,8 @@ is not a variant and is left out of the tables.
 | `2025-12-31-springboot-hono-poc` | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono `html``` / JSX | fragments | 2.0.8 → 4.0.0 |
 | `2026-01-24_hda-dynapage-demo` | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono components | **OOB vs `hx-partial`, compared** | 2.0.8 → 4.0.0 |
 | `2026-03-07_…graalvm-jsx-poc` | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | `hono/jsx` (`.tsx`) | fragments | 4.0.0 |
-| `2026-03-09_hda-springboot-graalvm-jsx-demo` | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
-| `2026-03-15_hda-quarkus-graalvm-jsx-demo` | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
+| `2026-03-09_hda-springboot-graalvm-hono-demo` | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
+| `2026-03-15_hda-quarkus-graalvm-hono-demo` | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
 | `2026-09-03_hda-springboot-browser-hono` | Spring Boot 4, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 | `2026-09-03_hda-quarkus-browser-hono` | Quarkus 3.32, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 
@@ -100,7 +100,7 @@ The direction of truth flipped over time: TypeScript-first → **Java-first**
 
 ## Axis 5 — Native image / deployment
 
-- The **Quarkus** variants (`…qute-htmx`, `…quarkus-graalvm-jsx-demo`,
+- The **Quarkus** variants (`…qute-htmx`, `…quarkus-graalvm-hono-demo`,
   `…quarkus-browser-hono`) carry native-image build files.
 - The **GraalVM polyglot** demos run on a GraalVM **JDK** (so GraalJS JIT-compiles
   the hot JS) but are **not** native images.
@@ -178,4 +178,4 @@ picker:
 | TypeScript HTML but you have a large Java codebase, and a second process is acceptable | separate Hono process (`springboot-hono-poc` pattern) |
 | TypeScript HTML, one Java codebase, **one** deployable, all rendering server-side | GraalVM polyglot (`2026-03-09` / `2026-03-15`) |
 | TypeScript HTML, one Java codebase, **plain JDK** (no GraalVM), server does only JSON — and shipping template code to the browser + a first-paint JS round-trip is acceptable | browser-side Hono (`2026-09-03_hda-*-browser-hono`) — the most recent direction |
-| Any of the GraalVM / browser variants on Quarkus with native-image on the table | `2026-03-15_hda-quarkus-graalvm-jsx-demo` or `2026-09-03_hda-quarkus-browser-hono` |
+| Any of the GraalVM / browser variants on Quarkus with native-image on the table | `2026-03-15_hda-quarkus-graalvm-hono-demo` or `2026-09-03_hda-quarkus-browser-hono` |
