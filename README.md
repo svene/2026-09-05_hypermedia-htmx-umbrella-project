@@ -16,20 +16,37 @@ GraalVM polyglot, and most recently in the browser. The date prefix in each
 project name marks when that experiment started and roughly tracks the learning
 journey.
 
+For the local repository layout, the project categories, and how the
+documentation set is kept current, see
+[`README_details.md`](README_details.md).
+
 ## Documents
 
-Start with [`docs/README.md`](docs/README.md), which indexes the documents and the
-suggested reading order.
+Read in this order:
 
-| File | Purpose |
-|------|---------|
-| [`docs/Variants.md`](docs/Variants.md) | Lightweight catalog: for each sibling project, what it is, its one distinguishing concept, and a pointer to the project for details. |
-| [`docs/History.md`](docs/History.md) | The chronological story: which concepts were adopted or dropped from one variant to the next, and why. |
-| [`docs/Variant-Comparison.md`](docs/Variant-Comparison.md) | The variants compared at the level of concepts and architecture. |
-| [`docs/Learnings.md`](docs/Learnings.md) | Learnings inferred from how the projects changed over time. Seeded from the observable history; extended manually. |
-| [`docs/Analysis-Baseline.md`](docs/Analysis-Baseline.md) | The commit each project was at when these docs were written, and how to refresh the docs after upstream changes. |
+1. **[docs/Variants.md](docs/Variants.md)** — the catalog. Opens with the two
+   project groups — **A · SSFE pattern showcases** (one per template technology)
+   and **B · "person" use-case apps** (one per technology/architecture), plus
+   the docs tooling — then the project ↔ GitHub repository table (with a
+   **Group** column) and, per project, what it is, its one distinguishing idea,
+   and status. Start here.
+2. **[docs/History.md](docs/History.md)** — the chronological story: which
+   concepts were adopted or dropped from one variant to the next, and why. Told
+   as 8 phases.
+3. **[docs/Variant-Comparison.md](docs/Variant-Comparison.md)** — the variants
+   compared on fixed axes (where HTML is generated, view technology, the
+   cross-language contract, dynamic-update style, native-image/deployment), then
+   a deep **two-process vs GraalVM vs browser-hono** trade-off section and a
+   "when to pick which" table.
+4. **[docs/Learnings.md](docs/Learnings.md)** — learnings inferred from how the
+   projects changed over time. Seeded from the observable history; **meant to be
+   extended manually.**
+5. **[docs/Analysis-Baseline.md](docs/Analysis-Baseline.md)** — the commit each
+   project was at when these docs were written, plus how to refresh the docs
+   after upstream changes.
 
 ## Working notes
 
-[`wip.md`](wip.md) holds the plan, the work-package breakdown, and the current
-TODO list.
+[`wip.md`](wip.md) holds the current TODO list and the conventions used when
+extending this documentation set. Completed work packages are logged in
+[`wip_done.md`](wip_done.md).

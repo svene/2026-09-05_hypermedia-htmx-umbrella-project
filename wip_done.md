@@ -1,8 +1,9 @@
 # Completed work log
 
 Split off from `wip.md` on 2026-09-11 to keep the active working document short.
-Everything below is **finished** — kept here as a record. See `wip.md` for the
-project's live purpose / scope / conventions and whatever is still open.
+Everything below is **finished** — kept here as a record. See `README.md` /
+`README_details.md` for the project's purpose and scope, `wip.md` for Claude's
+working conventions and whatever is still open.
 
 ## Work packages
 
