@@ -39,6 +39,24 @@ trade-off / when this variant makes sense.
 
 ## TODO
 
+- [ ] **WP22 — Rename the 5 `ssfe-patterns-*` repos** (follow-up to WP21,
+  `wip_done.md` — the terminology-only pass). **Blocked on a naming decision:**
+  what replaces `ssfe-patterns` in `2025-08-23_ssfe-patterns-jte-htmx`,
+  `…-jte-vc-htmx`, `…-thymeleaf-htmx`, `2025-12-21_ssfe-patterns-quarkus-qute-htmx`,
+  `2025-12-27_ssfe-patterns-hono-htmx`? Options to pick between (or propose
+  another): `hypermedia-patterns-*`, or folding into the `hda-` scheme the newer
+  projects already use. Once decided: **user, manually, one repo at a time is
+  fine** (doesn't have to be all 5 at once — precedent: WP-T10c left the GraalVM
+  PoC un-renamed) — `mv` the local folder, rename the GitHub repo,
+  `git remote set-url`. **Then Claude, per repo:** sweep `docs/*` +
+  `wip.md`/`wip_done.md` (project list, `Analysis-Baseline.md` row) + any
+  cross-repo prose reference in sibling repos (WP-T10b/c found some — e.g. a
+  readme or javadoc naming a sibling by its old name) + the docs-project's astro
+  sidebar/`.mdx` pages for that variant, if they name the repo (its
+  `extract-<v>-snippets.js` reads by relative path, not by name, so likely
+  unaffected — verify per repo). **Bigger than WP-T10b/c: 5 repos instead of
+  1–2**, so budget more than one session and expect to find repo-specific
+  cross-references not listed here.
 - [ ] **_(optional, low priority)_ Build out `2025-08-23_ssfe-patterns-jte-htmx`** —
   it is a very simple demo project and does **not** cover all the patterns the
   other pattern-course projects (JTE-VC, Thymeleaf, Qute, Hono) share. Bringing
@@ -46,5 +64,5 @@ trade-off / when this variant makes sense.
   the user has flagged this as low priority. Update `docs/*` afterwards.
 
 Everything else that was ever tracked here has shipped — see
-[`wip_done.md`](wip_done.md) for the full work-package history (WP0…WP20,
+[`wip_done.md`](wip_done.md) for the full work-package history (WP0…WP21,
 WP-T*, WP-S*), the completed Future-work items, and the resolved open questions.

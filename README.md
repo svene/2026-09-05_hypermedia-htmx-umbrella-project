@@ -25,7 +25,7 @@ documentation set is kept current, see
 Read in this order:
 
 1. **[docs/Variants.md](docs/Variants.md)** — the catalog. Opens with the two
-   project groups — **A · SSFE pattern showcases** (one per template technology)
+   project groups — **A · Hypermedia pattern showcases** (one per template technology)
    and **B · "person" use-case apps** (one per technology/architecture), plus
    the docs tooling — then the project ↔ GitHub repository table (with a
    **Group** column) and, per project, what it is, its one distinguishing idea,

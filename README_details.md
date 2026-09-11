@@ -17,8 +17,8 @@ The sibling projects fall into two families, plus documentation tooling — see
 [`docs/Variants.md`](docs/Variants.md) for the full catalog and the project ↔
 repository table:
 
-- **SSFE pattern showcases** — the same server-side-frontend pattern course,
-  one implementation per template technology (JTE, JTE + View Components,
+- **Hypermedia pattern showcases** — the same hypermedia pattern course, one
+  implementation per template technology (JTE, JTE + View Components,
   Thymeleaf, Qute, Hono).
 - **"Person" use-case apps** — the same small people/person domain
   application, one implementation per technology or architecture (two-process

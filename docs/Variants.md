@@ -12,7 +12,7 @@ roughly marks the point on the learning curve.
 
 The siblings fall into two families, plus the documentation tooling:
 
-- **Group A · SSFE pattern showcases** — the same server-side-frontend pattern
+- **Group A · Hypermedia pattern showcases** — the same hypermedia pattern
   course (a landing page + the `s01` / `s03` / `s04` / `s05` demo series),
   re-implemented once per **template technology**. They exist to compare *how you
   express the patterns*, not to build a real application.
@@ -57,7 +57,7 @@ pair, where the same templates run client-side. They mostly render the same smal
 
 ---
 
-## Group A — SSFE pattern showcases
+## Group A — Hypermedia pattern showcases
 
 One repo per **template technology**, all running the same pattern course
 (landing + `s01`/`s03`/`s04`/`s05`). They compare *how the patterns are
@@ -118,7 +118,7 @@ expressed*, not a real app. Ordered by era below.
 - **Stack:** Quarkus + [Qute](https://quarkus.io/guides/qute) templates, **htmx 4**
   (vendored under `META-INF/resources/js/…`, upgraded from 2.0.4 on 2026-09-05,
   commit `431e0d2`); native-image build files present.
-- **Distinguishing idea:** the same SSFE patterns on a Quarkus/Qute stack, with
+- **Distinguishing idea:** the same hypermedia patterns on a Quarkus/Qute stack, with
   a module-per-concept teaching structure and a live code-snippet viewer built
   into the demo app.
 - **Status:** working through module M05.
@@ -129,7 +129,7 @@ expressed*, not a real app. Ordered by era below.
 
 #### `2025-12-27_ssfe-patterns-hono-htmx`
 
-- **Role:** pattern showcase — the Hono/TS re-do of the SSFE pattern course
+- **Role:** pattern showcase — the Hono/TS re-do of the hypermedia pattern course
   (same `m00`–`m05` module structure as the Qute variant).
 - **Stack:** [Hono](https://hono.dev/) on Bun, **htmx 4** (vendored under
   `static/js/…`, upgraded from 2.0.8 on 2026-09-05, commit `3daf3da`), no Java at
