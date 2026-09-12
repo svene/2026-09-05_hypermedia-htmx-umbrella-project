@@ -6,8 +6,9 @@ for how it got there, see [History.md](History.md).
 
 Scope: the app / pattern-showcase variants, in the two groups the
 [catalog](Variants.md) defines — **A · Hypermedia pattern showcases**
-(`…ssfe-patterns-*` repos — see the "Terminology" work package in `wip.md` for
-the pending repo rename), one per template technology, and **B · "person"
+(`…ssfe-patterns-*` repos — see the "Terminology" work package in
+`docs/ai/wip.md` for the pending repo rename), one per template technology,
+and **B · "person"
 use-case apps** (the same domain
 app, one per technology/architecture). `2026-05-02_hda-htmx-patterns-docs` (the
 documentation site, and its throwaway predecessor `2026-05-01_springboot-hono-docs`)

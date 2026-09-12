@@ -14,7 +14,7 @@ produced*, not *what* it shows.
 
 Starting point: Spring Boot + htmx, HTML from a Java template engine.
 
-- **Plain JTE** (`ssfe-patterns-jte-htmx`). Established the two ways to assemble a
+- **Plain JTE** (`hypermedia-patterns-jte-htmx`). Established the two ways to assemble a
   page: *Template-Injection* (the layout receives a content block) vs
   *Template-Inclusion* (the page pulls in header/nav/footer fragments). JTE's
   refusal to parse unclosed tags forced awkward workarounds (e.g. the `<body>`

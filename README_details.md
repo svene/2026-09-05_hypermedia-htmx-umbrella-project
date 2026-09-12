@@ -26,13 +26,21 @@ repository table:
 - **Documentation tooling** — a separate Astro/Starlight site that extracts
   code snippets from the real variant source; not a variant itself.
 
+## AI-facing tracking files
+
+`docs/ai/` holds files Claude reads and writes to do its own bookkeeping —
+`wip.md` (current TODO + working conventions), `wip_done.md` (completed
+work-package log) and `Analysis-Baseline.md` (see below). They're kept apart
+from `docs/*.md`, which is written to be read by a person.
+
 ## Keeping the docs current
 
-`docs/Analysis-Baseline.md` records the commit each sibling project was
+`docs/ai/Analysis-Baseline.md` records the commit each sibling project was
 analysed at. To refresh a document after upstream changes: diff
 `<recorded-hash>..HEAD` in that project, revise the affected files under
 `docs/`, then bump that project's row and the analysis date in
-`Analysis-Baseline.md`.
+`Analysis-Baseline.md`. The `update-docs` skill automates this sweep across
+every project in the table.
 
 `docs/Learnings.md` is seeded from the observable history and meant to be
 extended over time with reasoning that isn't visible in commit messages.

@@ -35,7 +35,7 @@ name.
 
 | Project | Group | Repository | Started |
 |---|---|---|---|
-| `2025-08-23_ssfe-patterns-jte-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_ssfe-patterns-jte-htmx> | 2025-08 |
+| `2025-08-23_hypermedia-patterns-jte-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-jte-htmx> | 2025-08 |
 | `2025-08-23_ssfe-patterns-jte-vc-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_ssfe-patterns-jte-vc-htmx> | 2025-08 |
 | `2025-08-23_ssfe-patterns-thymeleaf-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_ssfe-patterns-thymeleaf-htmx> | 2025-08 |
 | `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | A · Patterns | <https://github.com/svene/2025-12-21_ssfe-patterns-quarkus-qute-htmx> | 2025-12 |
@@ -65,7 +65,7 @@ expressed*, not a real app. Ordered by era below.
 
 ### Java template-engine era (2025-08)
 
-#### `2025-08-23_ssfe-patterns-jte-htmx`
+#### `2025-08-23_hypermedia-patterns-jte-htmx`
 
 - **Role:** pattern showcase.
 - **Stack:** Spring Boot + plain [JTE](https://jte.gg/), **htmx 4** (vendored under
@@ -259,7 +259,8 @@ A separate site that documents the variants. It is
 **deliberately kept separate** from this umbrella project (decided 2026-09-06):
 different purpose — per-variant, code-level docs with source extracted from the
 real variant, versus this project's high-level concepts and cross-variant
-comparison. It is to be extended to cover every pattern variant — see `wip.md`.
+comparison. It is to be extended to cover every pattern variant — see
+`docs/ai/wip.md`.
 
 ### `2026-05-02_hda-htmx-patterns-docs`
 

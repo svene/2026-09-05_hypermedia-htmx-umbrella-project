@@ -1,8 +1,10 @@
 # Analysis Baseline
 
-The commit each project was at **when the docs in this folder were written**. When
-a project gains new commits later, diff from the hash recorded here to see what
-the umbrella docs still need to catch up on.
+AI-facing tracking file (see `docs/ai/` — kept separate from the user-facing
+docs in `docs/`, moved here 2026-09-12). The commit each project was at **when
+the `docs/*.md` files were last written**. When a project gains new commits
+later, diff from the hash recorded here to see what the umbrella docs still
+need to catch up on.
 
 - Analysis date: **2026-09-09** (baseline re-synced to each project's current
   HEAD; the 2026-09-06 Thymeleaf build-out and the 2026-09-07 per-project
@@ -10,12 +12,12 @@ the umbrella docs still need to catch up on.
   content beyond what the umbrella docs already cover)
 - All projects analysed on branch `main` unless noted.
 - Project name = GitHub repo name under `github.com/svene/` (see
-  [Variants.md](Variants.md) for links). The throwaway spike
+  [../Variants.md](../Variants.md) for links). The throwaway spike
   `2026-05-01_springboot-hono-docs` (local-only, superseded) is not tracked here.
 
 | Project | Branch | Commit at analysis | Date | Subject |
 |---|---|---|---|---|
-| `2025-08-23_ssfe-patterns-jte-htmx` | main | `9a9f2d9` | 2026-09-07 | playwright tests |
+| `2025-08-23_hypermedia-patterns-jte-htmx` | main | `9a9f2d9` | 2026-09-07 | playwright tests |
 | `2025-08-23_ssfe-patterns-jte-vc-htmx` | main | `a2c3cd1` | 2026-09-07 | playwright tests |
 | `2025-08-23_ssfe-patterns-thymeleaf-htmx` | main | `dc9822f` | 2026-09-09 | WP-T10b — docs-project rename swept through readme + javadocs |
 | `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | main | `e6bffc3` | 2026-09-07 | playwright tests |
@@ -31,7 +33,10 @@ the umbrella docs still need to catch up on.
 
 ## Refreshing the docs after upstream changes
 
-For one project (from that project's working copy):
+This whole procedure is automated by the `update-docs` skill
+(`.claude/skills/update-docs/SKILL.md`) — invoke it to sweep every project in
+this table. The manual steps it follows, for one project (from that project's
+working copy):
 
 ```sh
 git log --oneline <recorded-hash>..HEAD

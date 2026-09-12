@@ -41,12 +41,14 @@ Read in this order:
 4. **[docs/Learnings.md](docs/Learnings.md)** — learnings inferred from how the
    projects changed over time. Seeded from the observable history; **meant to be
    extended manually.**
-5. **[docs/Analysis-Baseline.md](docs/Analysis-Baseline.md)** — the commit each
-   project was at when these docs were written, plus how to refresh the docs
-   after upstream changes.
 
 ## Working notes
 
-[`wip.md`](wip.md) holds the current TODO list and the conventions used when
-extending this documentation set. Completed work packages are logged in
-[`wip_done.md`](wip_done.md).
+AI-facing tracking, kept separate from the docs above — see
+[`README_details.md`](README_details.md) for why. [`docs/ai/wip.md`](docs/ai/wip.md)
+holds the current TODO list and the conventions used when extending this
+documentation set; completed work packages are logged in
+[`docs/ai/wip_done.md`](docs/ai/wip_done.md);
+[`docs/ai/Analysis-Baseline.md`](docs/ai/Analysis-Baseline.md) tracks the
+commit each sibling project was last analysed at, so the docs above can be
+refreshed after upstream changes (automated by the `update-docs` skill).
