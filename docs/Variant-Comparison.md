@@ -33,7 +33,7 @@ technology* (Axis 2).
 | `2025-12-31-springboot-hono-poc` | B | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono `html``` / JSX | fragments | 2.0.8 → 4.0.0 |
 | `2026-01-24_hypermedia-dynapage-demo` | B | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono components | **4 strategies compared:** OOB · `hx-partial` · event-JSX · event-HTML | 2.0.8 → 4.0.0 |
 | `2026-03-07_…graalvm-jsx-poc` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | `hono/jsx` (`.tsx`) | fragments | 4.0.0 |
-| `2026-03-09_hda-springboot-graalvm-hono-demo` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
+| `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
 | `2026-03-15_hda-quarkus-graalvm-hono-demo` | B | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
 | `2026-09-03_hda-springboot-browser-hono` | B | Spring Boot 4, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 | `2026-09-03_hda-quarkus-browser-hono` | B | Quarkus 3.32, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |

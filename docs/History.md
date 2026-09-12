@@ -80,7 +80,7 @@ two languages.
 
 ## Phase 5 — Collapse to one process with GraalVM (2026-03)
 
-`springboot-graalvm-jsx-poc`, then `hda-springboot-graalvm-hono-demo`: run the
+`springboot-graalvm-jsx-poc`, then `hypermedia-springboot-graalvm-hono-demo`: run the
 JavaScript renderer **inside the JVM** via GraalVM Polyglot. No second server; the
 templates stay TypeScript. esbuild bundles them to one `ssr.js`.
 

@@ -43,7 +43,7 @@ name.
 | `2025-12-31-springboot-hono-poc` | B · Person app | <https://github.com/svene/2025-12-31-springboot-hono-poc> | 2025-12 |
 | `2026-01-24_hypermedia-dynapage-demo` | B · Person app | <https://github.com/svene/2026-01-24_hypermedia-dynapage-demo> | 2026-01 |
 | `2026-03-07_springboot-graalvm-jsx-poc` | B · Person app | <https://github.com/svene/2026-03-07_springboot-graalvm-jsx-poc> | 2026-03 |
-| `2026-03-09_hda-springboot-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-09_hda-springboot-graalvm-hono-demo> | 2026-03 |
+| `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-09_hypermedia-springboot-graalvm-hono-demo> | 2026-03 |
 | `2026-03-15_hda-quarkus-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-15_hda-quarkus-graalvm-hono-demo> | 2026-03 |
 | `2026-05-02_hda-htmx-patterns-docs` | Docs tooling | <https://github.com/svene/2026-05-02_hda-htmx-patterns-docs> | 2026-05 |
 | `2026-09-03_hda-springboot-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hda-springboot-browser-hono> | 2026-09 |
@@ -195,7 +195,7 @@ compare *where and how the HTML is produced and updated*. Ordered by era below.
   **kept as-is on purpose** — its `readme.md` carries a "historical PoC" note
   (see the audit in [Learnings.md](Learnings.md)).
 
-#### `2026-03-09_hda-springboot-graalvm-hono-demo`
+#### `2026-03-09_hypermedia-springboot-graalvm-hono-demo`
 
 - **Role:** full demo of the GraalVM-polyglot approach (Spring Boot).
 - **Stack:** Spring Boot 4 (Java 21, `JdbcClient`, Flyway/HSQLDB) + GraalVM
