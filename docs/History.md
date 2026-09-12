@@ -20,7 +20,7 @@ Starting point: Spring Boot + htmx, HTML from a Java template engine.
   refusal to parse unclosed tags forced awkward workarounds (e.g. the `<body>`
   tag has to live in the page, not the fragment), which pushed Injection forward
   as the better default.
-- **JTE + View Components** (`ssfe-patterns-jte-vc-htmx`). Moved from templates
+- **JTE + View Components** (`hypermedia-patterns-jte-vc-htmx`). Moved from templates
   addressed by path string to **components as server objects** — each owns its
   URL constant and template, the controller returns the component, and an htmx
   event (`hx-trigger … from:body`) refreshes it in place. Less stringly-typed

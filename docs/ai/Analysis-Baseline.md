@@ -18,7 +18,7 @@ need to catch up on.
 | Project | Branch | Commit at analysis | Date | Subject |
 |---|---|---|---|---|
 | `2025-08-23_hypermedia-patterns-jte-htmx` | main | `9a9f2d9` | 2026-09-07 | playwright tests |
-| `2025-08-23_ssfe-patterns-jte-vc-htmx` | main | `a2c3cd1` | 2026-09-07 | playwright tests |
+| `2025-08-23_hypermedia-patterns-jte-vc-htmx` | main | `a2c3cd1` | 2026-09-07 | playwright tests |
 | `2025-08-23_ssfe-patterns-thymeleaf-htmx` | main | `dc9822f` | 2026-09-09 | WP-T10b — docs-project rename swept through readme + javadocs |
 | `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | main | `e6bffc3` | 2026-09-07 | playwright tests |
 | `2025-12-27_ssfe-patterns-hono-htmx` | main | `98a8543` | 2026-09-07 | playwright tests |

@@ -49,7 +49,7 @@ trade-off / when this variant makes sense.
   | Old | New | Status |
   |---|---|---|
   | `2025-08-23_ssfe-patterns-jte-htmx` | `2025-08-23_hypermedia-patterns-jte-htmx` | ☑ **done 2026-09-12** — repo renamed, remote/folder/internals updated, umbrella docs swept; awaiting the project's own commit |
-  | `2025-08-23_ssfe-patterns-jte-vc-htmx` | `2025-08-23_hypermedia-patterns-jte-vc-htmx` | pending |
+  | `2025-08-23_ssfe-patterns-jte-vc-htmx` | `2025-08-23_hypermedia-patterns-jte-vc-htmx` | ☑ **done 2026-09-12** — repo renamed, remote/folder/internals updated, docs-project paths fixed (would've broken extraction), umbrella docs swept; awaiting commits |
   | `2025-08-23_ssfe-patterns-thymeleaf-htmx` | `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | pending |
   | `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | pending |
   | `2025-12-27_ssfe-patterns-hono-htmx` | `2025-12-27_hypermedia-patterns-hono-htmx` | pending |

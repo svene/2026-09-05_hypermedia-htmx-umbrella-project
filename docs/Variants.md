@@ -36,7 +36,7 @@ name.
 | Project | Group | Repository | Started |
 |---|---|---|---|
 | `2025-08-23_hypermedia-patterns-jte-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-jte-htmx> | 2025-08 |
-| `2025-08-23_ssfe-patterns-jte-vc-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_ssfe-patterns-jte-vc-htmx> | 2025-08 |
+| `2025-08-23_hypermedia-patterns-jte-vc-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-jte-vc-htmx> | 2025-08 |
 | `2025-08-23_ssfe-patterns-thymeleaf-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_ssfe-patterns-thymeleaf-htmx> | 2025-08 |
 | `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | A · Patterns | <https://github.com/svene/2025-12-21_ssfe-patterns-quarkus-qute-htmx> | 2025-12 |
 | `2025-12-27_ssfe-patterns-hono-htmx` | A · Patterns | <https://github.com/svene/2025-12-27_ssfe-patterns-hono-htmx> | 2025-12 |
@@ -76,7 +76,7 @@ expressed*, not a real app. Ordered by era below.
   fragments) — and why Injection scales better.
 - **Status:** working, documents two patterns.
 
-#### `2025-08-23_ssfe-patterns-jte-vc-htmx`
+#### `2025-08-23_hypermedia-patterns-jte-vc-htmx`
 
 - **Role:** pattern showcase (the most built-out of the 2025-08 trio).
 - **Stack:** Spring Boot + JTE + [spring-view-component](https://github.com/tschuehly/spring-view-component)
@@ -271,7 +271,7 @@ comparison. It is to be extended to cover every pattern variant — see
   **extracted from the real variant source** by tag markers, so the docs cannot
   drift from the code. `npm run extract-snippets` rebuilds the samples; `npm run
   dev` serves the site.
-- **Status:** covers the JTE-VC (`2025-08-23_ssfe-patterns-jte-vc-htmx`) and Hono
+- **Status:** covers the JTE-VC (`2025-08-23_hypermedia-patterns-jte-vc-htmx`) and Hono
   (`2025-12-27_ssfe-patterns-hono-htmx`) variants; the sidebar is scaffolded for
   Thymeleaf, JSX-Spring-Hono and the two Graal-JSX demos as future additions.
 
