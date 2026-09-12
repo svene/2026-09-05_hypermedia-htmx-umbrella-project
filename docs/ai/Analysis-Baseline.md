@@ -9,10 +9,15 @@ need to catch up on.
 - Analysis date: **2026-09-12** (baseline re-synced to each project's current
   HEAD; the 2026-09-06 Thymeleaf build-out and the 2026-09-07 per-project
   `playwright/` additions (WP-T12) are reflected — neither changes doc-relevant
-  content beyond what the umbrella docs already cover. The 2026-09-12 WP22
-  rename commits for the 5 `ssfe-patterns-*` repos — WP-T13 through WP-T17 —
-  are also reflected; those commits are pure renames plus internal path fixes,
-  not doc-relevant content changes)
+  content beyond what the umbrella docs already cover. The full WP22 rename —
+  all 11 `ssfe-*`/`hda-*` repos, WP-T13 through WP-T23, plus every follow-up
+  fix found during the post-WP22 review (missed `SSFE-Patterns` subtitles,
+  stale copy-pasted README titles, a leftover `HDA` acronym, a stale
+  `JSX`→`Hono` wording fix) — is reflected. Re-ran this `update-docs` sweep
+  2026-09-12 and found 9 of the 13 rows had a stale hash left over from a
+  follow-up commit that landed after that row was last bumped; all pure
+  renames/internal-path/wording fixes, already covered by the doc updates
+  made in the same turns — no new doc-relevant content, just caught-up hashes)
 - All projects analysed on branch `main` unless noted.
 - Project name = GitHub repo name under `github.com/svene/` (see
   [../Variants.md](../Variants.md) for links). The throwaway spike
@@ -22,17 +27,17 @@ need to catch up on.
 |---|---|---|---|---|
 | `2025-08-23_hypermedia-patterns-jte-htmx` | main | `839fa18` | 2026-09-12 | WP-T13 — renamed from `…_ssfe-patterns-jte-htmx` |
 | `2025-08-23_hypermedia-patterns-jte-vc-htmx` | main | `edbc335` | 2026-09-12 | WP-T14 — renamed from `…_ssfe-patterns-jte-vc-htmx` |
-| `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | main | `9ffa73f` | 2026-09-12 | WP-T15 — renamed from `…_ssfe-patterns-thymeleaf-htmx` (incl. `ssfepatterns`→`hypermediapatterns` Java package) |
-| `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | main | `470f172` | 2026-09-12 | WP-T16 — renamed from `…_ssfe-patterns-quarkus-qute-htmx` (incl. Java package + mirrored Qute templates dir) |
+| `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | main | `bb43829` | 2026-09-12 | WP-T21 follow-up — fixed 5 back-references to the renamed docs project (readme + 4 javadocs) |
+| `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | main | `6169029` | 2026-09-12 | Follow-up sweep — fixed a missed `SSFE-Patterns` display subtitle in `s03d04mpalayout.html` |
 | `2025-12-27_hypermedia-patterns-hono-htmx` | main | `3393f62` | 2026-09-12 | WP-T17 — renamed from `…_ssfe-patterns-hono-htmx` |
 | `2025-12-31-springboot-hono-poc` | main | `4e6f9aa` | 2026-09-05 | vendored bulma |
-| `2026-01-24_hypermedia-dynapage-demo` | main | `db3c697` | 2026-09-12 | WP-T18 — renamed from `…_hda-dynapage-demo` (pom.xml artifactIds + user's manual `hono/package.json` fix) |
-| `2026-03-07_springboot-graalvm-jsx-poc` | main | `3a0f19f` | 2026-09-09 | WP-T10c — back-reference updated to `…graalvm-hono-demo` (this repo keeps its name) |
-| `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | main | `9ce2966` | 2026-09-09 | WP-T10c — renamed from `…-graalvm-jsx-demo` |
-| `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | main | `bb6b072` | 2026-09-09 | WP-T10c — renamed from `…-graalvm-jsx-demo` |
-| `2026-05-02_hypermedia-htmx-patterns-docs` | main | `d37ad37` | 2026-09-12 | WP22 (T14–T17) — extractor `srcRoot`/package paths fixed for the jte-vc, thymeleaf, qute and hono renames |
-| `2026-09-03_hypermedia-springboot-browser-hono` | main | `68371c1` | 2026-09-05 | vendored bulma |
-| `2026-09-03_hypermedia-quarkus-browser-hono` | main | `100cb74` | 2026-09-09 | WP-T10c — fork-parent reference updated |
+| `2026-01-24_hypermedia-dynapage-demo` | main | `dc1d5e9` | 2026-09-12 | Follow-up — retitled `hono/README.md` (was recycled from the `springboot-hono-poc` fork-parent) |
+| `2026-03-07_springboot-graalvm-jsx-poc` | main | `fa71d84` | 2026-09-12 | WP-T19 follow-up — relative link to the renamed `…-graalvm-hono-demo` fixed; own title deliberately left (historical PoC) |
+| `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | main | `0e6c0b3` | 2026-09-12 | WP-T19 rename + follow-up JSX→Hono title/wording fix in `readme.md` |
+| `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | main | `f23d547` | 2026-09-12 | WP-T20 rename + follow-up fix of a stale copy-pasted `README.md` title |
+| `2026-05-02_hypermedia-htmx-patterns-docs` | main | `9e50ff6` | 2026-09-12 | WP-T21 rename + follow-up `astro.config.mjs` site-title and `README.md` title/coverage fixes |
+| `2026-09-03_hypermedia-springboot-browser-hono` | main | `0a483c3` | 2026-09-12 | WP-T22 — renamed from `…_hda-springboot-browser-hono` |
+| `2026-09-03_hypermedia-quarkus-browser-hono` | main | `5b8da7f` | 2026-09-12 | WP-T23 — renamed from `…_hda-quarkus-browser-hono` (WP22 complete) |
 
 ## Refreshing the docs after upstream changes
 
