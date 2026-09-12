@@ -37,7 +37,7 @@ name.
 |---|---|---|---|
 | `2025-08-23_hypermedia-patterns-jte-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-jte-htmx> | 2025-08 |
 | `2025-08-23_hypermedia-patterns-jte-vc-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-jte-vc-htmx> | 2025-08 |
-| `2025-08-23_ssfe-patterns-thymeleaf-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_ssfe-patterns-thymeleaf-htmx> | 2025-08 |
+| `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-thymeleaf-htmx> | 2025-08 |
 | `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | A · Patterns | <https://github.com/svene/2025-12-21_ssfe-patterns-quarkus-qute-htmx> | 2025-12 |
 | `2025-12-27_ssfe-patterns-hono-htmx` | A · Patterns | <https://github.com/svene/2025-12-27_ssfe-patterns-hono-htmx> | 2025-12 |
 | `2025-12-31-springboot-hono-poc` | B · Person app | <https://github.com/svene/2025-12-31-springboot-hono-poc> | 2025-12 |
@@ -91,7 +91,7 @@ expressed*, not a real app. Ordered by era below.
 - **Status:** working; documentation was progressively extracted from the code
   (`s03`–`s05` commits).
 
-#### `2025-08-23_ssfe-patterns-thymeleaf-htmx`
+#### `2025-08-23_hypermedia-patterns-thymeleaf-htmx`
 
 - **Role:** pattern showcase — the Thymeleaf counterpart to the JTE / Qute
   variants.
