@@ -144,7 +144,7 @@ Which projects have cross-language type generation, and in which direction:
 | Project | Direction | Notes |
 |---|---|---|
 | `springboot-hono-poc` | **Java→TS** ✅ | migrated (`ab83834`); removed the TS→Java generator and its Maven plugin |
-| `hda-dynapage-demo` | **Java→TS** ✅ | removed the old TS→Java ("Hono2Java") generator (`8b79818`); the `typescript-generator` Maven plugin is still active in `springboot/pom.xml`, generating `hono/src/generated/types/vm-types.d.ts` (VM interfaces + route/event unions) from Java |
+| `hypermedia-dynapage-demo` | **Java→TS** ✅ | removed the old TS→Java ("Hono2Java") generator (`8b79818`); the `typescript-generator` Maven plugin is still active in `springboot/pom.xml`, generating `hono/src/generated/types/vm-types.d.ts` (VM interfaces + route/event unions) from Java |
 | `springboot-graalvm-jsx-poc` | **TS→Java** — **kept on purpose** | still uses `javagen/generate-java-from-hono.ts` and `.tsx`; **decided (2026-09-05) to keep as a historical PoC**, superseded by `2026-03-09`; a note to that effect is in its `readme.md` |
 | `hda-springboot-graalvm-hono-demo` | **Java→TS** ✅ | migrated (`5ecb2e7`); `typescript-generator` + gmavenplus for consts/routes/events/action-URLs |
 | `hda-quarkus-graalvm-hono-demo` | **Java→TS** ✅ | migrated (`0fce481`) |

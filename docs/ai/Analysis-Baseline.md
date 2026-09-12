@@ -6,10 +6,13 @@ the `docs/*.md` files were last written**. When a project gains new commits
 later, diff from the hash recorded here to see what the umbrella docs still
 need to catch up on.
 
-- Analysis date: **2026-09-09** (baseline re-synced to each project's current
+- Analysis date: **2026-09-12** (baseline re-synced to each project's current
   HEAD; the 2026-09-06 Thymeleaf build-out and the 2026-09-07 per-project
   `playwright/` additions (WP-T12) are reflected — neither changes doc-relevant
-  content beyond what the umbrella docs already cover)
+  content beyond what the umbrella docs already cover. The 2026-09-12 WP22
+  rename commits for the 5 `ssfe-patterns-*` repos — WP-T13 through WP-T17 —
+  are also reflected; those commits are pure renames plus internal path fixes,
+  not doc-relevant content changes)
 - All projects analysed on branch `main` unless noted.
 - Project name = GitHub repo name under `github.com/svene/` (see
   [../Variants.md](../Variants.md) for links). The throwaway spike
@@ -17,17 +20,17 @@ need to catch up on.
 
 | Project | Branch | Commit at analysis | Date | Subject |
 |---|---|---|---|---|
-| `2025-08-23_hypermedia-patterns-jte-htmx` | main | `9a9f2d9` | 2026-09-07 | playwright tests |
-| `2025-08-23_hypermedia-patterns-jte-vc-htmx` | main | `a2c3cd1` | 2026-09-07 | playwright tests |
-| `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | main | `dc9822f` | 2026-09-09 | WP-T10b — docs-project rename swept through readme + javadocs |
-| `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | main | `e6bffc3` | 2026-09-07 | playwright tests |
-| `2025-12-27_hypermedia-patterns-hono-htmx` | main | `98a8543` | 2026-09-07 | playwright tests |
+| `2025-08-23_hypermedia-patterns-jte-htmx` | main | `839fa18` | 2026-09-12 | WP-T13 — renamed from `…_ssfe-patterns-jte-htmx` |
+| `2025-08-23_hypermedia-patterns-jte-vc-htmx` | main | `edbc335` | 2026-09-12 | WP-T14 — renamed from `…_ssfe-patterns-jte-vc-htmx` |
+| `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | main | `9ffa73f` | 2026-09-12 | WP-T15 — renamed from `…_ssfe-patterns-thymeleaf-htmx` (incl. `ssfepatterns`→`hypermediapatterns` Java package) |
+| `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | main | `470f172` | 2026-09-12 | WP-T16 — renamed from `…_ssfe-patterns-quarkus-qute-htmx` (incl. Java package + mirrored Qute templates dir) |
+| `2025-12-27_hypermedia-patterns-hono-htmx` | main | `3393f62` | 2026-09-12 | WP-T17 — renamed from `…_ssfe-patterns-hono-htmx` |
 | `2025-12-31-springboot-hono-poc` | main | `4e6f9aa` | 2026-09-05 | vendored bulma |
-| `2026-01-24_hda-dynapage-demo` | main | `0d3df4f` | 2026-09-05 | vendored bulma |
+| `2026-01-24_hypermedia-dynapage-demo` | main | `0d3df4f` | 2026-09-05 | vendored bulma |
 | `2026-03-07_springboot-graalvm-jsx-poc` | main | `3a0f19f` | 2026-09-09 | WP-T10c — back-reference updated to `…graalvm-hono-demo` (this repo keeps its name) |
 | `2026-03-09_hda-springboot-graalvm-hono-demo` | main | `9ce2966` | 2026-09-09 | WP-T10c — renamed from `…-graalvm-jsx-demo` |
 | `2026-03-15_hda-quarkus-graalvm-hono-demo` | main | `bb6b072` | 2026-09-09 | WP-T10c — renamed from `…-graalvm-jsx-demo` |
-| `2026-05-02_hda-htmx-patterns-docs` | main | `5e10194` | 2026-09-09 | WP-T10b — renamed from `…_ssfe-patterns-jte-vc-htmx-docs` |
+| `2026-05-02_hda-htmx-patterns-docs` | main | `dfc628f` | 2026-09-12 | WP22 (T14–T16) — extractor `srcRoot`/package paths fixed for the jte-vc, thymeleaf and qute renames; the WP-T17 hono-extractor fix is still uncommitted (see `wip.md`) |
 | `2026-09-03_hda-springboot-browser-hono` | main | `68371c1` | 2026-09-05 | vendored bulma |
 | `2026-09-03_hda-quarkus-browser-hono` | main | `100cb74` | 2026-09-09 | WP-T10c — fork-parent reference updated |
 

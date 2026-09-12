@@ -70,7 +70,7 @@ engine that just happens to run out-of-process.
 - Dev ergonomics: Hono reachable directly via GET while developing, Spring POST
   in production; Spring forwards static-resource requests to Hono.
 
-`hda-dynapage-demo` forked from that PoC and used it to compare update
+`hypermedia-dynapage-demo` forked from that PoC and used it to compare update
 strategies on an editable table: **OOB swaps vs `hx-partial`** — `hx-partial`
 judged more readable — plus the nested-form / `form=` attribute pattern for a
 selection table.
@@ -109,7 +109,7 @@ the current preferred style:
   preference). Java now owns the view models *and* the action URLs / route names;
   TypeScript consumes the generated types and constants, produced by the
   `typescript-generator` Maven plugin instead of a hand-written generator. This
-  reversal reached `springboot-hono-poc`, `hda-dynapage-demo` and both GraalVM
+  reversal reached `springboot-hono-poc`, `hypermedia-dynapage-demo` and both GraalVM
   demos, but **not `springboot-graalvm-jsx-poc`**, which still generates Java
   from TS — see the audit in [Learnings.md](Learnings.md).
 - **htmx 2 → htmx 4**.

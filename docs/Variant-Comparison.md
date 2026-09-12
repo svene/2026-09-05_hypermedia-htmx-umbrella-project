@@ -31,7 +31,7 @@ technology* (Axis 2).
 | `2025-12-21_…quarkus-qute-htmx` | A | Quarkus, Java | in the JVM | Qute templates | fragments, per-module demos | 4.0.0 |
 | `2025-12-27_…hono-htmx` | A | Hono on Bun, TypeScript | in the (single) JS process | Hono `html``` **and** `hono/jsx` | fragments, per-module demos | 4.0.0 |
 | `2025-12-31-springboot-hono-poc` | B | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono `html``` / JSX | fragments | 2.0.8 → 4.0.0 |
-| `2026-01-24_hda-dynapage-demo` | B | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono components | **4 strategies compared:** OOB · `hx-partial` · event-JSX · event-HTML | 2.0.8 → 4.0.0 |
+| `2026-01-24_hypermedia-dynapage-demo` | B | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono components | **4 strategies compared:** OOB · `hx-partial` · event-JSX · event-HTML | 2.0.8 → 4.0.0 |
 | `2026-03-07_…graalvm-jsx-poc` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | `hono/jsx` (`.tsx`) | fragments | 4.0.0 |
 | `2026-03-09_hda-springboot-graalvm-hono-demo` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
 | `2026-03-15_hda-quarkus-graalvm-hono-demo` | B | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |

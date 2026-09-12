@@ -28,8 +28,8 @@ the docs current") for the surrounding rules.
    level above this repo, split into `2025/` and `2026/` by the year in the
    project's own name — e.g. `2025-08-23_hypermedia-patterns-jte-htmx` is at
    `../../2025/2025-08-23_hypermedia-patterns-jte-htmx` relative to this repo, and
-   `2026-01-24_hda-dynapage-demo` is at
-   `../../2026/2026-01-24_hda-dynapage-demo`.
+   `2026-01-24_hypermedia-dynapage-demo` is at
+   `../../2026/2026-01-24_hypermedia-dynapage-demo`.
 
 3. **Diff against the recorded hash**, from this repo (no need to `cd`):
 

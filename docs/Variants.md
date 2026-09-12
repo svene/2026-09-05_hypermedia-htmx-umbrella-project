@@ -41,7 +41,7 @@ name.
 | `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | A · Patterns | <https://github.com/svene/2025-12-21_hypermedia-patterns-quarkus-qute-htmx> | 2025-12 |
 | `2025-12-27_hypermedia-patterns-hono-htmx` | A · Patterns | <https://github.com/svene/2025-12-27_hypermedia-patterns-hono-htmx> | 2025-12 |
 | `2025-12-31-springboot-hono-poc` | B · Person app | <https://github.com/svene/2025-12-31-springboot-hono-poc> | 2025-12 |
-| `2026-01-24_hda-dynapage-demo` | B · Person app | <https://github.com/svene/2026-01-24_hda-dynapage-demo> | 2026-01 |
+| `2026-01-24_hypermedia-dynapage-demo` | B · Person app | <https://github.com/svene/2026-01-24_hypermedia-dynapage-demo> | 2026-01 |
 | `2026-03-07_springboot-graalvm-jsx-poc` | B · Person app | <https://github.com/svene/2026-03-07_springboot-graalvm-jsx-poc> | 2026-03 |
 | `2026-03-09_hda-springboot-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-09_hda-springboot-graalvm-hono-demo> | 2026-03 |
 | `2026-03-15_hda-quarkus-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-15_hda-quarkus-graalvm-hono-demo> | 2026-03 |
@@ -160,7 +160,7 @@ compare *where and how the HTML is produced and updated*. Ordered by era below.
   out-of-process.
 - **Status:** working PoC (login `user` / `x21`); has architecture diagrams.
 
-#### `2026-01-24_hda-dynapage-demo`
+#### `2026-01-24_hypermedia-dynapage-demo`
 
 - **Role:** demo app comparing htmx update strategies for one screen.
 - **Stack:** same two-process Spring Boot + Hono setup; docker-compose;
