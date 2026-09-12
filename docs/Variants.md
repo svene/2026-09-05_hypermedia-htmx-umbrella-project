@@ -39,7 +39,7 @@ name.
 | `2025-08-23_hypermedia-patterns-jte-vc-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-jte-vc-htmx> | 2025-08 |
 | `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-thymeleaf-htmx> | 2025-08 |
 | `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | A · Patterns | <https://github.com/svene/2025-12-21_hypermedia-patterns-quarkus-qute-htmx> | 2025-12 |
-| `2025-12-27_ssfe-patterns-hono-htmx` | A · Patterns | <https://github.com/svene/2025-12-27_ssfe-patterns-hono-htmx> | 2025-12 |
+| `2025-12-27_hypermedia-patterns-hono-htmx` | A · Patterns | <https://github.com/svene/2025-12-27_hypermedia-patterns-hono-htmx> | 2025-12 |
 | `2025-12-31-springboot-hono-poc` | B · Person app | <https://github.com/svene/2025-12-31-springboot-hono-poc> | 2025-12 |
 | `2026-01-24_hda-dynapage-demo` | B · Person app | <https://github.com/svene/2026-01-24_hda-dynapage-demo> | 2026-01 |
 | `2026-03-07_springboot-graalvm-jsx-poc` | B · Person app | <https://github.com/svene/2026-03-07_springboot-graalvm-jsx-poc> | 2026-03 |
@@ -127,7 +127,7 @@ expressed*, not a real app. Ordered by era below.
 
 ### Hono / TypeScript era (2025-12 →, current preference)
 
-#### `2025-12-27_ssfe-patterns-hono-htmx`
+#### `2025-12-27_hypermedia-patterns-hono-htmx`
 
 - **Role:** pattern showcase — the Hono/TS re-do of the hypermedia pattern course
   (same `m00`–`m05` module structure as the Qute variant).
@@ -272,7 +272,7 @@ comparison. It is to be extended to cover every pattern variant — see
   drift from the code. `npm run extract-snippets` rebuilds the samples; `npm run
   dev` serves the site.
 - **Status:** covers the JTE-VC (`2025-08-23_hypermedia-patterns-jte-vc-htmx`) and Hono
-  (`2025-12-27_ssfe-patterns-hono-htmx`) variants; the sidebar is scaffolded for
+  (`2025-12-27_hypermedia-patterns-hono-htmx`) variants; the sidebar is scaffolded for
   Thymeleaf, JSX-Spring-Hono and the two Graal-JSX demos as future additions.
 
 > An earlier throwaway project, `2026-05-01_springboot-hono-docs` (local only),

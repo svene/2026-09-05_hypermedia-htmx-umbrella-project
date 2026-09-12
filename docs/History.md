@@ -47,7 +47,7 @@ friction remained.
 
 ## Phase 3 — Discovering Hono (2025-12)
 
-`ssfe-patterns-hono-htmx` rebuilt the *entire* module course in **Hono on Bun**,
+`hypermedia-patterns-hono-htmx` rebuilt the *entire* module course in **Hono on Bun**,
 no Java. It put Hono's two HTML styles side by side — the `html``` tagged
 template (`.ts`) and `hono/jsx` (`.tsx`) — and generating HTML in TypeScript
 turned out to be markedly more pleasant than any Java engine. The tagged template
