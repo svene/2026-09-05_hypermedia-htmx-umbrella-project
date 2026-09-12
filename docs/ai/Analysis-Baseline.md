@@ -22,7 +22,13 @@ need to catch up on.
   the last remaining `docs/ai/wip.md` TODO, bringing `hypermedia-patterns-jte-htmx`
   from a 2-page WIP demo up to the full `s01/s03/s04/s05` course — `docs/Variants.md`,
   `docs/Variant-Comparison.md`, `docs/History.md` and `docs/Learnings.md` updated
-  accordingly)
+  accordingly — and its follow-up integration into
+  `2026-05-02_hypermedia-htmx-patterns-docs` (2026-09-12, with Claude): a new
+  `00_JTE` sidebar entry ahead of `01_JTE-VC`, `extract-jte-snippets.js`, and 4
+  pages, plus `docs:start`/`docs:end` markers + Docs back-links added to
+  `hypermedia-patterns-jte-htmx` itself — `docs/Variants.md`'s jte-htmx entry
+  and its docs-project entry (the latter was already stale, missing
+  Thymeleaf/Qute coverage) both corrected)
 - All projects analysed on branch `main` unless noted.
 - Project name = GitHub repo name under `github.com/svene/` (see
   [../Variants.md](../Variants.md) for links). The throwaway spike
@@ -30,7 +36,7 @@ need to catch up on.
 
 | Project | Branch | Commit at analysis | Date | Subject |
 |---|---|---|---|---|
-| `2025-08-23_hypermedia-patterns-jte-htmx` | main | `e8d3999` | 2026-09-12 | Built out the full `s01/s03/s04/s05` course (with Claude), replacing the 2-page WIP demo |
+| `2025-08-23_hypermedia-patterns-jte-htmx` | main | `b14c8ee` | 2026-09-12 | Built out the full `s01/s03/s04/s05` course, then added `docs:start`/`docs:end` markers + Docs back-links for the new docs-site integration (with Claude) |
 | `2025-08-23_hypermedia-patterns-jte-vc-htmx` | main | `edbc335` | 2026-09-12 | WP-T14 — renamed from `…_ssfe-patterns-jte-vc-htmx` |
 | `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | main | `bb43829` | 2026-09-12 | WP-T21 follow-up — fixed 5 back-references to the renamed docs project (readme + 4 javadocs) |
 | `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | main | `6169029` | 2026-09-12 | Follow-up sweep — fixed a missed `SSFE-Patterns` display subtitle in `s03d04mpalayout.html` |
@@ -40,7 +46,7 @@ need to catch up on.
 | `2026-03-07_springboot-graalvm-jsx-poc` | main | `fa71d84` | 2026-09-12 | WP-T19 follow-up — relative link to the renamed `…-graalvm-hono-demo` fixed; own title deliberately left (historical PoC) |
 | `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | main | `0e6c0b3` | 2026-09-12 | WP-T19 rename + follow-up JSX→Hono title/wording fix in `readme.md` |
 | `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | main | `f23d547` | 2026-09-12 | WP-T20 rename + follow-up fix of a stale copy-pasted `README.md` title |
-| `2026-05-02_hypermedia-htmx-patterns-docs` | main | `9e50ff6` | 2026-09-12 | WP-T21 rename + follow-up `astro.config.mjs` site-title and `README.md` title/coverage fixes |
+| `2026-05-02_hypermedia-htmx-patterns-docs` | main | `70d5605` | 2026-09-12 | Added the plain-JTE variant — `00_JTE` sidebar entry, `extract-jte-snippets.js`, 4 pages (with Claude) |
 | `2026-09-03_hypermedia-springboot-browser-hono` | main | `0a483c3` | 2026-09-12 | WP-T22 — renamed from `…_hda-springboot-browser-hono` |
 | `2026-09-03_hypermedia-quarkus-browser-hono` | main | `5b8da7f` | 2026-09-12 | WP-T23 — renamed from `…_hda-quarkus-browser-hono` (WP22 complete) |
 
