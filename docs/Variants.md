@@ -46,7 +46,7 @@ name.
 | `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-09_hypermedia-springboot-graalvm-hono-demo> | 2026-03 |
 | `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-15_hypermedia-quarkus-graalvm-hono-demo> | 2026-03 |
 | `2026-05-02_hypermedia-htmx-patterns-docs` | Docs tooling | <https://github.com/svene/2026-05-02_hypermedia-htmx-patterns-docs> | 2026-05 |
-| `2026-09-03_hda-springboot-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hda-springboot-browser-hono> | 2026-09 |
+| `2026-09-03_hypermedia-springboot-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hypermedia-springboot-browser-hono> | 2026-09 |
 | `2026-09-03_hda-quarkus-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hda-quarkus-browser-hono> | 2026-09 |
 
 Common ground across (almost) all variants: a **Hypermedia-Driven Application** —
@@ -230,7 +230,7 @@ intercepts each response and runs the matching hono `html` template
 **JDK 21** — no GraalVM. Java stays the source of truth (`typescript-generator` +
 a gmavenplus script regenerate the `.ts` types/consts on `mvn package`).
 
-#### `2026-09-03_hda-springboot-browser-hono`
+#### `2026-09-03_hypermedia-springboot-browser-hono`
 
 - **Role:** the browser-rendering variant of the Spring Boot / hono demo.
 - **Stack:** Spring Boot 4 (plain JDK 21, Spring MVC, `JdbcClient`) + hono `html`

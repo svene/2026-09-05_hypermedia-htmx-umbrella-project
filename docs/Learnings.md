@@ -148,7 +148,7 @@ Which projects have cross-language type generation, and in which direction:
 | `springboot-graalvm-jsx-poc` | **TS→Java** — **kept on purpose** | still uses `javagen/generate-java-from-hono.ts` and `.tsx`; **decided (2026-09-05) to keep as a historical PoC**, superseded by `2026-03-09`; a note to that effect is in its `readme.md` |
 | `hypermedia-springboot-graalvm-hono-demo` | **Java→TS** ✅ | migrated (`5ecb2e7`); `typescript-generator` + gmavenplus for consts/routes/events/action-URLs |
 | `hypermedia-quarkus-graalvm-hono-demo` | **Java→TS** ✅ | migrated (`0fce481`) |
-| `hda-springboot-browser-hono` | **Java→TS** ✅ | forked from the SB GraalVM demo; keeps `typescript-generator` + gmavenplus |
+| `hypermedia-springboot-browser-hono` | **Java→TS** ✅ | forked from the SB GraalVM demo; keeps `typescript-generator` + gmavenplus |
 | `hda-quarkus-browser-hono` | **Java→TS** ✅ | forked from the Quarkus GraalVM demo; same setup |
 
 Pure-Java and pure-Hono variants have no cross-language contract.

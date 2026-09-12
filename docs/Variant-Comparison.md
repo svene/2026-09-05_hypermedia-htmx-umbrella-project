@@ -35,7 +35,7 @@ technology* (Axis 2).
 | `2026-03-07_…graalvm-jsx-poc` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | `hono/jsx` (`.tsx`) | fragments | 4.0.0 |
 | `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
 | `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | B | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
-| `2026-09-03_hda-springboot-browser-hono` | B | Spring Boot 4, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
+| `2026-09-03_hypermedia-springboot-browser-hono` | B | Spring Boot 4, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 | `2026-09-03_hda-quarkus-browser-hono` | B | Quarkus 3.32, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 
 The `…thymeleaf-htmx` row was built out 2026-09-06 (with Claude) as the

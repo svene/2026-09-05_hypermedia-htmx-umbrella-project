@@ -131,7 +131,7 @@ is the higher-level companion to it.
 
 ## Phase 8 — Rendering moves to the browser (2026-09)
 
-`hda-springboot-browser-hono` and `hda-quarkus-browser-hono`, forked from the
+`hypermedia-springboot-browser-hono` and `hda-quarkus-browser-hono`, forked from the
 March GraalVM demos, then the **GraalVM rendering layer was deleted**:
 
 - `/uiroute/*` becomes a plain **JSON API** returning a `{ route, vm }` envelope
