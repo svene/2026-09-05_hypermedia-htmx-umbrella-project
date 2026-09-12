@@ -28,7 +28,9 @@ need to catch up on.
   pages, plus `docs:start`/`docs:end` markers + Docs back-links added to
   `hypermedia-patterns-jte-htmx` itself — `docs/Variants.md`'s jte-htmx entry
   and its docs-project entry (the latter was already stale, missing
-  Thymeleaf/Qute coverage) both corrected)
+  Thymeleaf/Qute coverage) both corrected). Re-ran this `update-docs` sweep
+  again right after — all 13 rows already at their true current HEAD, zero
+  new commits anywhere, nothing to update)
 - All projects analysed on branch `main` unless noted.
 - Project name = GitHub repo name under `github.com/svene/` (see
   [../Variants.md](../Variants.md) for links). The throwaway spike
