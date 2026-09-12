@@ -25,7 +25,7 @@ technology* (Axis 2).
 
 | Variant (project) | Group | Backend + language | HTML generated where | View technology (concept) | Dynamic-update style | htmx |
 |---|---|---|---|---|---|---|
-| `2025-08-23_…jte-htmx` | A | Spring Boot, Java | in the JVM | plain JTE templates | full page + fragments | 4.0.0 |
+| `2025-08-23_…jte-htmx` | A | Spring Boot, Java | in the JVM | plain JTE templates | fragments, per-module demos | 4.0.0 |
 | `2025-08-23_…jte-vc-htmx` | A | Spring Boot, Java | in the JVM | JTE + server-side View Components | fragments + event-driven refresh | 4.0.0 |
 | `2025-08-23_…thymeleaf-htmx` | A | Spring Boot, Java | in the JVM | Thymeleaf fragments/slots | fragments, per-module demos | 4.0.0 |
 | `2025-12-21_…quarkus-qute-htmx` | A | Quarkus, Java | in the JVM | Qute templates | fragments, per-module demos | 4.0.0 |

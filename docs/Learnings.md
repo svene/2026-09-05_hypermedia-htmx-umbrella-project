@@ -100,8 +100,12 @@ for the axes.
     built out in full (2026-09-06, with Claude) once the umbrella project made the
     gap visible. The long pause is itself a signal about where the value was; that
     it could then be completed quickly says the pattern set was well understood by
-    that point. It follows the Qute course exactly (`m01/m03/m04/m05`, no JSX
-    module, no experiments), which also confirms the course had stabilised.
+    that point. It follows the Qute course exactly (`s01/s03/s04/s05`, no JSX
+    module, no experiments), which also confirms the course had stabilised. The
+    plain-JTE variant repeated the same story — a 2-page WIP left untouched for a
+    year, then built out to the same course (2026-09-12, with Claude) once flagged
+    as the one remaining gap in `docs/ai/wip.md` — confirming this is a repeatable
+    pattern, not a one-off.
 15. **Pin front-end assets: vendored, version-namespaced, no webjars/CDN.** The
     settled convention is a file in the repo at
     `…/js/htmx.org/4.0.0/htmx.js`, `…/css/bulma/1.0.4/bulma.min.css`, etc. It

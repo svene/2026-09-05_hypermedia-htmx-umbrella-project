@@ -19,7 +19,11 @@ Starting point: Spring Boot + htmx, HTML from a Java template engine.
   *Template-Inclusion* (the page pulls in header/nav/footer fragments). JTE's
   refusal to parse unclosed tags forced awkward workarounds (e.g. the `<body>`
   tag has to live in the page, not the fragment), which pushed Injection forward
-  as the better default.
+  as the better default. Left at that 2-page WIP for a year — **built out
+  2026-09-12** (with Claude) to the full `s01/s03/s04/s05` course the other
+  Java-template variants run, using JTE's own `@template` calls and `Content`
+  parameters (no View Components); the original two patterns became the
+  `s03d01`/`s03d03` demos.
 - **JTE + View Components** (`hypermedia-patterns-jte-vc-htmx`). Moved from templates
   addressed by path string to **components as server objects** — each owns its
   URL constant and template, the controller returns the component, and an htmx

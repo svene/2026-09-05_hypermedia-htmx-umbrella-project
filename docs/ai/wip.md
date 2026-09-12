@@ -41,12 +41,7 @@ trade-off / when this variant makes sense.
 
 ## TODO
 
-- [ ] **_(optional, low priority)_ Build out `2025-08-23_hypermedia-patterns-jte-htmx`** —
-  it is a very simple demo project and does **not** cover all the patterns the
-  other pattern-course projects (JTE-VC, Thymeleaf, Qute, Hono) share. Bringing
-  it up to the full `m01/m03/m04/m05` course would make the family complete, but
-  the user has flagged this as low priority. Update `docs/*` afterwards.
-
-Everything else that was ever tracked here has shipped — see
-[`wip_done.md`](wip_done.md) for the full work-package history (WP0…WP23,
-WP-T*, WP-S*), the completed Future-work items, and the resolved open questions.
+Nothing currently open — everything ever tracked here has shipped. See
+[`wip_done.md`](wip_done.md) for the full work-package history (WP0…WP24,
+WP-T*, WP-S*, WP-J*), the completed Future-work items, and the resolved open
+questions.

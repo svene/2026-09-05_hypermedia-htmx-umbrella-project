@@ -17,7 +17,12 @@ need to catch up on.
   2026-09-12 and found 9 of the 13 rows had a stale hash left over from a
   follow-up commit that landed after that row was last bumped; all pure
   renames/internal-path/wording fixes, already covered by the doc updates
-  made in the same turns — no new doc-relevant content, just caught-up hashes)
+  made in the same turns — no new doc-relevant content, just caught-up hashes.
+  Also reflects the plain-JTE variant's build-out (2026-09-12, with Claude):
+  the last remaining `docs/ai/wip.md` TODO, bringing `hypermedia-patterns-jte-htmx`
+  from a 2-page WIP demo up to the full `s01/s03/s04/s05` course — `docs/Variants.md`,
+  `docs/Variant-Comparison.md`, `docs/History.md` and `docs/Learnings.md` updated
+  accordingly)
 - All projects analysed on branch `main` unless noted.
 - Project name = GitHub repo name under `github.com/svene/` (see
   [../Variants.md](../Variants.md) for links). The throwaway spike
@@ -25,7 +30,7 @@ need to catch up on.
 
 | Project | Branch | Commit at analysis | Date | Subject |
 |---|---|---|---|---|
-| `2025-08-23_hypermedia-patterns-jte-htmx` | main | `839fa18` | 2026-09-12 | WP-T13 — renamed from `…_ssfe-patterns-jte-htmx` |
+| `2025-08-23_hypermedia-patterns-jte-htmx` | main | `e8d3999` | 2026-09-12 | Built out the full `s01/s03/s04/s05` course (with Claude), replacing the 2-page WIP demo |
 | `2025-08-23_hypermedia-patterns-jte-vc-htmx` | main | `edbc335` | 2026-09-12 | WP-T14 — renamed from `…_ssfe-patterns-jte-vc-htmx` |
 | `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | main | `bb43829` | 2026-09-12 | WP-T21 follow-up — fixed 5 back-references to the renamed docs project (readme + 4 javadocs) |
 | `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | main | `6169029` | 2026-09-12 | Follow-up sweep — fixed a missed `SSFE-Patterns` display subtitle in `s03d04mpalayout.html` |

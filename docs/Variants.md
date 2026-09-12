@@ -67,14 +67,25 @@ expressed*, not a real app. Ordered by era below.
 
 #### `2025-08-23_hypermedia-patterns-jte-htmx`
 
-- **Role:** pattern showcase.
-- **Stack:** Spring Boot + plain [JTE](https://jte.gg/), **htmx 4** (vendored under
-  `static/js/…`, upgraded from 2.0.4 on 2026-09-05, commit `e2cba81`).
-- **Distinguishing idea:** the two basic ways to assemble a page with a plain
-  template engine — *Template-Injection* (parent takes a `Content` block) vs
-  *Template-Inclusion* (child pulls in `pagestart` / `pagenavigation` / `pageend`
-  fragments) — and why Injection scales better.
-- **Status:** working, documents two patterns.
+- **Role:** pattern showcase — the plain-JTE counterpart to the JTE-VC /
+  Thymeleaf / Qute variants (no View Components).
+- **Stack:** Spring Boot + plain [JTE](https://jte.gg/), **htmx 4** (vendored
+  under `static/js/…`) + **Bulma 1.0.4** (vendored under `static/css/…`).
+- **Distinguishing idea:** the same component / insertion / slot patterns
+  expressed with JTE's own composition mechanisms — `@template` calls and
+  `Content` parameters — with no View-Components layer at all. The project's
+  original two hand-written demos, *Template-Injection* (parent takes a
+  `Content` block) and *Template-Inclusion* (child pulls in separate head/nav
+  fragments), now live as the `s03d01`/`s03d03` "Content Page" / "Custom Page"
+  demos.
+- **Structure:** a landing page plus modules `s01` Simple Pages, `s03` Page
+  Patterns, `s04` UI Patterns, `s05` htmx Patterns — the same course the
+  Thymeleaf/Qute variants run (`s02` skipped: no View-Components/JSX concept
+  here).
+- **Status:** built out 2026-09-12 (with Claude). Pattern write-ups stay
+  in-app for now — this variant has no page yet in
+  `2026-05-02_hypermedia-htmx-patterns-docs`, so (unlike Thymeleaf/Qute) there
+  are no `docs:start`/`docs:end` markers or docs back-links.
 
 #### `2025-08-23_hypermedia-patterns-jte-vc-htmx`
 
