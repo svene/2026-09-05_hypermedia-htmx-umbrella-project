@@ -82,10 +82,12 @@ expressed*, not a real app. Ordered by era below.
   Patterns, `s04` UI Patterns, `s05` htmx Patterns — the same course the
   Thymeleaf/Qute variants run (`s02` skipped: no View-Components/JSX concept
   here).
-- **Status:** built out 2026-09-12 (with Claude). Pattern write-ups stay
-  in-app for now — this variant has no page yet in
-  `2026-05-02_hypermedia-htmx-patterns-docs`, so (unlike Thymeleaf/Qute) there
-  are no `docs:start`/`docs:end` markers or docs back-links.
+- **Status:** built out 2026-09-12 (with Claude), and added to
+  `2026-05-02_hypermedia-htmx-patterns-docs` the same day — the `Technologies`
+  sidebar's new `00_JTE` entry, right before `01_JTE-VC` (its numbering
+  reflects it being the plainer, more basic sibling). Demo templates and
+  controllers carry `docs:start`/`docs:end` markers and link back to it, same
+  as Thymeleaf/Qute.
 
 #### `2025-08-23_hypermedia-patterns-jte-vc-htmx`
 
@@ -282,9 +284,9 @@ comparison. It is to be extended to cover every pattern variant — see
   **extracted from the real variant source** by tag markers, so the docs cannot
   drift from the code. `npm run extract-snippets` rebuilds the samples; `npm run
   dev` serves the site.
-- **Status:** covers the JTE-VC (`2025-08-23_hypermedia-patterns-jte-vc-htmx`) and Hono
-  (`2025-12-27_hypermedia-patterns-hono-htmx`) variants; the sidebar is scaffolded for
-  Thymeleaf, JSX-Spring-Hono and the two Graal-JSX demos as future additions.
+- **Status:** covers plain JTE, JTE-VC, Thymeleaf, Hono and Qute (`00_JTE`
+  through `03_Hono` and `07_Qute` in the sidebar); scaffolded, empty entries
+  remain for JSX-Spring-Hono and the two Graal-JSX demos as future additions.
 
 > An earlier throwaway project, `2026-05-01_springboot-hono-docs` (local only),
 > was just a spike to confirm Astro / Starlight is a workable documentation tool
