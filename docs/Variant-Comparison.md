@@ -10,7 +10,7 @@ Scope: the app / pattern-showcase variants, in the two groups the
 `docs/ai/wip.md` for the pending repo rename), one per template technology,
 and **B · "person"
 use-case apps** (the same domain
-app, one per technology/architecture). `2026-05-02_hda-htmx-patterns-docs` (the
+app, one per technology/architecture). `2026-05-02_hypermedia-htmx-patterns-docs` (the
 documentation site, and its throwaway predecessor `2026-05-01_springboot-hono-docs`)
 is not a variant and is left out of the tables.
 
@@ -41,7 +41,7 @@ technology* (Axis 2).
 The `…thymeleaf-htmx` row was built out 2026-09-06 (with Claude) as the
 fragment/slot take on the same `m01/m03/m04/m05` course the Qute variant runs
 (no JSX module, no "experiments" section); htmx 4 + vendored assets from the
-start. Pattern write-ups live in `2026-05-02_hda-htmx-patterns-docs`
+start. Pattern write-ups live in `2026-05-02_hypermedia-htmx-patterns-docs`
 (demos carry `docs:start`/`docs:end` markers), not in-app.
 
 ---

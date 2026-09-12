@@ -56,7 +56,7 @@ trade-off / when this variant makes sense.
   | `2026-01-24_hda-dynapage-demo` | `2026-01-24_hypermedia-dynapage-demo` | ☑ **done 2026-09-12** — repo renamed, remote/folder/internals (root + `springboot/` pom.xml artifactId; no docs-project dependency, Group B) updated, umbrella docs swept; awaiting commits |
   | `2026-03-09_hda-springboot-graalvm-hono-demo` | `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | ☑ **done 2026-09-12** — repo renamed, remote/folder/internals (pom.xml artifactId/name/description, playwright jar path, `HDA` terminology in architecture.md/readme.md) updated (`mvn compile` verified), cross-repo refs in the quarkus twin + graalvm-jsx-poc fixed, umbrella docs swept; awaiting commits |
   | `2026-03-15_hda-quarkus-graalvm-hono-demo` | `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | ☑ **done 2026-09-12** — repo renamed, remote/folder/internals (pom.xml artifactId, VARIANT-COMPARISON.md self-ref, `HDA` terminology in architecture.md) updated (`mvn compile` verified), functional link in the browser-hono quarkus twin fixed, umbrella docs swept; awaiting commits |
-  | `2026-05-02_hda-htmx-patterns-docs` | `2026-05-02_hypermedia-htmx-patterns-docs` | pending |
+  | `2026-05-02_hda-htmx-patterns-docs` | `2026-05-02_hypermedia-htmx-patterns-docs` | ☑ **done 2026-09-12** — repo renamed, remote/folder/internals (`package.json`/`package-lock.json` name) updated (`npm run build` verified, 25 pages), thymeleaf-htmx's back-references (readme + 4 javadocs) fixed, umbrella docs swept; awaiting commits |
   | `2026-09-03_hda-springboot-browser-hono` | `2026-09-03_hypermedia-springboot-browser-hono` | pending |
   | `2026-09-03_hda-quarkus-browser-hono` | `2026-09-03_hypermedia-quarkus-browser-hono` | pending |
 

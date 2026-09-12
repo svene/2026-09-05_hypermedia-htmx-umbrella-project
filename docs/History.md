@@ -31,7 +31,7 @@ Starting point: Spring Boot + htmx, HTML from a Java template engine.
   `m01/m03/m04/m05` course the Qute variant runs: `th:fragment` / `th:replace` /
   `~{…}` fragment expressions, core Thymeleaf (no layout-dialect), htmx 4 +
   vendored assets. Pattern write-ups go in
-  `2026-05-02_hda-htmx-patterns-docs` (demo templates carry
+  `2026-05-02_hypermedia-htmx-patterns-docs` (demo templates carry
   `docs:start`/`docs:end` markers), not in-app.
 
 **Recurring friction:** Java template-engine ergonomics — path strings, unclosed-tag
@@ -123,7 +123,7 @@ HSQLDB) versus what is deliberately kept aligned.
 
 `springboot-hono-docs` was a short spike to check whether Astro + Starlight was a
 workable documentation tool for these variants. It was, so it was thrown away and
-`hda-htmx-patterns-docs` was started as the real documentation site: prose
+`hypermedia-htmx-patterns-docs` was started as the real documentation site: prose
 by hand, but every code sample **extracted from the real variant source** by tag
 markers, so the docs can't drift from the code. It already covers the JTE-VC and
 Hono variants. Intended to grow into per-variant code-docs; this umbrella project

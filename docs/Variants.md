@@ -20,7 +20,7 @@ The siblings fall into two families, plus the documentation tooling:
   application (an editable table with row-edit and bulk-delete), re-implemented
   once per **technology or architecture**. They exist to compare *where and how
   the HTML is produced and updated*.
-- **Documentation tooling** — `2026-05-02_hda-htmx-patterns-docs` (and its
+- **Documentation tooling** — `2026-05-02_hypermedia-htmx-patterns-docs` (and its
   throwaway predecessor `2026-05-01_springboot-hono-docs`) is not a variant; it
   documents the others.
 
@@ -45,7 +45,7 @@ name.
 | `2026-03-07_springboot-graalvm-jsx-poc` | B · Person app | <https://github.com/svene/2026-03-07_springboot-graalvm-jsx-poc> | 2026-03 |
 | `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-09_hypermedia-springboot-graalvm-hono-demo> | 2026-03 |
 | `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-15_hypermedia-quarkus-graalvm-hono-demo> | 2026-03 |
-| `2026-05-02_hda-htmx-patterns-docs` | Docs tooling | <https://github.com/svene/2026-05-02_hda-htmx-patterns-docs> | 2026-05 |
+| `2026-05-02_hypermedia-htmx-patterns-docs` | Docs tooling | <https://github.com/svene/2026-05-02_hypermedia-htmx-patterns-docs> | 2026-05 |
 | `2026-09-03_hda-springboot-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hda-springboot-browser-hono> | 2026-09 |
 | `2026-09-03_hda-quarkus-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hda-quarkus-browser-hono> | 2026-09 |
 
@@ -104,7 +104,7 @@ expressed*, not a real app. Ordered by era below.
   variant runs, with the JSX module and the "experiments" section deliberately
   omitted (the `m02` gap is kept so demos line up by number across variants).
 - **Status:** built out 2026-09-06 (with Claude). Pattern write-ups live in
-  `2026-05-02_hda-htmx-patterns-docs`, not in-app — the demo templates
+  `2026-05-02_hypermedia-htmx-patterns-docs`, not in-app — the demo templates
   carry `docs:start`/`docs:end` markers and link back to it.
 
 ---
@@ -262,7 +262,7 @@ real variant, versus this project's high-level concepts and cross-variant
 comparison. It is to be extended to cover every pattern variant — see
 `docs/ai/wip.md`.
 
-### `2026-05-02_hda-htmx-patterns-docs`
+### `2026-05-02_hypermedia-htmx-patterns-docs`
 
 - **Stack:** [Astro](https://astro.build/) + [Starlight](https://starlight.astro.build/),
   with an `extract-snippets/` step (Node) whose output lands in the git-ignored
