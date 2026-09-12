@@ -29,7 +29,7 @@ need to catch up on.
 | `2026-01-24_hypermedia-dynapage-demo` | main | `db3c697` | 2026-09-12 | WP-T18 — renamed from `…_hda-dynapage-demo` (pom.xml artifactIds + user's manual `hono/package.json` fix) |
 | `2026-03-07_springboot-graalvm-jsx-poc` | main | `3a0f19f` | 2026-09-09 | WP-T10c — back-reference updated to `…graalvm-hono-demo` (this repo keeps its name) |
 | `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | main | `9ce2966` | 2026-09-09 | WP-T10c — renamed from `…-graalvm-jsx-demo` |
-| `2026-03-15_hda-quarkus-graalvm-hono-demo` | main | `bb6b072` | 2026-09-09 | WP-T10c — renamed from `…-graalvm-jsx-demo` |
+| `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | main | `bb6b072` | 2026-09-09 | WP-T10c — renamed from `…-graalvm-jsx-demo` |
 | `2026-05-02_hda-htmx-patterns-docs` | main | `d37ad37` | 2026-09-12 | WP22 (T14–T17) — extractor `srcRoot`/package paths fixed for the jte-vc, thymeleaf, qute and hono renames |
 | `2026-09-03_hda-springboot-browser-hono` | main | `68371c1` | 2026-09-05 | vendored bulma |
 | `2026-09-03_hda-quarkus-browser-hono` | main | `100cb74` | 2026-09-09 | WP-T10c — fork-parent reference updated |

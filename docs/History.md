@@ -97,7 +97,7 @@ Things learned here:
 
 ## Phase 6 — Convergence and simplification (2026-03-15 onward)
 
-`hda-quarkus-graalvm-hono-demo` was built as the framework-agnostic twin of the
+`hypermedia-quarkus-graalvm-hono-demo` was built as the framework-agnostic twin of the
 Spring Boot demo, then both repos were synced. The changes made along the way are
 the current preferred style:
 

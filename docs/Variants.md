@@ -44,7 +44,7 @@ name.
 | `2026-01-24_hypermedia-dynapage-demo` | B · Person app | <https://github.com/svene/2026-01-24_hypermedia-dynapage-demo> | 2026-01 |
 | `2026-03-07_springboot-graalvm-jsx-poc` | B · Person app | <https://github.com/svene/2026-03-07_springboot-graalvm-jsx-poc> | 2026-03 |
 | `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-09_hypermedia-springboot-graalvm-hono-demo> | 2026-03 |
-| `2026-03-15_hda-quarkus-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-15_hda-quarkus-graalvm-hono-demo> | 2026-03 |
+| `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-15_hypermedia-quarkus-graalvm-hono-demo> | 2026-03 |
 | `2026-05-02_hda-htmx-patterns-docs` | Docs tooling | <https://github.com/svene/2026-05-02_hda-htmx-patterns-docs> | 2026-05 |
 | `2026-09-03_hda-springboot-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hda-springboot-browser-hono> | 2026-09 |
 | `2026-09-03_hda-quarkus-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hda-quarkus-browser-hono> | 2026-09 |
@@ -207,7 +207,7 @@ compare *where and how the HTML is produced and updated*. Ordered by era below.
   constants from Java** (`typescript-generator`), Java being the source of truth.
 - **Status:** working demo with architecture / java-ts-integration docs.
 
-#### `2026-03-15_hda-quarkus-graalvm-hono-demo`
+#### `2026-03-15_hypermedia-quarkus-graalvm-hono-demo`
 
 - **Role:** the Quarkus twin of `2026-03-09` — same pattern, other framework.
 - **Stack:** Quarkus (JAX-RS, `@ConfigMapping`, `@Scheduled`, H2) + GraalVM

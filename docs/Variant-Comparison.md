@@ -34,7 +34,7 @@ technology* (Axis 2).
 | `2026-01-24_hypermedia-dynapage-demo` | B | Spring Boot **+** Hono, Java + TS | separate Hono process (HTTP) | Hono components | **4 strategies compared:** OOB · `hx-partial` · event-JSX · event-HTML | 2.0.8 → 4.0.0 |
 | `2026-03-07_…graalvm-jsx-poc` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | `hono/jsx` (`.tsx`) | fragments | 4.0.0 |
 | `2026-03-09_hypermedia-springboot-graalvm-hono-demo` | B | Spring Boot + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
-| `2026-03-15_hda-quarkus-graalvm-hono-demo` | B | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
+| `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | B | Quarkus + GraalVM, Java + TS | in the JVM via GraalVM polyglot | Hono `html``` (`.ts`) | `hx-partial` / fragments | 4.0.0 |
 | `2026-09-03_hda-springboot-browser-hono` | B | Spring Boot 4, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 | `2026-09-03_hda-quarkus-browser-hono` | B | Quarkus 3.32, plain JDK 21, Java + TS | **in the browser** (htmx `hono` extension) | Hono `html``` (`.ts`) | `/uiroute/*` returns `{route, vm}` JSON; fragment built client-side | 4.0.0 |
 
@@ -194,4 +194,4 @@ picker:
 | TypeScript HTML but you have a large Java codebase, and a second process is acceptable | separate Hono process (`springboot-hono-poc` pattern) |
 | TypeScript HTML, one Java codebase, **one** deployable, all rendering server-side | GraalVM polyglot (`2026-03-09` / `2026-03-15`) |
 | TypeScript HTML, one Java codebase, **plain JDK** (no GraalVM), server does only JSON — and shipping template code to the browser + a first-paint JS round-trip is acceptable | browser-side Hono (`2026-09-03_hda-*-browser-hono`) — the most recent direction |
-| Any of the GraalVM / browser variants on Quarkus with native-image on the table | `2026-03-15_hda-quarkus-graalvm-hono-demo` or `2026-09-03_hda-quarkus-browser-hono` |
+| Any of the GraalVM / browser variants on Quarkus with native-image on the table | `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` or `2026-09-03_hda-quarkus-browser-hono` |
