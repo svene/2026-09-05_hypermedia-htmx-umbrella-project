@@ -38,7 +38,7 @@ name.
 | `2025-08-23_hypermedia-patterns-jte-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-jte-htmx> | 2025-08 |
 | `2025-08-23_hypermedia-patterns-jte-vc-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-jte-vc-htmx> | 2025-08 |
 | `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | A · Patterns | <https://github.com/svene/2025-08-23_hypermedia-patterns-thymeleaf-htmx> | 2025-08 |
-| `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | A · Patterns | <https://github.com/svene/2025-12-21_ssfe-patterns-quarkus-qute-htmx> | 2025-12 |
+| `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | A · Patterns | <https://github.com/svene/2025-12-21_hypermedia-patterns-quarkus-qute-htmx> | 2025-12 |
 | `2025-12-27_ssfe-patterns-hono-htmx` | A · Patterns | <https://github.com/svene/2025-12-27_ssfe-patterns-hono-htmx> | 2025-12 |
 | `2025-12-31-springboot-hono-poc` | B · Person app | <https://github.com/svene/2025-12-31-springboot-hono-poc> | 2025-12 |
 | `2026-01-24_hda-dynapage-demo` | B · Person app | <https://github.com/svene/2026-01-24_hda-dynapage-demo> | 2026-01 |
@@ -111,7 +111,7 @@ expressed*, not a real app. Ordered by era below.
 
 ### Quarkus / Qute (2025-12)
 
-#### `2025-12-21_ssfe-patterns-quarkus-qute-htmx`
+#### `2025-12-21_hypermedia-patterns-quarkus-qute-htmx`
 
 - **Role:** pattern showcase, organised as a course (`m00`–`m05` modules:
   plain → JSX-ish → pages → UI patterns → htmx).

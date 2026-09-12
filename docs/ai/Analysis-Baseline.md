@@ -20,7 +20,7 @@ need to catch up on.
 | `2025-08-23_hypermedia-patterns-jte-htmx` | main | `9a9f2d9` | 2026-09-07 | playwright tests |
 | `2025-08-23_hypermedia-patterns-jte-vc-htmx` | main | `a2c3cd1` | 2026-09-07 | playwright tests |
 | `2025-08-23_hypermedia-patterns-thymeleaf-htmx` | main | `dc9822f` | 2026-09-09 | WP-T10b — docs-project rename swept through readme + javadocs |
-| `2025-12-21_ssfe-patterns-quarkus-qute-htmx` | main | `e6bffc3` | 2026-09-07 | playwright tests |
+| `2025-12-21_hypermedia-patterns-quarkus-qute-htmx` | main | `e6bffc3` | 2026-09-07 | playwright tests |
 | `2025-12-27_ssfe-patterns-hono-htmx` | main | `98a8543` | 2026-09-07 | playwright tests |
 | `2025-12-31-springboot-hono-poc` | main | `4e6f9aa` | 2026-09-05 | vendored bulma |
 | `2026-01-24_hda-dynapage-demo` | main | `0d3df4f` | 2026-09-05 | vendored bulma |

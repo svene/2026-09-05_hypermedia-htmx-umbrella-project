@@ -39,7 +39,7 @@ rules, verbosity.
 
 ## Phase 2 — A different JVM stack: Quarkus / Qute (2025-12)
 
-`ssfe-patterns-quarkus-qute-htmx` re-ran the pattern exercise on Quarkus with the
+`hypermedia-patterns-quarkus-qute-htmx` re-ran the pattern exercise on Quarkus with the
 Qute engine, restructured as a teaching course (`m00`–`m05` modules) with a live
 code-snippet viewer, and native-image build files in place. Useful as a
 stack comparison, but Qute is still a Java template engine, so the same class of
