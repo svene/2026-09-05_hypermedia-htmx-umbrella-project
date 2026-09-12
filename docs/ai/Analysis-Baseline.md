@@ -32,7 +32,7 @@ need to catch up on.
 | `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | main | `bb6b072` | 2026-09-09 | WP-T10c — renamed from `…-graalvm-jsx-demo` |
 | `2026-05-02_hypermedia-htmx-patterns-docs` | main | `d37ad37` | 2026-09-12 | WP22 (T14–T17) — extractor `srcRoot`/package paths fixed for the jte-vc, thymeleaf, qute and hono renames |
 | `2026-09-03_hypermedia-springboot-browser-hono` | main | `68371c1` | 2026-09-05 | vendored bulma |
-| `2026-09-03_hda-quarkus-browser-hono` | main | `100cb74` | 2026-09-09 | WP-T10c — fork-parent reference updated |
+| `2026-09-03_hypermedia-quarkus-browser-hono` | main | `100cb74` | 2026-09-09 | WP-T10c — fork-parent reference updated |
 
 ## Refreshing the docs after upstream changes
 

@@ -47,7 +47,7 @@ name.
 | `2026-03-15_hypermedia-quarkus-graalvm-hono-demo` | B · Person app | <https://github.com/svene/2026-03-15_hypermedia-quarkus-graalvm-hono-demo> | 2026-03 |
 | `2026-05-02_hypermedia-htmx-patterns-docs` | Docs tooling | <https://github.com/svene/2026-05-02_hypermedia-htmx-patterns-docs> | 2026-05 |
 | `2026-09-03_hypermedia-springboot-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hypermedia-springboot-browser-hono> | 2026-09 |
-| `2026-09-03_hda-quarkus-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hda-quarkus-browser-hono> | 2026-09 |
+| `2026-09-03_hypermedia-quarkus-browser-hono` | B · Person app | <https://github.com/svene/2026-09-03_hypermedia-quarkus-browser-hono> | 2026-09 |
 
 Common ground across (almost) all variants: a **Hypermedia-Driven Application** —
 the browser swaps in HTML fragments with htmx, no SPA, no virtual DOM. HTML is
@@ -241,7 +241,7 @@ a gmavenplus script regenerate the `.ts` types/consts on `mvn package`).
   process of any kind.
 - **Status:** working; migrated from the GraalVM demo in one step, docs updated.
 
-#### `2026-09-03_hda-quarkus-browser-hono`
+#### `2026-09-03_hypermedia-quarkus-browser-hono`
 
 - **Role:** the Quarkus twin of the above.
 - **Stack:** Quarkus 3.32 (plain JDK 21, `quarkus-rest` + `quarkus-rest-jsonb`,

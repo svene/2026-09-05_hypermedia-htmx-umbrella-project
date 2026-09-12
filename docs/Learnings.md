@@ -149,7 +149,7 @@ Which projects have cross-language type generation, and in which direction:
 | `hypermedia-springboot-graalvm-hono-demo` | **Java→TS** ✅ | migrated (`5ecb2e7`); `typescript-generator` + gmavenplus for consts/routes/events/action-URLs |
 | `hypermedia-quarkus-graalvm-hono-demo` | **Java→TS** ✅ | migrated (`0fce481`) |
 | `hypermedia-springboot-browser-hono` | **Java→TS** ✅ | forked from the SB GraalVM demo; keeps `typescript-generator` + gmavenplus |
-| `hda-quarkus-browser-hono` | **Java→TS** ✅ | forked from the Quarkus GraalVM demo; same setup |
+| `hypermedia-quarkus-browser-hono` | **Java→TS** ✅ | forked from the Quarkus GraalVM demo; same setup |
 
 Pure-Java and pure-Hono variants have no cross-language contract.
 
